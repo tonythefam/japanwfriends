@@ -1646,22 +1646,22 @@ function ExpensesPage() {
   }, [expenses]);
 
 useEffect(() => {
-  const fetchWiseRate = async () => {
+  const fetchExchangeRate = async () => {
     try {
       const response = await fetch(
-        "https://api.transferwise.com/v1/rates?source=MYR&target=JPY"
+        "https://open.er-api.com/v6/latest/MYR"
       );
 
       if (!response.ok) {
-        throw new Error("Wise rate unavailable");
+        throw new Error("Exchange rate unavailable");
       }
 
       const data = await response.json();
-      const rate = Array.isArray(data) ? data[0]?.rate : data?.rate;
+      const rate = data?.rates?.JPY;
 
       if (rate) {
         setLiveYenRate(Number(rate));
-        setRateSource("Wise live mid-market rate");
+        setRateSource("Live exchange rate");
       }
     } catch (error) {
       console.warn("Using fallback exchange rate:", error);
@@ -1670,7 +1670,7 @@ useEffect(() => {
     }
   };
 
-  fetchWiseRate();
+  fetchExchangeRate();
 }, []);
 
   const today = new Date().toLocaleDateString("en-GB");
