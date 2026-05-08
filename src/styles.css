@@ -3419,3 +3419,226 @@ button {
     height: 48vh;
   }
 }
+
+/* =========================================================
+   FINAL POLISH OVERRIDES — DESKTOP COUNTDOWN + MOBILE CARDS/PASS
+   ========================================================= */
+
+.mobileFlightMeta {
+  display: none;
+}
+
+/* desktop countdown spacing fix */
+@media (min-width: 851px) {
+  .countdownSection {
+    max-width: 1180px;
+  }
+
+  .countdownGrid {
+    gap: 0;
+  }
+
+  .countdownGrid div {
+    min-width: 160px;
+    padding: 0 34px !important;
+  }
+
+  .countdownGrid div:not(:last-child)::after {
+    right: -10px;
+    top: 8px;
+    font-size: clamp(48px, 5vw, 76px);
+  }
+
+  .countdownGrid strong {
+    font-size: clamp(64px, 7vw, 98px);
+    letter-spacing: -0.045em;
+  }
+
+  .countdownGrid span {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+  }
+}
+
+/* mobile refinements */
+@media (max-width: 850px) {
+  /* smaller liquid glass buttons */
+  .upgradedHomeCards {
+    max-width: 340px;
+  }
+
+  .upgradedHomeCards button {
+    min-height: 116px;
+    padding: 20px 20px;
+    border-radius: 30px;
+    grid-template-columns: 48px 1fr;
+    column-gap: 14px;
+  }
+
+  .upgradedHomeCards svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .upgradedHomeCards h3 {
+    font-size: 23px;
+  }
+
+  .upgradedHomeCards p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* AirAsia mobile boarding pass */
+  .boardingPass {
+    width: min(410px, calc(100vw - 38px));
+    border-radius: 14px;
+    background: #fffdf6;
+  }
+
+  .boardingHeader {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 20px 20px 8px;
+    background: #fffdf6;
+  }
+
+  .boardingAirline {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    align-self: start;
+    font-size: 0;
+  }
+
+  .boardingAirline::before {
+    content: "AirAsia";
+    display: inline-block;
+    padding: 7px 14px 8px;
+    background: #ed1c24;
+    color: white;
+    border-radius: 2px 12px 2px 12px;
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.06em;
+  }
+
+  .boardingTitle,
+  .boardingTitle.small {
+    display: none !important;
+  }
+
+  .mobileFlightMeta {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2px 12px;
+    align-items: start;
+    text-align: right;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .mobileFlightMeta span {
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+
+  .mobileFlightMeta strong {
+    font-size: 16px;
+    color: #111;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .boardingMainSide {
+    padding: 10px 20px 22px;
+  }
+
+  .routeReveal {
+    padding: 14px 0 20px;
+    min-height: 112px;
+  }
+
+  .mobileRouteText {
+    font-size: clamp(48px, 16vw, 66px);
+    color: #111 !important;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+  }
+
+  .routePlane {
+    display: block;
+    top: 28px;
+    font-size: 34px;
+    color: #555;
+  }
+
+  .ticketDetails {
+    grid-template-columns: 1.15fr 0.9fr 0.9fr;
+    gap: 20px 18px;
+    align-items: start;
+  }
+
+  .ticketField span,
+  .boardingStubSide span {
+    color: #4b5563;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+  }
+
+  .ticketField strong,
+  .boardingStubSide strong,
+  .typewriterName {
+    color: #111 !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.05;
+    letter-spacing: -0.035em !important;
+  }
+
+  .ticketField p {
+    color: #111;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .ticketField.wide {
+    grid-column: 1 / 2;
+  }
+
+  .ticketField.wide strong {
+    max-width: 120px;
+    white-space: normal !important;
+    overflow-wrap: break-word;
+  }
+
+  .typewriterName {
+    display: block !important;
+    white-space: normal !important;
+  }
+
+  .typewriterName .typedText {
+    min-width: 0 !important;
+    white-space: normal !important;
+  }
+
+  .ticketField.luggage {
+    grid-column: 1 / -1;
+  }
+
+  .ticketField.luggage strong {
+    font-size: 16px !important;
+  }
+
+  .stubBarcode {
+    height: 76px;
+    width: 76%;
+    margin: 36px auto 10px;
+  }
+}

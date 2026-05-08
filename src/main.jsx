@@ -1076,6 +1076,12 @@ function FlightsPage() {
 
             <div className="boardingTitle">Boarding Pass</div>
             <div className="boardingTitle small">Japan Trip</div>
+            <div className="mobileFlightMeta">
+              <span>GATE</span>
+              <strong>{flight.gate}</strong>
+              <span>FLIGHT NO.</span>
+              <strong>{flight.flightNo}</strong>
+            </div>
           </div>
 
           <div className="boardingTicketBody">
