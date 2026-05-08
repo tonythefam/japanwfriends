@@ -1203,15 +1203,28 @@ function FlightsPage() {
 
 function RouteReveal({ flight }) {
   const routeText = `${flight.fromCity} (${flight.fromCode}) → ${flight.toCity} (${flight.toCode})`;
+  const mobileRouteText = `${flight.fromCode === "KLIA2" ? "KUL" : flight.fromCode} → ${
+    flight.toCode === "KLIA2" ? "KUL" : flight.toCode
+  }`;
 
   return (
     <div className="routeReveal">
       <motion.h2
+        className="desktopRouteText"
         initial={{ clipPath: "inset(0 100% 0 0)" }}
         animate={{ clipPath: "inset(0 0 0 0)" }}
         transition={{ duration: 2.8, ease: "linear" }}
       >
         {routeText}
+      </motion.h2>
+
+      <motion.h2
+        className="mobileRouteText"
+        initial={{ clipPath: "inset(0 100% 0 0)" }}
+        animate={{ clipPath: "inset(0 0 0 0)" }}
+        transition={{ duration: 2.8, ease: "linear" }}
+      >
+        {mobileRouteText}
       </motion.h2>
 
       <motion.div
@@ -1229,7 +1242,6 @@ function RouteReveal({ flight }) {
     </div>
   );
 }
-
 const accommodations = [
   {
     city: "Kyoto",
