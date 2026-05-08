@@ -4,6 +4,11 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  
+  "engines": {
+    "node": "22.x"
+  },
+  
   "dependencies": {
     "@vitejs/plugin-react": "latest",
     "framer-motion": "^12.38.0",
