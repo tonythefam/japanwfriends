@@ -3782,3 +3782,49 @@ button {
     font-size: 15px;
   }
 }
+
+/* Exchange rate edit button polish */
+.exchangeRateDisplay button,
+.exchangeRateEditor button {
+  border: 0 !important;
+  border-radius: 999px !important;
+  padding: 7px 13px !important;
+  background: #111 !important;
+  color: #fff !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.exchangeRateDisplay button:hover,
+.exchangeRateEditor button:hover {
+  transform: translateY(-3px);
+  background: #b91c1c !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.exchangeRateDisplay {
+  gap: 8px;
+}
+
+.exchangeRateEditor {
+  gap: 8px;
+}
+
+@media (max-width: 850px) {
+  .exchangeRateDisplay,
+  .exchangeRateEditor {
+    gap: 7px;
+  }
+
+  .exchangeRateDisplay button,
+  .exchangeRateEditor button {
+    padding: 6px 11px !important;
+    font-size: 10px !important;
+  }
+}
