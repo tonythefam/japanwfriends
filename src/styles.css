@@ -3828,3 +3828,36 @@ button {
     font-size: 10px !important;
   }
 }
+
+.exchangeRateDisplay,
+.exchangeRateEditor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px !important;
+  flex-wrap: wrap;
+}
+
+.exchangeRateDisplay strong,
+.exchangeRateEditor strong {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.exchangeRateDisplay button,
+.exchangeRateEditor button {
+  margin-left: 6px !important;
+}
+
+@media (max-width: 850px) {
+  .exchangeRateDisplay,
+  .exchangeRateEditor {
+    gap: 10px !important;
+  }
+
+  .exchangeRateDisplay button,
+  .exchangeRateEditor button {
+    margin-left: 4px !important;
+  }
+}

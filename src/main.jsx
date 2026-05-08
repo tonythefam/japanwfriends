@@ -1664,47 +1664,59 @@ function ExpensesPage() {
 
   const safeRate = Number(exchangeRate) || yenRate;
 
-  const getYen = (item) => {
-    if (item.fixedCurrency === "YEN") return Number(item.yen || 0);
-    return Math.round(Number(item.myr || 0) * safeRate);
-  };
+ const getYen = (item) => {
+  const myrValue = Number(item.myr || 0);
+  const yenValue = Number(item.yen || 0);
 
-  const getMYR = (item) => {
-    if (item.fixedCurrency === "MYR") return Number(item.myr || 0);
-    return Number((Number(item.yen || 0) / safeRate).toFixed(2));
-  };
+  if (item.fixedCurrency === "YEN") return yenValue;
 
-  const updateExpense = (index, value) => {
-    setExpenses((prev) =>
-      prev.map((item, i) => {
-        if (i !== index || item.fixed) return item;
+  if (yenValue > 0 && myrValue === 0) return yenValue;
 
-        if (value === "") {
-          return {
-            ...item,
-            myr: "",
-            yen: "",
-          };
-        }
+  return Math.round(myrValue * safeRate);
+};
 
-        const amount = Number(value);
+const getMYR = (item) => {
+  const myrValue = Number(item.myr || 0);
+  const yenValue = Number(item.yen || 0);
 
-        if (currency === "MYR") {
-          return {
-            ...item,
-            myr: amount,
-            yen: Math.round(amount * safeRate),
-          };
-        }
+  if (item.fixedCurrency === "MYR") return myrValue;
 
+  if (myrValue > 0 && yenValue === 0) return myrValue;
+
+  return Number((yenValue / safeRate).toFixed(2));
+};
+
+const updateExpense = (index, value) => {
+  setExpenses((prev) =>
+    prev.map((item, i) => {
+      if (i !== index || item.fixed) return item;
+
+      if (value === "") {
         return {
           ...item,
-          yen: amount,
-          myr: Number((amount / safeRate).toFixed(2)),
+          myr: "",
+          yen: "",
         };
-      })
-    );
-  };
+      }
+
+      const amount = Number(value);
+
+      if (currency === "MYR") {
+        return {
+          ...item,
+          myr: amount,
+          yen: Math.round(amount * safeRate),
+        };
+      }
+
+      return {
+        ...item,
+        yen: amount,
+        myr: Number((amount / safeRate).toFixed(2)),
+      };
+    })
+  );
+};
 
   const formatMYR = (value) =>
     `RM${Number(value || 0).toLocaleString("en-MY", {
@@ -1715,12 +1727,21 @@ function ExpensesPage() {
   const formatYEN = (value) =>
     `¥${Number(value || 0).toLocaleString("ja-JP")}`;
 
-  const cleanAmount = (item) =>
-    currency === "MYR" ? item.myr ?? "" : item.yen ?? "";
+const cleanAmount = (item) => {
+  if (currency === "MYR") {
+    return item.myr ?? "";
+  }
 
-  const totalMYR = expenses.reduce((sum, item) => sum + getMYR(item), 0);
-  const totalYEN = expenses.reduce((sum, item) => sum + getYen(item), 0);
-  const shoppingBalance = budget - totalMYR;
+  return item.yen ?? "";
+};
+
+const totalMYR = expenses.reduce((sum, item) => {
+  return sum + Number(getMYR(item) || 0);
+}, 0);
+const totalYEN = expenses.reduce((sum, item) => {
+  return sum + Number(getYen(item) || 0);
+}, 0);
+const shoppingBalance = Number(budget || 0) - totalMYR;
 
   return (
     <main className="expensesPage">
