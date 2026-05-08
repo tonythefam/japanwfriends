@@ -1623,14 +1623,20 @@ const initialExpenses = [
   { name: "Taxi and Uber", yen: null, myr: 100, fixed: false },
 ];
 
-const [liveYenRate, setLiveYenRate] = useState(yenRate);
-const [rateSource, setRateSource] = useState("Fixed fallback rate");
+const yenRate = 40.41;
 
 function ExpensesPage() {
   const [currency, setCurrency] = useState("MYR");
+
   const [budget, setBudget] = useState(() => {
     return Number(localStorage.getItem("japanTripBudget")) || 5000;
   });
+
+  const [exchangeRate, setExchangeRate] = useState(() => {
+    return Number(localStorage.getItem("japanTripExchangeRate")) || yenRate;
+  });
+
+  const [editingRate, setEditingRate] = useState(false);
 
   const [expenses, setExpenses] = useState(() => {
     const saved = localStorage.getItem("japanTripExpenses");
@@ -1645,78 +1651,60 @@ function ExpensesPage() {
     localStorage.setItem("japanTripExpenses", JSON.stringify(expenses));
   }, [expenses]);
 
-useEffect(() => {
-  const fetchExchangeRate = async () => {
-    try {
-      const response = await fetch(
-        "https://open.er-api.com/v6/latest/MYR"
-      );
+  useEffect(() => {
+    localStorage.setItem("japanTripBudget", budget);
+  }, [budget]);
 
-      if (!response.ok) {
-        throw new Error("Exchange rate unavailable");
-      }
-
-      const data = await response.json();
-      const rate = data?.rates?.JPY;
-
-      if (rate) {
-        setLiveYenRate(Number(rate));
-        setRateSource("Live exchange rate");
-      }
-    } catch (error) {
-      console.warn("Using fallback exchange rate:", error);
-      setLiveYenRate(yenRate);
-      setRateSource("Fixed fallback rate");
-    }
-  };
-
-  fetchExchangeRate();
-}, []);
+  useEffect(() => {
+    localStorage.setItem("japanTripExchangeRate", exchangeRate);
+  }, [exchangeRate]);
 
   const today = new Date().toLocaleDateString("en-GB");
   const receiptNo = "JP-7X9B2K";
 
+  const safeRate = Number(exchangeRate) || yenRate;
+
+  const getYen = (item) => {
+    if (item.fixedCurrency === "YEN") return Number(item.yen || 0);
+    return Math.round(Number(item.myr || 0) * safeRate);
+  };
+
+  const getMYR = (item) => {
+    if (item.fixedCurrency === "MYR") return Number(item.myr || 0);
+    return Number((Number(item.yen || 0) / safeRate).toFixed(2));
+  };
+
   const updateExpense = (index, value) => {
-  const cleanValue = value === "" ? "" : Number(value);
+    setExpenses((prev) =>
+      prev.map((item, i) => {
+        if (i !== index || item.fixed) return item;
 
-  setExpenses((prev) =>
-    prev.map((item, i) => {
-      if (i !== index || item.fixed) return item;
+        if (value === "") {
+          return {
+            ...item,
+            myr: "",
+            yen: "",
+          };
+        }
 
-      if (cleanValue === "") {
+        const amount = Number(value);
+
+        if (currency === "MYR") {
+          return {
+            ...item,
+            myr: amount,
+            yen: Math.round(amount * safeRate),
+          };
+        }
+
         return {
           ...item,
-          myr: "",
-          yen: "",
+          yen: amount,
+          myr: Number((amount / safeRate).toFixed(2)),
         };
-      }
-
-      if (currency === "MYR") {
-        return {
-          ...item,
-          myr: cleanValue,
-          yen: Math.round(cleanValue * liveYenRate),
-        };
-      }
-
-      return {
-        ...item,
-        yen: cleanValue,
-        myr: Number((cleanValue / liveYenRate).toFixed(2)),
-      };
-    })
-  );
-};
-
-const getYen = (item) => {
-  if (item.fixedCurrency === "YEN") return Number(item.yen || 0);
-  return Math.round(Number(item.myr || 0) * liveYenRate);
-};
-
-const getMYR = (item) => {
-  if (item.fixedCurrency === "MYR") return Number(item.myr || 0);
-  return Number((Number(item.yen || 0) / liveYenRate).toFixed(2));
-};
+      })
+    );
+  };
 
   const formatMYR = (value) =>
     `RM${Number(value || 0).toLocaleString("en-MY", {
@@ -1727,12 +1715,12 @@ const getMYR = (item) => {
   const formatYEN = (value) =>
     `¥${Number(value || 0).toLocaleString("ja-JP")}`;
 
-const cleanAmount = (item) =>
-  currency === "MYR" ? item.myr ?? "" : item.yen ?? "";
+  const cleanAmount = (item) =>
+    currency === "MYR" ? item.myr ?? "" : item.yen ?? "";
 
-const totalMYR = expenses.reduce((sum, item) => sum + getMYR(item), 0);
-const totalYEN = expenses.reduce((sum, item) => sum + getYen(item), 0);
-const shoppingBalance = budget - totalMYR;
+  const totalMYR = expenses.reduce((sum, item) => sum + getMYR(item), 0);
+  const totalYEN = expenses.reduce((sum, item) => sum + getYen(item), 0);
+  const shoppingBalance = budget - totalMYR;
 
   return (
     <main className="expensesPage">
@@ -1766,6 +1754,7 @@ const shoppingBalance = budget - totalMYR;
               >
                 MYR
               </button>
+
               <button
                 className={currency === "YEN" ? "active" : ""}
                 onClick={() => setCurrency("YEN")}
@@ -1779,10 +1768,17 @@ const shoppingBalance = budget - totalMYR;
               <strong>{currency === "MYR" ? "RM" : "¥"}</strong>
               <input
                 type="number"
-                value={currency === "MYR" ? budget : Math.round(budget * yenRate)}
+                value={currency === "MYR" ? budget : Math.round(budget * safeRate)}
                 onChange={(e) => {
-                  const value = Number(e.target.value) || 0;
-                  setBudget(currency === "MYR" ? value : value / yenRate);
+                  const value = e.target.value;
+
+                  if (value === "") {
+                    setBudget("");
+                    return;
+                  }
+
+                  const amount = Number(value);
+                  setBudget(currency === "MYR" ? amount : amount / safeRate);
                 }}
               />
             </label>
@@ -1799,11 +1795,7 @@ const shoppingBalance = budget - totalMYR;
             <div className="receiptDivider slim" />
 
             {expenses.map((item, index) => (
-              <motion.div
-                layout
-                className="thermalRow"
-                key={item.name}
-              >
+              <motion.div layout className="thermalRow" key={item.name}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
 
                 <span>{item.name}</span>
@@ -1822,7 +1814,7 @@ const shoppingBalance = budget - totalMYR;
                     {item.fixed ? (
                       <span>
                         {currency === "MYR"
-                          ? formatMYR(item.myr)
+                          ? formatMYR(getMYR(item))
                           : formatYEN(getYen(item))}
                       </span>
                     ) : (
@@ -1856,15 +1848,36 @@ const shoppingBalance = budget - totalMYR;
 
           <div className="receiptDivider" />
 
-<section className="exchangeRateLine">
-  <span>EXCHANGE RATE:</span>
-  <strong>
-    1 MYR = {Number(liveYenRate).toFixed(2)} YEN
-  </strong>
-  <small>{rateSource}</small>
-</section>
+          <section className="exchangeRateLine">
+            <span>EXCHANGE RATE:</span>
 
-<div className="receiptDivider" />
+            {editingRate ? (
+              <div className="exchangeRateEditor">
+                <strong>1 MYR =</strong>
+
+                <input
+                  type="number"
+                  step="0.01"
+                  value={exchangeRate}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setExchangeRate(value === "" ? "" : Number(value));
+                  }}
+                />
+
+                <strong>YEN</strong>
+
+                <button onClick={() => setEditingRate(false)}>SAVE</button>
+              </div>
+            ) : (
+              <div className="exchangeRateDisplay">
+                <strong>1 MYR = {Number(safeRate).toFixed(2)} YEN</strong>
+                <button onClick={() => setEditingRate(true)}>EDIT</button>
+              </div>
+            )}
+          </section>
+
+          <div className="receiptDivider" />
 
           <footer className="thermalFooter">
             THANK YOU FOR YOUR BUSINESS!
