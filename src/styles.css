@@ -3642,3 +3642,143 @@ button {
     margin: 36px auto 10px;
   }
 }
+
+/* =========================================================
+   EXPENSES PAGE CLEANUP — MOBILE + INPUT STYLE
+   ========================================================= */
+
+/* slimmer input style for both desktop and mobile */
+.thermalAmount input,
+.thermalBudget input {
+  border: 0 !important;
+  border-bottom: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 4px 2px 6px !important;
+  box-shadow: none !important;
+}
+
+.thermalAmount input {
+  max-width: 86px;
+}
+
+.thermalBudget input {
+  width: 92px;
+}
+
+/* receipt total should feel like receipt text, not huge display text */
+.thermalTotals div {
+  font-size: 18px;
+  align-items: baseline;
+}
+
+.thermalTotals strong {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.exchangeRateLine {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+  font-family: "Courier New", monospace;
+}
+
+.exchangeRateLine span {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.exchangeRateLine strong {
+  font-size: 16px;
+}
+
+.exchangeRateLine small {
+  font-size: 12px;
+  color: #57534e;
+}
+
+/* mobile receipt cleanup */
+@media (max-width: 850px) {
+  .receiptControlsSimple {
+    gap: 14px;
+  }
+
+  .thermalToggle {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 8px;
+  }
+
+  .thermalToggle button {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 15px;
+  }
+
+  .thermalBudget {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .thermalBudget span {
+    font-size: 13px;
+  }
+
+  .thermalBudget input {
+    width: 90px;
+    text-align: right;
+  }
+
+  /* remove STATUS column on mobile */
+  .thermalRow {
+    grid-template-columns: minmax(0, 1fr) 98px;
+    gap: 12px;
+    font-size: 13px;
+    align-items: center;
+  }
+
+  .thermalHead span:nth-child(3),
+  .thermalRow > span:nth-child(3) {
+    display: none;
+  }
+
+  .thermalHead {
+    font-size: 12px;
+  }
+
+  .thermalHead span:nth-child(2)::after {
+    content: "";
+  }
+
+  .thermalRow > span:nth-child(2) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.25;
+  }
+
+  .thermalAmount {
+    text-align: right;
+  }
+
+  .thermalAmount input {
+    max-width: 76px;
+    font-size: 13px;
+  }
+
+  .thermalTotals div {
+    font-size: 16px;
+  }
+
+  .thermalTotals strong {
+    font-size: 16px;
+  }
+
+  .thermalFooter {
+    font-size: 15px;
+  }
+}

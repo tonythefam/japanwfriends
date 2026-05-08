@@ -1610,12 +1610,12 @@ function FloorPlanModal({ stay, onClose }) {
 }
 
 const initialExpenses = [
-  { name: "Flights", yen: 66853, myr: 1653.9, fixed: true },
+  { name: "Flights", yen: null, myr: 1653.9, fixed: true, fixedCurrency: "MYR" },
   { name: "Transport to Kyoto", yen: null, myr: 90, fixed: false },
-  { name: "Stay in Kyoto (4 nights)", yen: 20273, myr: 502, fixed: true },
+  { name: "Stay in Kyoto (4 nights)", yen: 20273, myr: null, fixed: true, fixedCurrency: "YEN" },
   { name: "Transport to Osaka", yen: null, myr: 50, fixed: false },
-  { name: "Stay in Osaka (3 nights)", yen: 11496, myr: 285, fixed: true },
-  { name: "teamLab Kyoto", yen: 4568, myr: 113, fixed: true },
+  { name: "Stay in Osaka (3 nights)", yen: 11496, myr: null, fixed: true, fixedCurrency: "YEN" },
+  { name: "teamLab Kyoto", yen: null, myr: 113, fixed: true, fixedCurrency: "MYR" },
   { name: "Transport to KIX", yen: null, myr: 30, fixed: false },
   { name: "Food", yen: null, myr: 1140, fixed: false },
   { name: "Sightseeing admission fees", yen: null, myr: 130, fixed: false },
@@ -1623,7 +1623,8 @@ const initialExpenses = [
   { name: "Taxi and Uber", yen: null, myr: 100, fixed: false },
 ];
 
-const yenRate = 40.41;
+const [liveYenRate, setLiveYenRate] = useState(yenRate);
+const [rateSource, setRateSource] = useState("Fixed fallback rate");
 
 function ExpensesPage() {
   const [currency, setCurrency] = useState("MYR");
@@ -1644,38 +1645,78 @@ function ExpensesPage() {
     localStorage.setItem("japanTripExpenses", JSON.stringify(expenses));
   }, [expenses]);
 
-  useEffect(() => {
-    localStorage.setItem("japanTripBudget", budget);
-  }, [budget]);
+useEffect(() => {
+  const fetchWiseRate = async () => {
+    try {
+      const response = await fetch(
+        "https://api.transferwise.com/v1/rates?source=MYR&target=JPY"
+      );
+
+      if (!response.ok) {
+        throw new Error("Wise rate unavailable");
+      }
+
+      const data = await response.json();
+      const rate = Array.isArray(data) ? data[0]?.rate : data?.rate;
+
+      if (rate) {
+        setLiveYenRate(Number(rate));
+        setRateSource("Wise live mid-market rate");
+      }
+    } catch (error) {
+      console.warn("Using fallback exchange rate:", error);
+      setLiveYenRate(yenRate);
+      setRateSource("Fixed fallback rate");
+    }
+  };
+
+  fetchWiseRate();
+}, []);
 
   const today = new Date().toLocaleDateString("en-GB");
   const receiptNo = "JP-7X9B2K";
 
   const updateExpense = (index, value) => {
-    setExpenses((prev) =>
-      prev.map((item, i) => {
-        if (i !== index || item.fixed) return item;
+  const cleanValue = value === "" ? "" : Number(value);
 
-        const amount = Number(value) || 0;
+  setExpenses((prev) =>
+    prev.map((item, i) => {
+      if (i !== index || item.fixed) return item;
 
-        if (currency === "MYR") {
-          return {
-            ...item,
-            myr: amount,
-            yen: Math.round(amount * yenRate),
-          };
-        }
-
+      if (cleanValue === "") {
         return {
           ...item,
-          yen: amount,
-          myr: Number((amount / yenRate).toFixed(2)),
+          myr: "",
+          yen: "",
         };
-      })
-    );
-  };
+      }
 
-  const getYen = (item) => item.yen ?? Math.round((item.myr || 0) * yenRate);
+      if (currency === "MYR") {
+        return {
+          ...item,
+          myr: cleanValue,
+          yen: Math.round(cleanValue * liveYenRate),
+        };
+      }
+
+      return {
+        ...item,
+        yen: cleanValue,
+        myr: Number((cleanValue / liveYenRate).toFixed(2)),
+      };
+    })
+  );
+};
+
+const getYen = (item) => {
+  if (item.fixedCurrency === "YEN") return Number(item.yen || 0);
+  return Math.round(Number(item.myr || 0) * liveYenRate);
+};
+
+const getMYR = (item) => {
+  if (item.fixedCurrency === "MYR") return Number(item.myr || 0);
+  return Number((Number(item.yen || 0) / liveYenRate).toFixed(2));
+};
 
   const formatMYR = (value) =>
     `RM${Number(value || 0).toLocaleString("en-MY", {
@@ -1686,12 +1727,12 @@ function ExpensesPage() {
   const formatYEN = (value) =>
     `¥${Number(value || 0).toLocaleString("ja-JP")}`;
 
-  const cleanAmount = (item) =>
-    currency === "MYR" ? Number(item.myr || 0) : getYen(item);
+const cleanAmount = (item) =>
+  currency === "MYR" ? item.myr ?? "" : item.yen ?? "";
 
-  const totalMYR = expenses.reduce((sum, item) => sum + Number(item.myr || 0), 0);
-  const totalYEN = expenses.reduce((sum, item) => sum + getYen(item), 0);
-  const shoppingBalance = budget - totalMYR;
+const totalMYR = expenses.reduce((sum, item) => sum + getMYR(item), 0);
+const totalYEN = expenses.reduce((sum, item) => sum + getYen(item), 0);
+const shoppingBalance = budget - totalMYR;
 
   return (
     <main className="expensesPage">
@@ -1814,6 +1855,16 @@ function ExpensesPage() {
           </section>
 
           <div className="receiptDivider" />
+
+<section className="exchangeRateLine">
+  <span>EXCHANGE RATE:</span>
+  <strong>
+    1 MYR = {Number(liveYenRate).toFixed(2)} YEN
+  </strong>
+  <small>{rateSource}</small>
+</section>
+
+<div className="receiptDivider" />
 
           <footer className="thermalFooter">
             THANK YOU FOR YOUR BUSINESS!
