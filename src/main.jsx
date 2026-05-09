@@ -550,13 +550,17 @@ function Sidebar({ open, setOpen, page, setPage }) {
             exit={{ opacity: 0 }}
           />
 
-          <motion.aside
-            className="drawer"
-            initial={{ x: -380 }}
-            animate={{ x: 0 }}
-            exit={{ x: -380 }}
-            transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          >
+<motion.aside
+  className="drawer"
+  initial={{ x: "-100%" }}
+  animate={{ x: 0 }}
+  exit={{ x: "-100%" }}
+  transition={{
+    type: "tween",
+    duration: 0.32,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
             <div className="drawerTop">
               <div>
                 <p className="smallLabel">Japan 2026</p>
@@ -576,11 +580,9 @@ function Sidebar({ open, setOpen, page, setPage }) {
                   <button
                     key={item.id}
                     className={page === item.id ? "active" : ""}
-                    onClick={() => {
-                      setPage(item.id);
-                      setOpen(false);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
+onClick={() => {
+  setPage(item.id);
+}}
                   >
                     <Icon size={19} />
                     {item.label}
@@ -710,44 +712,54 @@ function CountdownTimer() {
 }
 
 function HomePage({ setPage }) {
+  const goToPage = (pageName) => {
+    setPage(pageName);
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 0);
+  };
+
   return (
     <>
       <HomeAmbientBackground />
-      <Hero setPage={setPage} />
+      <Hero setPage={goToPage} />
 
       <main className="container homeContainer">
         <CountdownTimer />
 
         <section className="homeCards upgradedHomeCards">
-          <button onClick={() => setPage("flights")}>
+          <button onClick={() => goToPage("flights")}>
             <Plane />
             <span>01</span>
             <h3>Flights</h3>
             <p>Return flight, luggage and airport timing.</p>
           </button>
 
-          <button onClick={() => setPage("accommodation")}>
+          <button onClick={() => goToPage("accommodation")}>
             <Hotel />
             <span>02</span>
             <h3>Accommodation</h3>
             <p>Kyoto and Osaka stays in one clean view.</p>
           </button>
 
-          <button onClick={() => setPage("expenses")}>
+          <button onClick={() => goToPage("expenses")}>
             <Wallet />
             <span>03</span>
             <h3>Expenses</h3>
             <p>Budget, food, admission and shopping allowance.</p>
           </button>
 
-          <button onClick={() => setPage("gallery")}>
+          <button onClick={() => goToPage("gallery")}>
             <Camera />
             <span>04</span>
             <h3>Gallery</h3>
             <p>Disposable film rolls from all 9 friends.</p>
           </button>
 
-          <button onClick={() => setPage("places")}>
+          <button onClick={() => goToPage("places")}>
             <MapPin />
             <span>05</span>
             <h3>Places</h3>
@@ -1230,12 +1242,16 @@ function FlightsPage() {
 
 function RouteReveal({ flight }) {
   const routeText = `${flight.fromCity} (${flight.fromCode}) → ${flight.toCity} (${flight.toCode})`;
-  const mobileRouteText = `${flight.fromCode === "KLIA2" ? "KUL" : flight.fromCode} → ${
+
+  const mobileRouteText = `${
+    flight.fromCode === "KLIA2" ? "KUL" : flight.fromCode
+  } → ${
     flight.toCode === "KLIA2" ? "KUL" : flight.toCode
   }`;
 
   return (
     <div className="routeReveal">
+      {/* DESKTOP */}
       <motion.h2
         className="desktopRouteText"
         initial={{ clipPath: "inset(0 100% 0 0)" }}
@@ -1245,6 +1261,7 @@ function RouteReveal({ flight }) {
         {routeText}
       </motion.h2>
 
+      {/* MOBILE */}
       <motion.h2
         className="mobileRouteText"
         initial={{ clipPath: "inset(0 100% 0 0)" }}
@@ -1254,14 +1271,36 @@ function RouteReveal({ flight }) {
         {mobileRouteText}
       </motion.h2>
 
+      {/* DESKTOP PLANE */}
       <motion.div
-        className="routePlane"
+        className="routePlane desktopPlane"
         initial={{ left: "0%", opacity: 0 }}
-        animate={{ left: "100%", opacity: [0, 1, 1, 0] }}
+        animate={{
+          left: "100%",
+          opacity: [0, 1, 1, 0],
+        }}
         transition={{
           duration: 2.8,
           ease: "linear",
-          times: [0, 0.05, 0.94, 1],
+          times: [0, 0.06, 0.94, 1],
+        }}
+      >
+        ✈
+      </motion.div>
+
+      {/* MOBILE PLANE */}
+      <motion.div
+        key={mobileRouteText}
+        className="mobileRoutePlaneReal"
+        initial={{ left: "2%", opacity: 0 }}
+        animate={{
+          left: "96%",
+          opacity: [0, 1, 1, 0],
+        }}
+        transition={{
+          duration: 2.8,
+          ease: "linear",
+          times: [0, 0.06, 0.94, 1],
         }}
       >
         ✈
@@ -1269,6 +1308,7 @@ function RouteReveal({ flight }) {
     </div>
   );
 }
+
 const accommodations = [
   {
     city: "Kyoto",
@@ -2232,14 +2272,19 @@ function GalleryPage() {
         setActiveCardKey(tonyCard.dataset.cardKey);
       }
 
-      setTimeout(() => {
-        hasInteractedRef.current = false;
-        startAutoScroll();
+      const autoScrollDelay =
+  window.innerWidth <= 850 ? 2200 : 3000;
 
-        setTimeout(() => {
-          if (!hasInteractedRef.current) startAutoScroll();
-        }, 500);
-      }, 1000);
+setTimeout(() => {
+  hasInteractedRef.current = false;
+  startAutoScroll();
+
+  setTimeout(() => {
+    if (!hasInteractedRef.current) {
+      startAutoScroll();
+    }
+  }, 500);
+}, autoScrollDelay);
     });
 
     return () => {
@@ -2337,24 +2382,78 @@ function GalleryPage() {
     <main className="galleryPage">
       <div className="galleryBg" />
 
-      <section className="galleryHero compactGalleryHero">
-        <div className="infoIcon">
-          <Camera size={28} />
-        </div>
+      <motion.section
+  className="galleryHero compactGalleryHero"
+  initial={{ opacity: 0, y: -18 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.7,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+        <motion.div
+  className="infoIcon"
+  initial={{ opacity: 0, scale: 0.82 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{
+    delay: 0.2,
+    duration: 0.7,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  <Camera size={28} />
+</motion.div>
 
-        <p className="smallLabel">Disposable Film Gallery</p>
+<motion.p
+  className="smallLabel"
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    delay: 0.2,
+    duration: 0.7,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  Film Gallery
+</motion.p>
 
-        <span>Re-live everyone's memories through their lenses.</span>
-      </section>
+<motion.span
+  initial={{ opacity: 0, y: 12 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    delay: 0.2,
+    duration: 0.8,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+>
+  See the world of Japan through their lenses.
+</motion.span>
+      </motion.section>
 
       <section className="filmPackStage heroGalleryStage">
-        <div className="filmPackIntro minimal">
-          <h2>Open the pack.</h2>
-        </div>
+        <motion.div
+  className="filmPackIntro minimal"
+  initial={{ opacity: 0, y: 22 }}
+  animate={{ opacity: 1, y: 0 }}
+transition={{
+  delay: window.innerWidth <= 850 ? 0.55 : 1.35,
+  duration: 0.75,
+  ease: [0.22, 1, 0.36, 1],
+}}
+>
+  <h2>Choose your roll</h2>
+</motion.div>
 
-        <div
-          ref={trackRef}
-          className="filmPackTrack"
+        <motion.div
+  ref={trackRef}
+  className="filmPackTrack"
+  initial={{ opacity: 0, y: 42 }}
+  animate={{ opacity: 1, y: 0 }}
+transition={{
+  delay: window.innerWidth <= 850 ? 1.75 : 2.25,
+  duration: 0.85,
+  ease: [0.22, 1, 0.36, 1],
+}}
           onWheel={onWheel}
           onScroll={() => {
             handleLoop();
@@ -2426,7 +2525,7 @@ function GalleryPage() {
               </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </section>
 
       <AnimatePresence>
@@ -2627,15 +2726,35 @@ function App() {
   const [page, setPage] = useState("home");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const goToPage = (pageName) => {
+    setPage(pageName);
+    setDrawerOpen(false);
+
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+  };
+
   return (
     <div className="page">
-      <TopBar setOpen={setDrawerOpen} drawerOpen={drawerOpen} page={page} />
+      <TopBar
+        setOpen={setDrawerOpen}
+        drawerOpen={drawerOpen}
+        page={page}
+      />
 
       <Sidebar
         open={drawerOpen}
         setOpen={setDrawerOpen}
         page={page}
-        setPage={setPage}
+        setPage={goToPage}
       />
 
       <AnimatePresence mode="wait">
@@ -2646,7 +2765,7 @@ function App() {
           exit={{ opacity: 0, y: -18 }}
           transition={{ duration: 0.35 }}
         >
-          {page === "home" && <HomePage setPage={setPage} />}
+          {page === "home" && <HomePage setPage={goToPage} />}
           {page === "itinerary" && <CalendarPage />}
           {page === "flights" && <FlightsPage />}
           {page === "accommodation" && <AccommodationPage />}
