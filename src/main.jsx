@@ -1,4 +1,13 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import tonyAvatar from "./assets/gallery/tony.jpg";
+import natalieAvatar from "./assets/gallery/natalie.jpg";
+import yujingAvatar from "./assets/gallery/yujing.jpg";
+import zhaoyangAvatar from "./assets/gallery/zhaoyang.jpg";
+import anthonyAvatar from "./assets/gallery/anthony.jpg";
+import ashleyAvatar from "./assets/gallery/ashley.jpg";
+import paulAvatar from "./assets/gallery/paul.jpg";
+import leequanAvatar from "./assets/gallery/leequan.jpg";
+import jianshengAvatar from "./assets/gallery/jiansheng.jpg";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   motion,
@@ -20,6 +29,10 @@ import {
   Landmark,
   Home,
   Sparkles,
+  Camera,
+  Images,
+  Film,
+  Aperture,
 } from "lucide-react";
 import "./styles.css";
 
@@ -407,6 +420,7 @@ const pages = [
   { id: "flights", label: "Flight Details", icon: Plane },
   { id: "accommodation", label: "Accommodation", icon: BedDouble },
   { id: "expenses", label: "Expenses", icon: ReceiptText },
+  { id: "gallery", label: "Gallery", icon: Camera },
   { id: "places", label: "Places of Interest", icon: Landmark },
 ];
 
@@ -726,9 +740,16 @@ function HomePage({ setPage }) {
             <p>Budget, food, admission and shopping allowance.</p>
           </button>
 
+          <button onClick={() => setPage("gallery")}>
+            <Camera />
+            <span>04</span>
+            <h3>Gallery</h3>
+            <p>Disposable film rolls from all 9 friends.</p>
+          </button>
+
           <button onClick={() => setPage("places")}>
             <MapPin />
-            <span>04</span>
+            <span>05</span>
             <h3>Places</h3>
             <p>Saved attractions and map planning.</p>
           </button>
@@ -1911,6 +1932,597 @@ const shoppingBalance = Number(budget || 0) - totalMYR;
   );
 }
 
+
+const filmPhotoPool = [
+  "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1558862107-d49ef2a04d72?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1480796927426-f609979314bd?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1505069190533-da1c9af13346?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1554797589-7241bb691973?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1522383225653-ed111181a951?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1526481280698-8fcc13fd4d2c?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1494587416117-f102a2ac0a8d?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=900&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1570521462033-3015e76e7432?q=80&w=900&auto=format&fit=crop",
+];
+
+const galleryProfiles = [
+  {
+    id: "tony",
+    fullName: "Ng Wai Zhung",
+    name: "Tony",
+    roll: "ROLL 01",
+    vibe: "Kyoto Soft Light",
+    avatar: tonyAvatar,
+  },
+
+  {
+    id: "natalie",
+    fullName: "Cheow Kai Xin",
+    name: "Natalie",
+    roll: "ROLL 02",
+    vibe: "Osaka Night Roll",
+    avatar: natalieAvatar,
+  },
+
+  {
+    id: "yujing",
+    fullName: "Tan Yujing",
+    name: "Yujing",
+    roll: "ROLL 03",
+    vibe: "Kyoto Street Diary",
+    avatar: yujingAvatar,
+  },
+
+  {
+    id: "zhaoyang",
+    fullName: "Low Zhao Yang",
+    name: "Zhao Yang",
+    roll: "ROLL 04",
+    vibe: "Fuji Soft Frame",
+    avatar: zhaoyangAvatar,
+  },
+
+  {
+    id: "anthony",
+    fullName: "Siak Xiang Jun",
+    name: "Anthony",
+    roll: "ROLL 05",
+    vibe: "Food & Friends",
+    avatar: anthonyAvatar,
+  },
+
+  {
+    id: "ashley",
+    fullName: "Low Yue Tong",
+    name: "Ashley",
+    roll: "ROLL 06",
+    vibe: "Soft Memories",
+    avatar: ashleyAvatar,
+  },
+
+  {
+    id: "paul",
+    fullName: "Lim Paul Lim",
+    name: "Paul",
+    roll: "ROLL 07",
+    vibe: "City Walk Roll",
+    avatar: paulAvatar,
+  },
+
+  {
+    id: "leequan",
+    fullName: "Tan Lee Quan",
+    name: "Lee Quan",
+    roll: "ROLL 08",
+    vibe: "Good Food Roll",
+    avatar: leequanAvatar,
+  },
+
+  {
+    id: "jiansheng",
+    fullName: "Chew Jian Sheng",
+    name: "Jian Sheng",
+    roll: "ROLL 09",
+    vibe: "Waku Waku Roll",
+    avatar: jianshengAvatar,
+  },
+].map((profile) => ({
+  ...profile,
+
+  photos: Array.from({ length: 27 }, (_, i) => ({
+    id: `${profile.id}-${i + 1}`,
+    src: profile.avatar,
+    caption: `Frame ${String(i + 1).padStart(2, "0")} · ${profile.name}`,
+  })),
+}));
+
+function GalleryPage() {
+  const [selectedProfile, setSelectedProfile] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [activeCardKey, setActiveCardKey] = useState("");
+
+  const trackRef = useRef(null);
+  const autoRef = useRef(null);
+  const momentumRef = useRef(null);
+  const alignTimeoutRef = useRef(null);
+  const hasInteractedRef = useRef(false);
+
+  const dragRef = useRef({
+    isDown: false,
+    startX: 0,
+    scrollLeft: 0,
+    lastX: 0,
+    lastTime: 0,
+    velocity: 0,
+    moved: false,
+  });
+
+  const loopProfiles = [
+    ...galleryProfiles,
+    ...galleryProfiles,
+    ...galleryProfiles,
+    ...galleryProfiles,
+    ...galleryProfiles,
+  ];
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const isPovButtonEvent = (e) => {
+    return e.target.closest(".theirPovButton");
+  };
+
+  const getSetWidth = () => {
+    const track = trackRef.current;
+    return track ? track.scrollWidth / 5 : 0;
+  };
+
+  const handleLoop = () => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const setWidth = getSetWidth();
+
+    if (track.scrollLeft < setWidth * 1.25) {
+      track.scrollLeft += setWidth;
+    }
+
+    if (track.scrollLeft > setWidth * 3.75) {
+      track.scrollLeft -= setWidth;
+    }
+  };
+
+  const getClosestCard = () => {
+    const track = trackRef.current;
+    if (!track) return null;
+
+    const cards = Array.from(track.querySelectorAll(".filmProfileCard"));
+    const center = track.scrollLeft + track.clientWidth / 2;
+
+    let closest = null;
+    let smallestDistance = Infinity;
+
+    cards.forEach((card) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const distance = Math.abs(center - cardCenter);
+
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closest = card;
+      }
+    });
+
+    return closest;
+  };
+
+  const updateActiveCard = () => {
+    const closest = getClosestCard();
+    if (closest?.dataset.cardKey) {
+      setActiveCardKey(closest.dataset.cardKey);
+    }
+  };
+
+  const centerCard = (card, behavior = "smooth") => {
+    const track = trackRef.current;
+    if (!track || !card) return;
+
+    track.scrollTo({
+      left: card.offsetLeft - track.clientWidth / 2 + card.offsetWidth / 2,
+      behavior,
+    });
+  };
+
+  const alignClosestCard = () => {
+    const closest = getClosestCard();
+    if (!closest) return;
+
+    centerCard(closest, "smooth");
+    setActiveCardKey(closest.dataset.cardKey);
+  };
+
+  const scheduleAlignment = () => {
+    clearTimeout(alignTimeoutRef.current);
+
+    alignTimeoutRef.current = setTimeout(() => {
+      alignClosestCard();
+    }, 420);
+  };
+
+  const stopAutoScroll = () => {
+    hasInteractedRef.current = true;
+    cancelAnimationFrame(autoRef.current);
+  };
+
+  const startAutoScroll = () => {
+    cancelAnimationFrame(autoRef.current);
+
+    const speed = window.innerWidth <= 850 ? 2.1 : 0.75;
+
+    const step = () => {
+      const track = trackRef.current;
+
+      if (!track || hasInteractedRef.current) return;
+
+      track.scrollLeft = track.scrollLeft + speed;
+
+      handleLoop();
+      updateActiveCard();
+
+      autoRef.current = requestAnimationFrame(step);
+    };
+
+    autoRef.current = requestAnimationFrame(step);
+  };
+
+  const startMomentum = () => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let velocity = dragRef.current.velocity * 22;
+
+    const step = () => {
+      if (Math.abs(velocity) < 0.18) {
+        scheduleAlignment();
+        return;
+      }
+
+      track.scrollLeft -= velocity;
+      velocity *= 0.94;
+
+      handleLoop();
+      updateActiveCard();
+
+      momentumRef.current = requestAnimationFrame(step);
+    };
+
+    cancelAnimationFrame(momentumRef.current);
+    momentumRef.current = requestAnimationFrame(step);
+  };
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    requestAnimationFrame(() => {
+      const tonyCard = track.querySelector(
+        '.filmProfileCard[data-profile-id="tony"][data-loop-index="2"]'
+      );
+
+      if (tonyCard) {
+        centerCard(tonyCard, "auto");
+        setActiveCardKey(tonyCard.dataset.cardKey);
+      }
+
+      setTimeout(() => {
+        hasInteractedRef.current = false;
+        startAutoScroll();
+
+        setTimeout(() => {
+          if (!hasInteractedRef.current) startAutoScroll();
+        }, 500);
+      }, 1000);
+    });
+
+    return () => {
+      cancelAnimationFrame(autoRef.current);
+      cancelAnimationFrame(momentumRef.current);
+      clearTimeout(alignTimeoutRef.current);
+    };
+  }, []);
+
+  const onPointerDown = (e) => {
+    if (isPovButtonEvent(e)) return;
+
+    const track = trackRef.current;
+    if (!track) return;
+
+    stopAutoScroll();
+    clearTimeout(alignTimeoutRef.current);
+    cancelAnimationFrame(momentumRef.current);
+
+    dragRef.current = {
+      isDown: true,
+      startX: e.clientX,
+      scrollLeft: track.scrollLeft,
+      lastX: e.clientX,
+      lastTime: performance.now(),
+      velocity: 0,
+      moved: false,
+    };
+
+    track.setPointerCapture?.(e.pointerId);
+    track.classList.add("dragging");
+  };
+
+  const onPointerMove = (e) => {
+    if (isPovButtonEvent(e)) return;
+
+    const track = trackRef.current;
+    if (!track || !dragRef.current.isDown) return;
+
+    const now = performance.now();
+    const dx = e.clientX - dragRef.current.lastX;
+    const dt = now - dragRef.current.lastTime || 16;
+
+    dragRef.current.velocity = dx / dt;
+    dragRef.current.lastX = e.clientX;
+    dragRef.current.lastTime = now;
+
+    const walk = e.clientX - dragRef.current.startX;
+
+    if (Math.abs(walk) > 5) {
+      dragRef.current.moved = true;
+    }
+
+    track.scrollLeft = dragRef.current.scrollLeft - walk;
+
+    handleLoop();
+    updateActiveCard();
+  };
+
+  const onPointerUp = (e) => {
+    if (isPovButtonEvent(e)) return;
+
+    const track = trackRef.current;
+    if (!track) return;
+
+    dragRef.current.isDown = false;
+    track.releasePointerCapture?.(e.pointerId);
+    track.classList.remove("dragging");
+
+    handleLoop();
+    updateActiveCard();
+    startMomentum();
+  };
+
+  const onWheel = (e) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    stopAutoScroll();
+    e.preventDefault();
+    clearTimeout(alignTimeoutRef.current);
+    cancelAnimationFrame(momentumRef.current);
+
+    const amount =
+      Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+
+    track.scrollLeft += amount * 1.15;
+
+    handleLoop();
+    updateActiveCard();
+    scheduleAlignment();
+  };
+
+  return (
+    <main className="galleryPage">
+      <div className="galleryBg" />
+
+      <section className="galleryHero compactGalleryHero">
+        <div className="infoIcon">
+          <Camera size={28} />
+        </div>
+
+        <p className="smallLabel">Disposable Film Gallery</p>
+
+        <span>Re-live everyone's memories through their lenses.</span>
+      </section>
+
+      <section className="filmPackStage heroGalleryStage">
+        <div className="filmPackIntro minimal">
+          <h2>Open the pack.</h2>
+        </div>
+
+        <div
+          ref={trackRef}
+          className="filmPackTrack"
+          onWheel={onWheel}
+          onScroll={() => {
+            handleLoop();
+            updateActiveCard();
+          }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          onPointerLeave={(e) => {
+            if (dragRef.current.isDown) onPointerUp(e);
+          }}
+        >
+          {loopProfiles.map((profile, index) => {
+            const cardKey = `${profile.id}-${index}`;
+            const isActive = activeCardKey === cardKey;
+
+            return (
+              <motion.article
+                key={cardKey}
+                data-card-key={cardKey}
+                data-profile-id={profile.id}
+                data-loop-index={Math.floor(index / galleryProfiles.length)}
+                className={`filmProfileCard ${isActive ? "active" : ""}`}
+                onClick={() => {
+                  if (dragRef.current.moved) return;
+
+                  if (window.innerWidth <= 850) {
+                    setSelectedProfile(profile);
+                  }
+                }}
+              >
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  draggable="false"
+                  onDragStart={(e) => e.preventDefault()}
+                />
+
+                <div className="filmProfileFade" />
+
+                <div className="filmProfileInfo">
+                  <span>{profile.roll}</span>
+
+                  <h2>{profile.name}</h2>
+
+                  <small>27 exposures · {profile.vibe}</small>
+
+                  <button
+                    type="button"
+                    className="theirPovButton"
+                    onPointerDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onPointerUp={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedProfile(profile);
+                    }}
+                  >
+                    Their POV
+                  </button>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {selectedProfile && (
+          <FilmRollViewer
+            profile={selectedProfile}
+            onClose={() => {
+              setSelectedProfile(null);
+              setSelectedPhoto(null);
+            }}
+            selectedPhoto={selectedPhoto}
+            setSelectedPhoto={setSelectedPhoto}
+          />
+        )}
+      </AnimatePresence>
+    </main>
+  );
+}
+
+function FilmRollViewer({ profile, onClose, selectedPhoto, setSelectedPhoto }) {
+  return (
+    <motion.div
+      className="filmViewerBackdrop"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <motion.div
+        className="filmViewer"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, y: 38, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 38, scale: 0.96 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      >
+        <button className="filmViewerClose" onClick={onClose}>
+          ×
+        </button>
+
+        <header className="filmViewerHeader">
+          <div>
+            <p className="smallLabel">{profile.roll} · 27 Photos</p>
+            <h2>{profile.name}</h2>
+            <span>{profile.vibe} · Developed after Japan 2026</span>
+          </div>
+
+          <div className="filmViewerBadge">
+            <Aperture size={20} />
+            <strong>35mm</strong>
+          </div>
+        </header>
+
+        <section className="filmPhotoMasonry">
+          {profile.photos.map((photo, index) => (
+            <motion.button
+              className={`filmPhotoTile ${index % 5 === 0 ? "large" : ""}`}
+              key={photo.id}
+              onClick={() => setSelectedPhoto({ ...photo, index })}
+              whileHover={{ y: -6 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <img src={photo.src} alt={photo.caption} />
+              <span>{String(index + 1).padStart(2, "0")}</span>
+            </motion.button>
+          ))}
+        </section>
+      </motion.div>
+
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            className="filmLightbox"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedPhoto(null);
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button onClick={() => setSelectedPhoto(null)}>×</button>
+
+            <img src={selectedPhoto.src} alt={selectedPhoto.caption} />
+
+            <p>
+              {profile.name} · Photo {selectedPhoto.index + 1} /{" "}
+              {profile.photos.length}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 function PlacesPage() {
   const [showMapGuide, setShowMapGuide] = useState(true);
 
@@ -2039,6 +2651,7 @@ function App() {
           {page === "flights" && <FlightsPage />}
           {page === "accommodation" && <AccommodationPage />}
           {page === "expenses" && <ExpensesPage />}
+          {page === "gallery" && <GalleryPage />}
           {page === "places" && <PlacesPage />}
         </motion.div>
       </AnimatePresence>

@@ -1,34 +1,87 @@
-* {
-  box-sizing: border-box;
+/* =========================================================
+   JAPAN 2026 WEBSITE — STREAMLINED STYLES
+   Includes: Home, Itinerary, Flights, Accommodation, Expenses,
+   Places, Gallery, and mobile-specific refinements.
+   ========================================================= */
+
+:root {
+  --cream: #fffaf5;
+  --paper: #fffdf8;
+  --sand: #f7f1e8;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --soft: #f5f5f4;
+  --red: #b91c1c;
+  --rose: #d94a4d;
+  --airasia: #ed1c24;
+  --glass: rgba(255, 255, 255, 0.22);
+  --glass-strong: rgba(255, 255, 255, 0.34);
+  --shadow-soft: 0 18px 46px rgba(0, 0, 0, 0.18);
+  --shadow-heavy: 0 30px 90px rgba(0, 0, 0, 0.32);
+  --radius-xl: 34px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  color: #1c1917;
-  background: #f7f1e8;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--sand);
 }
-
-button {
-  font-family: inherit;
-}
-
-/* PAGE */
+button, input { font-family: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
 
 .page {
   min-height: 100vh;
   background:
     radial-gradient(circle at top left, rgba(239, 68, 68, 0.16), transparent 30%),
     radial-gradient(circle at bottom right, rgba(251, 146, 60, 0.16), transparent 32%),
-    #f7f1e8;
+    var(--sand);
 }
 
-/* FLOATING TOP BAR */
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 120px 24px 90px;
+}
+
+.smallLabel {
+  margin: 0;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.pill {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.infoIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: var(--radius-pill);
+  display: grid;
+  place-items: center;
+  background: #fee2e2;
+  color: var(--red);
+}
+
+/* =========================================================
+   FLOATING TOP BAR + DRAWER
+   ========================================================= */
 
 .floatingMenuWrap {
   position: fixed;
@@ -42,28 +95,32 @@ button {
   align-items: center;
   gap: 12px;
   padding: 8px 16px 8px 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: rgba(28, 25, 23, 0.34);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-.menuButton {
+.menuButton,
+.iconButton {
   width: 42px;
   height: 42px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   display: grid;
   place-items: center;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.88);
-  color: #1c1917;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
 }
 
-.menuButton:hover {
-  transform: translateY(-2px) scale(1.05);
+.menuButton:hover,
+.iconButton:hover {
+  transform: translateY(-2px) scale(1.04);
   background: white;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
 
 .floatingBrand {
@@ -73,21 +130,8 @@ button {
   text-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   white-space: nowrap;
 }
-
-.floatingBrand strong {
-  font-size: 13px;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-}
-
-.floatingBrand span {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
-
-/* DRAWER */
+.floatingBrand strong { font-size: 13px; font-weight: 800; letter-spacing: 0.04em; }
+.floatingBrand span { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.75; }
 
 .drawerBackdrop {
   position: fixed;
@@ -95,42 +139,22 @@ button {
   z-index: 80;
   background: rgba(28, 25, 23, 0.38);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .drawer {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0 auto 0 0;
   z-index: 90;
   width: min(380px, 88vw);
   padding: 26px;
-  background:
-    linear-gradient(145deg, rgba(255, 250, 245, 0.96), rgba(255, 241, 230, 0.95)),
-    #fffaf5;
+  background: linear-gradient(145deg, rgba(255,250,245,0.98), rgba(255,241,230,0.96));
   border-right: 1px solid rgba(120, 113, 108, 0.18);
   box-shadow: 30px 0 70px rgba(0, 0, 0, 0.22);
 }
-
-.drawerTop {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  align-items: flex-start;
-  margin-bottom: 34px;
-}
-
-.drawerTop h2 {
-  margin: 8px 0 0;
-  font-size: 36px;
-  letter-spacing: -0.05em;
-}
-
-.drawerLinks {
-  display: grid;
-  gap: 10px;
-}
-
+.drawerTop { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 34px; }
+.drawerTop h2 { margin: 8px 0 0; font-size: 36px; letter-spacing: -0.05em; }
+.drawerLinks { display: grid; gap: 10px; }
 .drawerLinks button {
   border: 0;
   cursor: pointer;
@@ -142,19 +166,16 @@ button {
   padding: 16px 18px;
   border-radius: 20px;
   color: #44403c;
-  background: rgba(255, 255, 255, 0.64);
-  transition: 0.2s ease;
-  font-weight: 650;
+  background: rgba(255, 255, 255, 0.66);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  font-weight: 700;
 }
-
 .drawerLinks button:hover,
-.drawerLinks button.active {
-  background: #1c1917;
-  color: white;
-  transform: translateX(4px);
-}
+.drawerLinks button.active { background: var(--ink); color: white; transform: translateX(4px); }
 
-/* HOME AMBIENT BACKGROUND */
+/* =========================================================
+   HOME + HERO + COUNTDOWN + HOME CARDS
+   ========================================================= */
 
 .homeAmbientBg {
   position: fixed;
@@ -164,29 +185,13 @@ button {
   pointer-events: none;
   background: #111;
 }
-
-.homeAmbientImage {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 1;
-}
-
+.homeAmbientImage { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .homeAmbientOverlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42)),
-    rgba(0, 0, 0, 0.08);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.42)), rgba(0,0,0,0.08);
 }
-
-.homeContainer {
-  position: relative;
-  z-index: 2;
-}
-
-/* HERO */
+.homeContainer { position: relative; z-index: 2; }
 
 .heroImageWrapper {
   height: 100vh;
@@ -197,28 +202,9 @@ button {
   place-items: center;
   background: transparent;
 }
-
-.heroOverlay {
-  display: none;
-}
-
-.heroContent {
-  position: relative;
-  z-index: 2;
-  max-width: 920px;
-  padding: 0 24px;
-  text-align: center;
-  color: white;
-}
-
-.heroTag {
-  margin: 0 0 18px;
-  font-size: 13px;
-  letter-spacing: 0.35em;
-  font-weight: 700;
-  color: #fecaca;
-}
-
+.heroOverlay { display: none; }
+.heroContent { position: relative; z-index: 2; max-width: 920px; padding: 0 24px; text-align: center; color: white; }
+.heroTag { margin: 0 0 18px; font-size: 13px; letter-spacing: 0.35em; font-weight: 800; color: #fecaca; }
 .heroContent h1 {
   margin: 0;
   font-size: clamp(64px, 10vw, 132px);
@@ -226,3638 +212,1473 @@ button {
   letter-spacing: -0.07em;
   text-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
-
 .heroButton {
   margin-top: 28px;
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 14px 22px;
   background: white;
-  color: #1c1917;
-  font-weight: 800;
+  color: var(--ink);
+  font-weight: 900;
   cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+.heroButton:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(0,0,0,0.24); }
+.scrollHintWrap { position: absolute; bottom: 34px; left: 0; right: 0; z-index: 3; display: flex; justify-content: center; pointer-events: none; }
+.scrollHint { color: rgba(255,255,255,0.86); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; display: grid; gap: 8px; justify-items: center; text-align: center; }
+.scrollHint span { font-size: 22px; }
 
-.scrollHintWrap {
-  position: absolute;
-  bottom: 34px;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
+.rotatingQuoteWrap { min-height: 46px; margin: 28px auto 0; display: flex; justify-content: center; align-items: center; }
+.rotatingQuote { margin: 0; max-width: 850px; font-size: clamp(20px, 2.4vw, 30px); line-height: 1.35; color: rgba(255,255,255,0.9); text-shadow: 0 8px 26px rgba(0,0,0,0.45); text-align: center; }
+.rotatingQuote span { white-space: nowrap; color: rgba(255,255,255,0.78); }
 
-.scrollHint {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  display: grid;
-  gap: 8px;
-  justify-items: center;
-  text-align: center;
-}
-
-.scrollHint span {
-  font-size: 22px;
-}
-
-/* ROTATING QUOTES */
-
-.rotatingQuoteWrap {
-  min-height: 46px;
-  margin: 28px auto 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rotatingQuote {
-  margin: 0;
-  max-width: 850px;
-  font-size: clamp(20px, 2.4vw, 30px);
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
-  text-align: center;
-}
-
-.rotatingQuote span {
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-/* HOME */
-
-.container {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 120px 24px 90px;
-}
-
-.pill {
-  display: inline-flex;
-  background: rgba(255, 255, 255, 0.72);
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 650;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-
-/* COUNTDOWN */
-
-.countdownSection {
-  max-width: 1080px;
-  margin: 20px auto 72px;
-  text-align: center;
-  padding: 36px 24px;
-  border-radius: 42px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.countdownSection .pill {
-  background: rgba(255, 255, 255, 0.88);
-}
-
+.countdownSection { max-width: 1180px; margin: 20px auto 72px; text-align: center; padding: 36px 24px; background: transparent; }
+.countdownSection .pill { background: rgba(255,255,255,0.88); }
 .countdownSection h2 {
   margin: 24px 0 0;
   font-size: clamp(44px, 7vw, 86px);
   line-height: 0.92;
   letter-spacing: -0.07em;
   color: white;
-  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 4px 14px rgba(0,0,0,0.75), 0 18px 48px rgba(0,0,0,0.55);
 }
-
-.countdownSubtitle {
-  max-width: 680px;
-  margin: 24px auto 0;
-  font-size: 18px;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
-}
-
+.countdownSubtitle { max-width: 680px; margin: 24px auto 0; font-size: 18px; line-height: 1.75; color: rgba(255,255,255,0.9); text-shadow: 0 8px 26px rgba(0,0,0,0.45); }
 .countdownGrid {
   margin-top: 38px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-.countdownGrid div {
-  padding: 26px 18px;
-  border-radius: 28px;
-  background: rgba(255, 250, 245, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(8px);
-  text-align: center;
-}
-
-.countdownGrid strong {
-  display: block;
-  font-size: clamp(38px, 6vw, 72px);
-  line-height: 0.9;
-  letter-spacing: -0.06em;
-}
-
-.countdownGrid span {
-  display: block;
-  margin-top: 12px;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #b91c1c;
-}
-
-/* HOME CARDS */
-
-.homeCards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 54px;
-}
-
-.upgradedHomeCards {
-  position: relative;
-  z-index: 2;
-  max-width: 1040px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.upgradedHomeCards button {
-  cursor: pointer;
-  transform: translateY(0);
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  position: relative;
-  min-height: 165px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  background: rgba(255, 255, 255, 0.76);
-  backdrop-filter: blur(8px);
-  border-radius: 26px;
-  padding: 24px;
-  text-align: left;
-}
-
-.upgradedHomeCards button:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
-}
-
-.upgradedHomeCards svg {
-  width: 26px;
-  height: 26px;
-  color: #b91c1c;
-}
-
-.upgradedHomeCards h3 {
-  margin: 22px 0 8px;
-  font-size: 21px;
-}
-
-.upgradedHomeCards p {
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.upgradedHomeCards span {
-  display: none;
-}
-
-/* CALENDAR PAGE */
-
-.calendarPage {
-  padding-top: 0;
-  background: #fffaf5;
-}
-
-.calendarStack {
-  position: relative;
-}
-
-.tearScene {
-  min-height: 100vh;
-  height: auto;
-  position: relative;
-  perspective: 1800px;
-}
-
-.calendarSheetFull {
-  position: relative;
-  min-height: 100vh;
-  height: auto;
-  background: #fffaf5;
-}
-
-.calendarCover {
-  position: relative;
-  min-height: 48vh;
-  height: auto;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  padding: 96px 42px 48px;
-}
-
-.calendarCoverOverlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.65)),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 55%);
-}
-
-.calendarHeaderFloating {
-  position: absolute;
-  top: 86px;
-  right: 40px;
-  z-index: 5;
-  color: white;
-}
-
-.calendarHeaderFloating p {
-  display: none;
-}
-
-.calendarHeaderFloating span {
-  display: inline-flex;
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: rgba(28, 25, 23, 0.42);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-}
-
-.calendarCoverText {
-  position: relative;
-  z-index: 5;
-  color: white;
-  max-width: 820px;
-  margin-top: 52px;
-
-  padding: 0;
-  width: auto;
-  border-radius: 0;
-  background: transparent;
-  backdrop-filter: none;
-}
-
-.calendarCoverText h2 {
-  text-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.9),
-    0 12px 28px rgba(0, 0, 0, 0.75),
-    0 0 2px rgba(0, 0, 0, 1);
-}
-
-.calendarCoverText p,
-.calendarCoverText > span,
-.dayLocation {
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.85),
-    0 8px 20px rgba(0, 0, 0, 0.65);
-}
-
-.dayLocation {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  margin-bottom: 16px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: white;
-  background: rgba(185, 28, 28, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
-}
-
-.calendarCoverText > span {
-  display: block;
-  margin: 0 0 12px;
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  color: #fecaca;
-  font-weight: 900;
-}
-
-.calendarCoverText h2 {
-  margin: 0;
-  font-size: clamp(42px, 7vw, 86px);
-  line-height: 0.94;
-  letter-spacing: -0.07em;
-}
-
-.calendarCoverText p {
-  margin: 18px 0 0;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.calendarContent {
-  min-height: 52vh;
-  height: auto;
-  padding: clamp(36px, 5vw, 64px);
-  display: grid;
-  grid-template-columns: 0.72fr 1.28fr;
-  gap: clamp(30px, 5vw, 70px);
-  align-items: center;
-}
-
-.calendarBigNumber {
-  font-size: clamp(120px, 16vw, 230px);
-  font-weight: 950;
-  letter-spacing: -0.1em;
-  line-height: 0.78;
-}
-
-.calendarCityTag {
-  margin-bottom: 14px;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: #b91c1c;
-}
-
-.calendarBigNumber > span {
-  display: block;
-  margin-bottom: 18px;
-  font-size: clamp(18px, 2vw, 28px);
-  letter-spacing: 0.4em;
-  color: #b91c1c;
-}
-
-.calendarCopy h3 {
-  margin: 0;
-  font-size: clamp(34px, 5vw, 68px);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-}
-
-.calendarCopy p {
-  margin: 22px 0 0;
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.75;
-  color: #57534e;
-}
-
-.highlightList {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.highlightButton {
-  border: 1px solid rgba(120, 113, 108, 0.12);
-  background: #f5f5f4;
-  padding: 16px;
-  border-radius: 18px;
-  color: #44403c;
-  line-height: 1.5;
-  text-align: left;
-  font-size: 15px;
-  display: grid;
-  gap: 6px;
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
-}
-
-.highlightButton strong {
-  font-size: 16px;
-}
-
-.highlightButton span {
-  font-size: 13px;
-  color: #78716c;
-}
-
-.highlightButton.clickable {
-  cursor: pointer;
-  background: #fff;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-}
-
-.highlightButton.clickable:hover {
-  transform: translateY(-3px);
-  background: #fee2e2;
-  color: #7f1d1d;
-}
-
-/* PLACE BUBBLE */
-
-.placeBubbleBackdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: rgba(28, 25, 23, 0.45);
-  backdrop-filter: blur(8px);
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-.placeBubble {
-  position: relative;
-  background: #fffaf5;
-  border-radius: 34px;
-  overflow: hidden;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
-}
-
-.majorBubble {
-  width: min(880px, 100%);
-}
-
-.minorBubble {
-  width: min(560px, 100%);
-}
-
-.bubbleClose {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 5;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.bubbleImages {
-  width: 100%;
-  height: 300px;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  overflow: hidden;
-}
-
-.bubbleImages img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  display: block;
-}
-
-.bubbleContent {
-  padding: 34px;
-  background: #fffaf5;
-}
-
-.bubbleContent h2 {
-  margin: 10px 0 12px;
-  font-size: clamp(34px, 5vw, 58px);
-  letter-spacing: -0.06em;
-}
-
-.bubbleContent p:last-child {
-  color: #57534e;
-  font-size: 18px;
-  line-height: 1.75;
-}
-
-.placeMetaGrid {
-  margin-top: 24px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-}
-
-.placeMetaGrid div,
-.placeMetaGrid a {
-  border-radius: 18px;
-  background: #f5f5f4;
-  padding: 16px;
-  text-decoration: none;
-  color: #44403c;
-}
-
-.placeMetaGrid span {
-  display: block;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #78716c;
-  margin-bottom: 8px;
-}
-
-.placeMetaGrid strong {
-  display: block;
-  line-height: 1.45;
-}
-
-.placeMetaGrid a {
-  background: #1c1917;
-  color: white;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* INFO PAGES */
-
-.infoPage {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 140px 24px 90px;
-}
-
-.infoHero {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 46px;
-}
-
-.infoIcon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 18px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.smallLabel {
-  margin: 0;
-  color: #b91c1c;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-}
-
-.infoHero h1 {
-  margin: 16px 0 0;
-  font-size: clamp(46px, 7vw, 86px);
-  line-height: 0.95;
-  letter-spacing: -0.07em;
-}
-
-.infoHero p:last-child {
-  max-width: 680px;
-  margin: 24px auto 0;
-  color: #57534e;
-  font-size: 18px;
-  line-height: 1.75;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.infoCard {
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  background: rgba(255, 255, 255, 0.66);
-  border-radius: 28px;
-  padding: 26px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.06);
-}
-
-.infoCard p {
-  margin: 0;
-  color: #78716c;
-  font-size: 14px;
-}
-
-.infoCard h3 {
-  margin: 10px 0 0;
-  font-size: clamp(22px, 3vw, 34px);
-  letter-spacing: -0.04em;
-}
-
-.mapPanel {
-  border-radius: 34px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-}
-
-.mapPanel iframe {
-  width: 100%;
-  height: 520px;
-  border: 0;
-  display: block;
-}
-
-.mapNote {
-  padding: 24px;
-}
-
-.mapNote h3 {
-  margin: 0 0 8px;
-  font-size: 24px;
-}
-
-.mapNote p {
-  margin: 0;
-  color: #57534e;
-  line-height: 1.6;
-}
-
-.mapNote code {
-  background: #f5f5f4;
-  padding: 3px 7px;
-  border-radius: 6px;
-}
-
-.placeGrid {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.placeGrid div {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 18px;
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  color: #44403c;
-}
-
-/* FLIGHT PAGE */
-
-.flightPage {
-  position: relative;
-  min-height: 100vh;
-  padding: 88px 24px 48px;
-  overflow: hidden;
-}
-
-.flightHero {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 18px;
-  color: white;
-}
-
-.flightHero .infoIcon {
-  width: 46px;
-  height: 46px;
-  margin-bottom: 10px;
-}
-
-.flightHero h1 {
-  margin: 10px 0 0;
-  font-size: clamp(34px, 5vw, 58px);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-  text-shadow: 0 18px 46px rgba(0, 0, 0, 0.5);
-}
-
-.flightHero p:last-child {
-  display: none;
-}
-
-.flightSwitcher {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 18px;
-  padding: 6px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
-}
-
-.flightSwitcher button {
-  border: 0;
-  cursor: pointer;
-  padding: 11px 18px;
-  border-radius: 999px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.88);
-  font-weight: 850;
-  transition: 0.28s ease;
-}
-
-.flightSwitcher button:hover {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.flightSwitcher button.active {
-  background: rgba(255, 255, 255, 0.92);
-  color: #1c1917;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-}
-
-.flightBg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-
-  background-image:
-  linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.25),
-    rgba(0, 0, 0, 0.08) 40%,
-    rgba(247, 241, 232, 0.22)
-    ),
-    url("https://images.pexels.com/photos/19082534/pexels-photo-19082534.jpeg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* make sure NO blur */
-  filter: none;
-}
-
-.flightHero,
-.flightSwitcher,
-.boardingPass {
-  position: relative;
-  z-index: 2;
-}
-
-/* BOARDING PASS */
-
-.boardingPass {
-  width: min(1280px, 100%);
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 28px;
-  background: #f8eee6;
-  border: 1px solid rgba(255, 255, 255, 0.82);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.24);
-}
-
-.boardingHeader {
-  height: 68px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 298px;
-  align-items: center;
-  background: #d94a4d;
-  color: white;
-}
-
-.boardingAirline {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: start;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-left: 36px;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.boardingTitle {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: center;
-
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.boardingTitle.small {
-  grid-column: 2;
-  grid-row: 1;
-
-  height: 68px;
-  display: grid;
-  place-items: center;
-  border-left: 2px dashed rgba(255, 255, 255, 0.42);
-  font-size: 15px;
-  min-width: 0;
-}
-
-.boardingTicketBody {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 298px;
-  min-height: 360px;
-}
-
-.boardingMainSide {
-  padding: 34px 44px 28px;
-  min-width: 0;
-}
-
-.routeReveal {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  text-align: left;
-  padding: 8px 0 32px;
-}
-
-.routeReveal h2 {
-  margin: 0;
-  width: fit-content;
-  max-width: 100%;
-  font-size: clamp(32px, 3.8vw, 54px);
-  line-height: 1.05;
-  letter-spacing: -0.055em;
-  white-space: nowrap;
-}
-
-.routePlane {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  font-size: clamp(36px, 3.8vw, 52px);
-  color: #d94a4d;
-  z-index: 5;
-  transform: translateX(-50%);
-}
-
-.ticketDetails {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 0.85fr 0.85fr;
-  gap: 24px 34px;
-  align-items: start;
-}
-
-.ticketField {
-  min-width: 0;
-}
-
-.ticketField.wide {
-  grid-column: span 2;
-}
-
-.ticketField.luggage {
-  grid-column: span 2;
-}
-
-.ticketField span,
-.boardingStubSide span {
-  display: block;
-  margin-bottom: 7px;
-  font-family: "Courier New", monospace;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #9f1239;
-}
-
-.ticketField strong,
-.boardingStubSide strong {
-  display: block;
-  font-family: "Courier New", monospace;
-  font-size: clamp(17px, 1.35vw, 23px);
-  line-height: 1.18;
-  letter-spacing: -0.04em;
-}
-
-.ticketField p {
-  margin: 6px 0 0;
-  font-family: "Courier New", monospace;
-  color: #57534e;
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.ticketField.luggage strong {
-  white-space: nowrap;
-  font-size: clamp(14px, 1vw, 17px);
-}
-
-.boardingFooterNote {
-  margin-top: 30px;
-  font-family: "Courier New", monospace;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.boardingStubSide {
-  padding: 34px 30px;
-  display: grid;
-  align-content: center;
-  gap: 14px;
-  border-left: 2px dashed rgba(120, 113, 108, 0.34);
-  min-width: 0;
-}
-
-.boardingStubSide h3 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #9f1239;
-}
-
-.stubMiniGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.stubMiniGrid strong {
-  font-size: 17px;
-}
-
-.stubBarcode {
-  height: 54px;
-  display: flex;
-  gap: 3px;
-  align-items: stretch;
-  margin-top: 8px;
-  overflow: hidden;
-}
-
-.stubBarcode span {
-  display: block;
-  width: 4px;
-  background: #1c1917;
-  border-radius: 2px;
-}
-
-.stubBarcode span:nth-child(3n) {
-  width: 8px;
-}
-
-.stubBarcode span:nth-child(4n) {
-  width: 2px;
-}
-
-.typewriterName {
-  display: inline-flex !important;
-  align-items: baseline;
-  min-height: 1.2em;
-  white-space: nowrap;
-  font-family: "Courier New", monospace !important;
-  font-size: clamp(17px, 1.35vw, 23px) !important;
-  font-weight: 900 !important;
-  line-height: 1.18;
-  letter-spacing: -0.04em !important;
-  color: #1c1917 !important;
-}
-
-.typewriterName .typedText {
-  display: inline-block !important;
-  min-width: 160px;
-  font-family: inherit !important;
-  font-size: inherit !important;
-  font-weight: inherit !important;
-  letter-spacing: inherit !important;
-  color: inherit !important;
-  text-transform: none !important;
-  margin: 0 !important;
-}
-
-.typewriterName .typeCursor {
-  display: none !important;
-}
-
-/* REMOVE HEADER DASHED LINE COMPLETELY */
-
-.boardingHeader,
-.boardingHeader * {
-  border-left: none !important;
-  border-right: none !important;
-}
-
-.boardingHeader::before,
-.boardingHeader::after,
-.boardingTitle.small::before,
-.boardingTitle.small::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* ACCOMMODATION BACKGROUND */
-
-.accommodationPage {
-  position: relative;
-  min-height: 100vh;
-  padding: 52px 24px 36px;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.accommodationBg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.22),
-      rgba(0, 0, 0, 0.08) 42%,
-      rgba(247, 241, 232, 0.44)
-    ),
-    url("https://cdn.mos.cms.futurecdn.net/xhDkbUESGzwLyVzMG9mcQ8.jpg");
-
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  pointer-events: none;
-  will-change: auto;
-}
-
-.accommodationPage .infoPage {
-  position: relative;
-  z-index: 2;
-}
-
-/* ACCOMMODATION PAGE */
-
-.accommodationPage {
-  position: relative;
-  min-height: 100vh;
-  padding: 88px 24px 46px;
-  overflow: hidden;
-}
-
-.accommodationBg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.22),
-      rgba(0, 0, 0, 0.08) 42%,
-      rgba(247, 241, 232, 0.44)
-    ),
-    url("https://cdn.mos.cms.futurecdn.net/xhDkbUESGzwLyVzMG9mcQ8.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.accommodationHero,
-.stayGrid {
-  position: relative;
-  z-index: 2;
-}
-
-.accommodationHero.compact {
-  text-align: center;
-  color: white;
-  margin-bottom: 14px;
-}
-
-.accommodationHero.compact .infoIcon {
-  width: 42px;
-  height: 42px;
-  margin-bottom: 6px;
-}
-
-.accommodationHero h1 {
-  margin: 6px 0 0;
-  font-size: clamp(32px, 4.4vw, 50px);
-  line-height: 0.95;
-}
-
-.stayGrid {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.stayCard.compact {
-  overflow: hidden;
-  border-radius: 30px;
-  background: rgba(255, 250, 245, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-}
-
-.stayImage {
-  position: relative;
-  min-height: 245px;
-  background-size: cover;
-  background-position: center;
-}
-
-.stayImage::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.42));
-}
-
-.stayImage span {
-  position: absolute;
-  left: 22px;
-  bottom: 20px;
-  z-index: 2;
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: rgba(185, 28, 28, 0.85);
-  color: white;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
-.photoButton {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  border: 0;
-  border-radius: 999px;
-  padding: 11px 16px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #1c1917;
-  font-weight: 850;
-  cursor: pointer;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-}
-
-.stayContent {
-  padding: 22px;
-}
-
-.stayContent h2 {
-  margin: 8px 0 18px;
-  font-size: clamp(26px, 3vw, 38px);
-  line-height: 0.95;
-  letter-spacing: -0.06em;
-}
-
-.stayDetails {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.stayDetails div {
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(120, 113, 108, 0.1);
-}
-
-.stayDetails span {
-  display: block;
-  margin-bottom: 7px;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #b91c1c;
-}
-
-.stayDetails strong {
-  font-size: 15px;
-  line-height: 1.3;
-}
-
-.stayActions {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.stayActions a,
-.stayActions button {
-  border: 0;
-  display: flex;
-  justify-content: center;
-  padding: 13px 16px;
-  border-radius: 999px;
-  background: #1c1917;
-  color: white;
-  text-decoration: none;
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.stayActions button {
-  background: #b91c1c;
-}
-
-/* GALLERY MODAL */
-
-.galleryBackdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 300;
-  background: rgba(28, 25, 23, 0.58);
-  backdrop-filter: blur(8px);
-  display: grid;
-  place-items: center;
-  padding: 24px;
-}
-
-.galleryModal,
-.floorPlanModal {
-  position: relative;
-  width: min(980px, 100%);
-  max-height: 92vh;
-  overflow: hidden;
-  border-radius: 34px;
-  background: #fffaf5;
-  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.38);
-}
-
-.galleryClose {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 5;
-  width: 42px;
-  height: 42px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.galleryImageWrap {
-  position: relative;
-  height: 520px;
-  background: #111;
-}
-
-.galleryImageWrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.galleryArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
-  font-size: 34px;
-  cursor: pointer;
-}
-
-.galleryArrow.left {
-  left: 18px;
-}
-
-.galleryArrow.right {
-  right: 18px;
-}
-
-.galleryInfo {
-  padding: 22px 28px 26px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  background: #f8eee6;
-}
-
-.galleryInfo h2 {
-  margin: 4px 0 0;
-  font-size: clamp(26px, 2.4vw, 38px);
-  line-height: 1.05;
-}
-
-.galleryInfo > span {
-  font-weight: 900;
-  color: #78716c;
-}
-
-.galleryThumbs {
-  padding: 0 24px 24px;
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-}
-
-.galleryThumbs button {
-  flex: 0 0 86px;
-  height: 64px;
-  padding: 0;
-  border: 3px solid transparent;
-  border-radius: 14px;
-  overflow: hidden;
-  cursor: pointer;
-  background: none;
-}
-
-.galleryThumbs button.active {
-  border-color: #b91c1c;
-}
-
-.galleryThumbs img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* FLOOR PLANS */
-
-.floorPlanModal {
-  padding: 34px;
-}
-
-.floorPlanModal h2 {
-  margin: 8px 0 24px;
-  font-size: clamp(34px, 5vw, 58px);
-  letter-spacing: -0.06em;
-}
-
-.floorPlanGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.floorPlanGrid div {
-  overflow: hidden;
-  border-radius: 24px;
-  background: #f5f5f4;
-  border: 1px solid rgba(120, 113, 108, 0.12);
-}
-
-.floorPlanGrid img {
-  width: 100%;
-  height: 330px;
-  object-fit: contain;
-  background: white;
-}
-
-.floorPlanGrid strong {
-  display: block;
-  padding: 16px;
-}
-
-.floorPlanModal.large {
-  width: min(1180px, 96vw);
-  max-height: 94vh;
-  padding: 0;
-}
-
-.floorPlanImageWrap {
-  position: relative;
-  height: 65vh; /* ↓ reduced from 76vh */
-  padding: 20px 20px 0; /* adds breathing space */
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floorPlanImageWrap img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.roomTabs {
-  padding: 18px 20px;
-  display: flex;
-  gap: 10px;
-  background: #fffaf5;
-  border-bottom: 1px solid rgba(120, 113, 108, 0.12);
-  overflow-x: auto;
-}
-
-.roomTabs button {
-  border: 0;
-  white-space: nowrap;
-  padding: 11px 16px;
-  border-radius: 999px;
-  background: #f5f5f4;
-  color: #44403c;
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.roomTabs button.active {
-  background: #1c1917;
-  color: white;
-}
-
-.transitDetail {
-  grid-column: span 2;
-}
-
-.transitDetail p {
-  margin: 6px 0 0;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #57534e;
-}
-
-.stayImage {
-  min-height: 220px;
-}
-
-.stayContent {
-  padding: 18px 22px 20px;
-}
-
-.stayContent h2 {
-  margin: 6px 0 14px;
-}
-
-.stayDetails {
-  gap: 10px;
-}
-
-.stayDetails div {
-  padding: 12px 14px;
-}
-
-.stayActions {
-  margin-top: 12px;
-}
-
-.transitBubbleButton {
-  margin-top: 10px;
-  padding: 13px 16px;
-}
-
-.calendarHeaderFloating {
-  position: absolute !important;
-  top: 86px !important;
-  left: auto !important;
-  right: 40px !important;
-  z-index: 10 !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-  color: white !important;
-}
-
-.calendarHeaderFloating span {
-  display: inline-flex !important;
-  width: auto !important;
-  padding: 8px 13px !important;
-  border-radius: 999px !important;
-  background: rgba(28, 25, 23, 0.42) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-}
-
-@media (max-width: 850px) {
-  .transitDetail {
-    grid-column: auto;
-  }
-}
-
-.transitBubbleButton {
-  margin-top: 12px;
-  display: grid;
-  gap: 5px;
-  width: 100%;
-  padding: 16px 18px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(120, 113, 108, 0.1);
-  color: #1c1917;
-  text-decoration: none;
-}
-
-.transitBubbleButton span {
-  font-size: 14px;
-  font-weight: 900;
-}
-
-.transitBubbleButton small {
-  font-size: 13px;
-  color: #57534e;
-}
-
-/* ACCOMMODATION ANIMATIONS */
-
-.stayCard {
-  transform: translateY(0);
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.stayCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 34px 78px rgba(0, 0, 0, 0.28);
-}
-
-.stayImage {
-  overflow: hidden;
-}
-
-.stayImage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1);
-  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.stayImage:hover::before,
-.stayCard:hover .stayImage::before {
-  transform: scale(1.08);
-}
-
-.stayImage > * {
-  position: absolute;
-}
-
-.photoButton,
-.stayActions a,
-.stayActions button,
-.transitBubbleButton {
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease;
-}
-
-.photoButton:hover,
-.stayActions a:hover,
-.stayActions button:hover,
-.transitBubbleButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
-}
-
-.transitBubbleButton:hover {
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.galleryThumbs button {
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.galleryThumbs button:hover {
-  transform: translateY(-3px);
-  opacity: 0.88;
-}
-
-.galleryArrow,
-.galleryClose {
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-
-.galleryArrow:hover,
-.galleryClose:hover {
-  transform: scale(1.08);
-  background: white;
-}
-
-.photoButton {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 5;
-}
-
-.stayImage span {
-  z-index: 5;
-}
-
-.stayImage::before {
-  z-index: 0;
-}
-
-.stayImage::after {
-  z-index: 1;
-}
-
-.dayCoverSlideshow {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  background: #111;
-}
-
-.dayCoverSlide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.calendarCoverOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.48), transparent 58%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.52));
-}
-
-.calendarHeaderFloating,
-.calendarCoverText {
-  position: relative;
-  z-index: 2;
-}
-
-/* EXPENSES PAGE */
-
-.expensesPage {
-  position: relative;
-  min-height: 100vh;
-  padding: 42px 24px 70px;
-  overflow: visible;
-  isolation: isolate;
-}
-
-.expensesBg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(255, 250, 245, 0.08),
-      rgba(247, 241, 232, 0.16)
-    ),
-    url("https://images.wallpapersden.com/image/download/japan-yamaguchi-pond_ZmpsZ2mUmZqaraWkpJRpbWVlrWhnZWU.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  filter: none;
-  pointer-events: none;
-}
-
-.paperReceipt {
-  position: relative;
-  z-index: 2;
-  width: min(720px, 100%);
-  min-height: auto;
-  margin: 0 auto;
-  background: #fffdf8;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
-  overflow: hidden;
-}
-
-.paperReceipt::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 18px;
-  background:
-    linear-gradient(135deg, transparent 50%, #fffdf8 50%) 0 0 / 18px 18px,
-    linear-gradient(225deg, transparent 50%, #fffdf8 50%) 0 0 / 18px 18px;
-}
-
-.receiptInner {
-  padding: 38px 48px 46px;
-  font-family: "Courier New", monospace;
-  color: #111;
-}
-
-
-.thermalHeader {
-  text-align: center;
-}
-
-.thermalHeader h1 {
-  margin: 0 0 16px;
-  font-family: "Courier New", monospace;
-  font-size: clamp(28px, 4vw, 42px);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.thermalHeader p {
-  margin: 6px 0;
-  font-size: 17px;
-  line-height: 1.35;
-}
-
-.receiptDivider {
-  margin: 18px 0;
-  border-top: 2px dashed #111;
-}
-
-.receiptDivider.slim {
-  margin: 8px 0 10px;
-}
-
-.receiptMeta {
-  text-align: center;
-}
-
-.receiptMeta p {
-  margin: 8px 0;
-  font-size: 18px;
-  letter-spacing: 0.04em;
-}
-
-.receiptControlsSimple {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 14px;
-}
-
-.thermalToggle {
-  display: inline-flex;
-  border: 1.8px solid #111;
-  border-radius: 8px;
-  overflow: hidden;
-  background: white;
-}
-
-.thermalToggle button {
-  border: 0;
-  padding: 10px 18px;
-  background: transparent;
-  font-family: "Courier New", monospace;
-  font-size: 16px;
-  font-weight: 900;
-  cursor: pointer;
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.thermalToggle button:hover {
-  transform: translateY(-1px);
-}
-
-.thermalToggle button.active {
-  background: #111;
-  color: white;
-}
-
-.thermalBudget {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  white-space: nowrap;
-}
-
-.thermalBudget span {
-  font-weight: 900;
-}
-
-.thermalBudget input {
-  width: 120px;
-  border: 1.8px solid #111;
-  border-radius: 6px;
-  padding: 9px 10px;
-  background: transparent;
-  font-family: "Courier New", monospace;
-  font-size: 16px;
-  font-weight: 900;
-  text-align: right;
-}
-
-.thermalTable {
-  margin-top: 6px;
-}
-
-.thermalRow {
-  display: grid;
-  grid-template-columns: 58px minmax(0, 1fr) 120px 140px;
-  gap: 12px;
-  align-items: center;
-  min-height: 38px;
-  font-size: 16px;
-}
-
-.thermalHead {
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.thermalRow > span:nth-child(2) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.thermalRow > span:nth-child(3) {
-  text-align: left;
-}
-
-.thermalAmount {
-  text-align: right;
-}
-
-.thermalAmount input {
-  width: 100%;
-  max-width: 118px;
-  border: 1.6px solid #111;
-  border-radius: 6px;
-  padding: 7px 8px;
-  background: transparent;
-  font-family: "Courier New", monospace;
-  font-size: 16px;
-  font-weight: 900;
-  text-align: right;
-}
-
-.thermalAmount input:focus,
-.thermalBudget input:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.12);
-}
-
-.thermalTotals {
-  display: grid;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.thermalTotals div {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  font-size: 20px;
-}
-
-.thermalTotals strong {
-  font-size: 22px;
-}
-
-.thermalFooter {
-  margin: 26px 0;
-  text-align: center;
-  font-size: 18px;
-  letter-spacing: 0.04em;
-}
-
-@media (max-width: 850px) {
-  .expensesPage {
-    padding: 82px 14px 24px;
-    overflow: visible;
-  }
-
-  .paperReceipt {
-    height: auto;
-    min-height: calc(100vh - 106px);
-  }
-
-  .receiptInner {
-    padding: 28px 20px 38px;
-  }
-
-  .receiptControlsSimple {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .thermalBudget {
-    justify-content: space-between;
-  }
-
-  .thermalRow {
-    grid-template-columns: 42px minmax(0, 1fr) 92px 105px;
-    gap: 8px;
-    font-size: 12px;
-  }
-
-  .thermalAmount input {
-    font-size: 12px;
-  }
-
-  .thermalHeader p,
-  .receiptMeta p {
-    font-size: 14px;
-  }
-}
-
-/* PLACES OF INTEREST */
-
-.placesPage {
-  position: relative;
-  min-height: 100vh;
-  padding: 76px 24px 42px;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.placesBg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.18),
-      rgba(247, 241, 232, 0.18)
-    ),
-    url("https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=1920&auto=format&fit=crop");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  pointer-events: none;
-}
-
-.placesHero,
-.mapExperience {
-  position: relative;
-  z-index: 2;
-}
-
-.placesHero.compact {
-  text-align: center;
-  color: white;
-  margin-bottom: 16px;
-}
-
-.placesHero.compact .infoIcon {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 8px;
-}
-
-.placesHero h1 {
-  margin: 8px 0 0;
-  font-size: clamp(34px, 5vw, 58px);
-  line-height: 0.95;
-  letter-spacing: -0.07em;
-  text-shadow: 0 18px 46px rgba(0, 0, 0, 0.5);
-}
-
-.mapExperience.bigMap {
-  max-width: 1420px;
-  height: calc(100vh - 170px);
-  min-height: 680px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.interactiveMapFrame {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 38px;
-  background: rgba(255, 250, 245, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
-}
-
-.interactiveMapFrame iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
-.floatingMapCard {
-  position: absolute;
-  left: 24px;
-  bottom: 24px;
-  width: min(360px, calc(100% - 48px));
-  padding: 22px;
-  border-radius: 28px;
-  background: rgba(255, 250, 245, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(12px);
-}
-
-.floatingMapCard h2 {
-  margin: 8px 0 16px;
-  font-size: 30px;
-  line-height: 0.96;
-  letter-spacing: -0.06em;
-}
-
-.mapMiniTips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.mapMiniTips span {
-  padding: 8px 11px;
-  border-radius: 999px;
-  background: rgba(185, 28, 28, 0.1);
-  color: #7f1d1d;
-  font-size: 13px;
-  font-weight: 850;
-}
-
-.floatingMapCard a {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  padding: 13px 16px;
-  border-radius: 999px;
-  background: #1c1917;
-  color: white;
-  text-decoration: none;
-  font-weight: 850;
-  transition: 0.3s ease;
-}
-
-.floatingMapCard a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
-}
-
-@media (max-width: 900px) {
-  .placesPage {
-    padding: 92px 18px 60px;
-    overflow: visible;
-  }
-
-  .mapExperience.bigMap {
-    height: 720px;
-    min-height: 720px;
-  }
-
-  .floatingMapCard {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    width: 100%;
-    margin-top: 16px;
-  }
-}
-
-.floatingMapGuide {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  width: min(360px, calc(100% - 48px));
-  padding: 24px;
-  border-radius: 28px;
-  background: rgba(255, 250, 245, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(10px);
-  z-index: 5;
-
-  animation: fadeGuideIn 0.45s ease;
-}
-
-.closeGuide {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  width: 30px;
-  height: 30px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.06);
-  color: #1c1917;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-.closeGuide:hover {
-  transform: rotate(90deg);
-  background: rgba(0,0,0,0.12);
-}
-
-.floatingMapGuide h2 {
-  margin: 8px 0 18px;
-  font-size: 32px;
-  line-height: 0.96;
-  letter-spacing: -0.06em;
-}
-
-.guideSteps {
-  display: grid;
-  gap: 10px;
-}
-
-.guideSteps div {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 12px 14px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.7);
-}
-
-.guideSteps span {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  background: #b91c1c;
-  color: white;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.guideSteps p {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.45;
-  color: #44403c;
-}
-
-.floatingMapGuide {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  left: auto;
-  top: auto;
-  width: min(360px, calc(100% - 48px));
-}
-
-.floatingMapGuide a {
-  display: none;
-}
-
-.openFullMapBubble {
-  position: relative;
-  z-index: 2;
-  width: fit-content;
-  margin: 18px auto 0;
-  display: flex;
-  justify-content: center;
-  padding: 14px 22px;
-  border-radius: 999px;
-  background: rgba(255, 250, 245, 0.92);
-  color: #1c1917;
-  text-decoration: none;
-  font-weight: 900;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    background 0.35s ease;
-}
-
-.openFullMapBubble:hover {
-  transform: translateY(-5px);
-  background: white;
-  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.26);
-}
-
-@keyframes fadeGuideIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 850px) {
-  .floorPlanImageWrap {
-    height: 52vh;
-  }
-}
-
-@media (max-width: 850px) {
-  .accommodationPage {
-    padding: 100px 18px 70px;
-  }
-
-  .stayGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .stayImage {
-    min-height: 260px;
-  }
-
-  .stayDetails {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 850px) {
-
-  .flightPage {
-  padding: 92px 16px 40px;
-}
-
-.flightHero h1 {
-  font-size: clamp(32px, 10vw, 48px);
-}
-
-.flightSwitcher {
-  width: 100%;
-}
-  .boardingPass {
-    border-radius: 26px;
-  }
-
-  .boardingHeader {
-    height: auto;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 18px;
-    text-align: center;
-  }
-
-  .boardingAirline {
-    justify-content: center;
-    padding-left: 0;
-  }
-
-.boardingTitle.small {
-  grid-column: 2;
-  grid-row: 1;
-
-  height: 68px;
-  display: grid;
-  place-items: center;
-  border-left: none;
-  font-size: 15px;
-  min-width: 0;
-}
-
-  .boardingTicketBody {
-    grid-template-columns: 1fr;
-  }
-
-  .boardingMainSide {
-    padding: 28px 22px;
-  }
-
-  .routeReveal h2 {
-    white-space: normal;
-    font-size: clamp(30px, 10vw, 48px);
-  }
-
-  .ticketDetails {
-    grid-template-columns: 1fr;
-  }
-
-  .ticketField.wide,
-  .ticketField.luggage {
-    grid-column: auto;
-  }
-
-  .ticketField.luggage strong {
-    white-space: normal;
-  }
-
-  .boardingStubSide {
-    padding: 28px 22px;
-    border-left: 0;
-    border-top: 2px dashed rgba(120, 113, 108, 0.34);
-  }
-
-  .accommodationPage {
-  padding: 92px 18px 60px;
-  overflow: visible;
-}
-
-.stayGrid,
-.stayDetails,
-.stayActions,
-.floorPlanGrid {
-  grid-template-columns: 1fr;
-}
-
-.stayImage {
-  min-height: 240px;
-}
-
-.galleryImageWrap {
-  height: 360px;
-}
-
-.galleryInfo {
-  align-items: flex-start;
-  gap: 12px;
-  flex-direction: column;
-}
-}
-
-/* =========================================================
-   MOBILE FIXES ONLY — HOME + COUNTDOWN + BOARDING PASS
-   ========================================================= */
-
-@media (max-width: 850px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
-
-  .heroImageWrapper {
-    height: 100svh;
-    min-height: 100svh;
-    padding: 0 18px;
-    place-items: center;
-  }
-
-  .heroContent {
-    width: 100%;
-    max-width: 360px;
-    padding: 0;
-    margin: 0 auto;
-    transform: translateY(-8px);
-  }
-
-  .heroTag {
-    font-size: 11px;
-    letter-spacing: 0.28em;
-    margin-bottom: 14px;
-  }
-
-  .heroContent h1 {
-    font-size: clamp(58px, 18vw, 78px);
-    line-height: 0.9;
-    letter-spacing: -0.08em;
-  }
-
-  .rotatingQuoteWrap {
-    min-height: 70px;
-    margin-top: 22px;
-  }
-
-  .rotatingQuote {
-    font-size: 20px;
-    line-height: 1.35;
-  }
-
-  .heroButton {
-    margin-top: 18px;
-  }
-
-  .scrollHintWrap {
-    bottom: 84px;
-  }
-
-  .container {
-    padding: 70px 18px 80px;
-  }
-
-  .countdownSection {
-    margin: 0 auto 46px;
-    padding: 24px 0;
-    width: 100%;
-  }
-
-  .countdownSection h2 {
-    font-size: clamp(42px, 13vw, 56px);
-    line-height: 0.95;
-  }
-
-  .countdownSubtitle {
-    max-width: 330px;
-    font-size: 15px;
-    line-height: 1.55;
-    margin-top: 18px;
-  }
-
-  .countdownGrid {
-    width: 100%;
-    margin-top: 28px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .countdownGrid div {
-    min-width: 0;
-    padding: 22px 10px;
-    border-radius: 30px;
-  }
-
-  .countdownGrid strong {
-    font-size: clamp(42px, 14vw, 58px);
-  }
-
-  .countdownGrid span {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-  }
-
-  .homeCards {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 28px;
-  }
-
-  .upgradedHomeCards {
-    width: 100%;
-    max-width: 360px;
-  }
-
-  .upgradedHomeCards button {
-    min-height: unset;
-    padding: 20px 22px;
-    border-radius: 28px;
-    display: grid;
-    grid-template-columns: 42px 1fr;
-    column-gap: 16px;
-    align-items: center;
-    text-align: left;
-  }
-
-  .upgradedHomeCards svg {
-    grid-row: span 2;
-    width: 30px;
-    height: 30px;
-  }
-
-  .upgradedHomeCards h3 {
-    margin: 0;
-    font-size: 22px;
-  }
-
-  .upgradedHomeCards p {
-    margin: 6px 0 0;
-    font-size: 14px;
-    line-height: 1.45;
-  }
-}
-
-/* MOBILE BOARDING PASS — desktop remains unchanged */
-@media (max-width: 850px) {
-  .flightPage {
-    padding: 92px 20px 80px;
-    overflow-x: hidden;
-  }
-
-  .flightHero {
-    margin-bottom: 18px;
-  }
-
-  .flightHero h1 {
-    font-size: clamp(38px, 12vw, 54px);
-    max-width: 360px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .flightSwitcher {
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: 22px;
-  }
-
-  .flightSwitcher button {
-    flex: 1;
-    padding: 12px 8px;
-    font-size: 13px;
-  }
-
-  .boardingPass {
-    width: min(420px, 100%);
-    border-radius: 26px;
-    background: #fff8ea;
-  }
-
-  .boardingHeader {
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 22px 24px;
-    gap: 8px;
-    background: transparent;
-    color: #f97316;
-  }
-
-  .boardingAirline {
-    grid-column: 1 / 2;
-    justify-self: start;
-    padding-left: 0;
-    color: #f97316;
-    font-size: 24px;
-    letter-spacing: -0.04em;
-    text-transform: none;
-  }
-
-  .boardingAirline svg {
-    display: none;
-  }
-
-  .boardingTitle {
-    display: none;
-  }
-
-  .boardingTitle.small {
-    display: grid !important;
-    grid-column: 2 / 3;
-    justify-self: end;
-    height: auto;
-    color: #1c1917;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-  }
-
-  .boardingTicketBody {
-    display: block;
-    min-height: auto;
-  }
-
-  .boardingMainSide {
-    padding: 0 24px 28px;
-  }
-
-  .routeReveal {
-    padding: 12px 0 26px;
-    text-align: center;
-  }
-
-  .routeReveal h2 {
-    white-space: normal;
-    width: 100%;
-    font-size: clamp(42px, 15vw, 68px);
-    line-height: 0.95;
-    letter-spacing: -0.07em;
-    color: #f97316;
-    text-align: center;
-  }
-
-  .routePlane {
-    display: none;
-  }
-
-  .ticketDetails {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 24px;
-  }
-
-  .ticketField {
-    min-width: 0;
-  }
-
-  .ticketField.wide {
-    grid-column: 1 / -1;
-  }
-
-  .ticketField.luggage {
-    grid-column: 1 / -1;
-  }
-
-  .ticketField span,
-  .boardingStubSide span {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    color: #44403c;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-  }
-
-  .ticketField strong,
-  .boardingStubSide strong,
-  .typewriterName {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
-    color: #f97316 !important;
-    font-size: 24px !important;
-    letter-spacing: -0.04em !important;
-    line-height: 1.05;
-  }
-
-  .ticketField p {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    color: #f97316;
-    font-size: 18px;
-  }
-
-  .typewriterName .typedText {
-    min-width: 0;
-  }
-
-  .boardingFooterNote {
-    display: none;
-  }
-
-  .boardingStubSide {
-    border-top: 0;
-    border-left: 0;
-    padding: 8px 24px 28px;
-    display: block;
-  }
-
-  .boardingStubSide h3,
-  .boardingStubSide > div:not(.stubBarcode) {
-    display: none;
-  }
-
-  .stubBarcode {
-    height: 86px;
-    margin: 34px auto 16px;
-    width: 78%;
-    padding: 14px 18px;
-    background: white;
-    border-radius: 6px;
-    justify-content: center;
-  }
-
-  .stubBarcode span {
-    background: #111;
-  }
-
-  .boardingPass::before,
-  .boardingPass::after {
-    content: "";
-    position: absolute;
-    top: 28%;
-    width: 16px;
-    height: 16px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: 5;
-  }
-
-  .boardingPass::before {
-    left: -8px;
-  }
-
-  .boardingPass::after {
-    right: -8px;
-  }
-}
-
-/* =========================================================
-   POLISH UPDATE — COUNTDOWN, LIQUID GLASS CARDS, MOBILE FIXES
-   ========================================================= */
-
-.mobileRouteText {
-  display: none;
-}
-
-/* COUNTDOWN — desktop + mobile */
-.countdownSection {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.countdownSection h2 {
-  text-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.7),
-    0 18px 48px rgba(0, 0, 0, 0.55);
-}
-
-.countdownGrid {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: clamp(14px, 3vw, 34px);
-  margin-top: 38px;
+  gap: 0;
 }
-
-.countdownGrid div {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  min-width: 100px;
-  position: relative;
-}
-
+.countdownGrid div { min-width: 160px; padding: 0 34px; text-align: center; position: relative; }
 .countdownGrid div:not(:last-child)::after {
   content: ":";
   position: absolute;
-  right: -24px;
-  top: 2px;
-  font-size: clamp(46px, 7vw, 86px);
+  right: -10px;
+  top: 8px;
+  font-size: clamp(48px, 5vw, 76px);
   line-height: 0.8;
   font-weight: 900;
   color: white;
-  text-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.75),
-    0 18px 48px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 4px 14px rgba(0,0,0,0.75), 0 18px 48px rgba(0,0,0,0.55);
 }
+.countdownGrid strong { display: block; color: white; font-size: clamp(64px, 7vw, 98px); line-height: 0.85; letter-spacing: -0.045em; text-shadow: 0 4px 14px rgba(0,0,0,0.75), 0 20px 54px rgba(0,0,0,0.55); }
+.countdownGrid span { display: block; margin-top: 16px; color: white; font-size: 13px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 3px 10px rgba(0,0,0,0.75), 0 12px 32px rgba(0,0,0,0.55); }
 
-.countdownGrid strong {
-  color: white;
-  font-size: clamp(54px, 8vw, 104px);
-  line-height: 0.85;
-  letter-spacing: -0.06em;
-  text-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.75),
-    0 20px 54px rgba(0, 0, 0, 0.55);
-}
-
-.countdownGrid span {
-  margin-top: 16px;
-  color: white;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.75),
-    0 12px 32px rgba(0, 0, 0, 0.55);
-}
-
-/* HOME CARDS — Apple liquid glass style */
+.homeCards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 54px; }
+.upgradedHomeCards { position: relative; z-index: 2; max-width: 1180px; margin-left: auto; margin-right: auto; }
 .upgradedHomeCards button {
-  color: white;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.34),
-      rgba(255, 255, 255, 0.14)
-    );
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    0 22px 55px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  position: relative;
+  min-height: 165px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.44);
+  background: linear-gradient(145deg, rgba(255,255,255,0.34), rgba(255,255,255,0.14));
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border-radius: 28px;
+  padding: 24px;
+  text-align: left;
+  color: white;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 22px 55px rgba(0,0,0,0.22);
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1);
 }
-
 .upgradedHomeCards button::before {
   content: "";
   position: absolute;
   inset: 1px;
   border-radius: inherit;
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.72), transparent 38%),
-    linear-gradient(to bottom, rgba(255,255,255,0.2), transparent 45%);
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.72), transparent 38%), linear-gradient(to bottom, rgba(255,255,255,0.2), transparent 45%);
   pointer-events: none;
+  opacity: 0.85;
+}
+.upgradedHomeCards button:hover { transform: translateY(-8px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), 0 30px 70px rgba(0,0,0,0.28); }
+.upgradedHomeCards svg,
+.upgradedHomeCards h3,
+.upgradedHomeCards p { position: relative; z-index: 2; }
+.upgradedHomeCards svg { width: 28px; height: 28px; color: white; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.35)); }
+.upgradedHomeCards h3 { margin: 22px 0 8px; font-size: 21px; color: white; text-shadow: 0 5px 18px rgba(0,0,0,0.45); }
+.upgradedHomeCards p { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.88); text-shadow: 0 4px 14px rgba(0,0,0,0.45); }
+.upgradedHomeCards span { display: none; }
+
+/* =========================================================
+   ITINERARY + HIGHLIGHT POPUPS
+   ========================================================= */
+
+.calendarPage { padding-top: 0; background: var(--cream); }
+.calendarStack { position: relative; }
+.tearScene { min-height: 100vh; height: auto; position: relative; perspective: 1800px; }
+.calendarSheetFull { position: relative; min-height: 100vh; height: auto; background: var(--cream); }
+.calendarCover { position: relative; min-height: 48vh; height: auto; background-size: cover; background-position: center; overflow: hidden; padding: 96px 42px 48px; }
+.dayCoverSlideshow { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #111; }
+.dayCoverSlide { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.calendarCoverOverlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right, rgba(0,0,0,0.48), transparent 58%), linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.52)); }
+.calendarHeaderFloating { position: absolute !important; top: 86px !important; right: 40px !important; z-index: 10 !important; display: flex !important; justify-content: flex-end !important; color: white !important; }
+.calendarHeaderFloating p { display: none; }
+.calendarHeaderFloating span { display: inline-flex !important; width: auto !important; padding: 8px 13px !important; border-radius: var(--radius-pill) !important; background: rgba(28,25,23,0.42) !important; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.28) !important; }
+.calendarCoverText { position: relative; z-index: 2; color: white; max-width: 820px; margin-top: 52px; }
+.calendarCoverText h2 { margin: 0; font-size: clamp(42px, 7vw, 86px); line-height: 0.94; letter-spacing: -0.07em; text-shadow: 0 3px 8px rgba(0,0,0,0.9), 0 12px 28px rgba(0,0,0,0.75); }
+.calendarCoverText p { margin: 18px 0 0; font-size: 18px; color: rgba(255,255,255,0.82); text-shadow: 0 2px 6px rgba(0,0,0,0.85), 0 8px 20px rgba(0,0,0,0.65); }
+.calendarCoverText > span { display: block; margin: 0 0 12px; font-size: 13px; letter-spacing: 0.3em; color: #fecaca; font-weight: 900; text-shadow: 0 2px 6px rgba(0,0,0,0.85), 0 8px 20px rgba(0,0,0,0.65); }
+.dayLocation { display: inline-flex; align-items: center; width: fit-content; margin-bottom: 16px; padding: 8px 14px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 900; letter-spacing: 0.28em; text-transform: uppercase; color: white; background: rgba(185,28,28,0.72); border: 1px solid rgba(255,255,255,0.32); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 12px 30px rgba(0,0,0,0.28); text-shadow: 0 2px 6px rgba(0,0,0,0.85), 0 8px 20px rgba(0,0,0,0.65); }
+.calendarContent { min-height: 52vh; padding: clamp(36px,5vw,64px); display: grid; grid-template-columns: 0.72fr 1.28fr; gap: clamp(30px,5vw,70px); align-items: center; }
+.calendarBigNumber { font-size: clamp(120px,16vw,230px); font-weight: 950; letter-spacing: -0.1em; line-height: 0.78; }
+.calendarCityTag { margin-bottom: 14px; font-size: 13px; font-weight: 900; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); }
+.calendarBigNumber > span { display: block; margin-bottom: 18px; font-size: clamp(18px,2vw,28px); letter-spacing: 0.4em; color: var(--red); }
+.calendarCopy h3 { margin: 0; font-size: clamp(34px,5vw,68px); line-height: 0.95; letter-spacing: -0.06em; }
+.calendarCopy p { margin: 22px 0 0; font-size: clamp(16px,2vw,20px); line-height: 1.75; color: var(--muted); }
+.highlightList { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+.highlightButton { border: 1px solid rgba(120,113,108,0.12); background: var(--soft); padding: 16px; border-radius: 18px; color: #44403c; line-height: 1.5; text-align: left; font-size: 15px; display: grid; gap: 6px; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+.highlightButton strong { font-size: 16px; }
+.highlightButton span { font-size: 13px; color: #78716c; }
+.highlightButton.clickable { cursor: pointer; background: #fff; box-shadow: 0 10px 24px rgba(0,0,0,0.06); }
+.highlightButton.clickable:hover { transform: translateY(-3px); background: #fee2e2; color: #7f1d1d; }
+
+.placeBubbleBackdrop,
+.galleryBackdrop,
+.filmViewerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(28,25,23,0.58);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.placeBubble { position: relative; background: var(--cream); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-heavy); }
+.majorBubble { width: min(880px, 100%); }
+.minorBubble { width: min(560px, 100%); }
+.bubbleClose,
+.galleryClose,
+.filmViewerClose,
+.closeGuide {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 20;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
+  font-size: 28px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.bubbleClose:hover,
+.galleryClose:hover,
+.filmViewerClose:hover,
+.closeGuide:hover { transform: scale(1.08); background: white; }
+.bubbleImages { width: 100%; height: 300px; display: grid; grid-template-columns: 1.2fr 0.8fr; overflow: hidden; }
+.bubbleImages img { width: 100%; height: 300px; object-fit: cover; display: block; }
+.bubbleContent { padding: 34px; background: var(--cream); }
+.bubbleContent h2 { margin: 10px 0 12px; font-size: clamp(34px,5vw,58px); letter-spacing: -0.06em; line-height: 0.98; }
+.bubbleContent > p:not(.smallLabel) { color: var(--muted); font-size: 18px; line-height: 1.65; }
+.placeMetaGrid { margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.placeMetaGrid div,
+.placeMetaGrid a { border-radius: 18px; background: var(--soft); padding: 16px; text-decoration: none; color: #44403c; }
+.placeMetaGrid span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: #78716c; margin-bottom: 8px; }
+.placeMetaGrid strong { display: block; line-height: 1.45; }
+.placeMetaGrid a { background: var(--ink); color: white; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+
+/* =========================================================
+   FLIGHTS + BOARDING PASS
+   ========================================================= */
+
+.flightPage { position: relative; min-height: 100vh; padding: 88px 24px 48px; overflow: hidden; }
+.flightBg { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.08) 40%, rgba(247,241,232,0.22)), url("https://images.pexels.com/photos/19082534/pexels-photo-19082534.jpeg"); background-size: cover; background-position: center; background-repeat: no-repeat; }
+.flightHero,
+.flightSwitcher,
+.boardingPass { position: relative; z-index: 2; }
+.flightHero { text-align: center; max-width: 850px; margin: 0 auto 18px; color: white; }
+.flightHero .infoIcon { width: 46px; height: 46px; margin-bottom: 10px; }
+.flightHero h1 { margin: 10px 0 0; font-size: clamp(34px,5vw,58px); line-height: 0.95; letter-spacing: -0.06em; text-shadow: 0 18px 46px rgba(0,0,0,0.5); }
+.flightHero p:last-child { display: none; }
+.flightSwitcher { display: flex; justify-content: center; gap: 10px; margin: 0 auto 18px; padding: 6px; width: fit-content; border-radius: var(--radius-pill); background: rgba(255,255,255,0.22); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 14px 36px rgba(0,0,0,0.18); }
+.flightSwitcher button { border: 0; cursor: pointer; padding: 11px 18px; border-radius: var(--radius-pill); background: transparent; color: rgba(255,255,255,0.88); font-weight: 850; transition: 0.28s ease; }
+.flightSwitcher button:hover { background: rgba(255,255,255,0.16); }
+.flightSwitcher button.active { background: rgba(255,255,255,0.92); color: var(--ink); box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
+
+.boardingPass { width: min(1280px, 100%); margin: 0 auto; overflow: hidden; border-radius: 28px; background: #f8eee6; border: 1px solid rgba(255,255,255,0.82); box-shadow: 0 28px 70px rgba(0,0,0,0.24); }
+.boardingHeader { height: 68px; display: grid; grid-template-columns: minmax(0,1fr) 298px; align-items: center; background: var(--rose); color: white; }
+.boardingAirline { grid-column: 1; grid-row: 1; justify-self: start; display: flex; align-items: center; gap: 12px; padding-left: 36px; font-size: 14px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.boardingTitle { grid-column: 1; grid-row: 1; justify-self: center; font-size: 23px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; }
+.boardingTitle.small { grid-column: 2; grid-row: 1; height: 68px; display: grid; place-items: center; font-size: 15px; min-width: 0; }
+.mobileFlightMeta { display: none; }
+.boardingHeader,
+.boardingHeader * { border-left: none !important; border-right: none !important; }
+.boardingTicketBody { display: grid; grid-template-columns: minmax(0, 1fr) 298px; min-height: 360px; }
+.boardingMainSide { padding: 34px 44px 28px; min-width: 0; }
+.routeReveal { position: relative; width: 100%; overflow: hidden; text-align: left; padding: 8px 0 32px; }
+.routeReveal h2 { margin: 0; width: fit-content; max-width: 100%; font-size: clamp(32px,3.8vw,54px); line-height: 1.05; letter-spacing: -0.055em; white-space: nowrap; }
+.mobileRouteText { display: none; }
+.routePlane { position: absolute; top: 2px; left: 0; font-size: clamp(36px,3.8vw,52px); color: var(--rose); z-index: 5; transform: translateX(-50%); }
+.ticketDetails { display: grid; grid-template-columns: 1.3fr 1fr 0.85fr 0.85fr; gap: 24px 34px; align-items: start; }
+.ticketField { min-width: 0; }
+.ticketField.wide,
+.ticketField.luggage { grid-column: span 2; }
+.ticketField span,
+.boardingStubSide span { display: block; margin-bottom: 7px; font-family: "Courier New", monospace; font-size: 10px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: #9f1239; }
+.ticketField strong,
+.boardingStubSide strong { display: block; font-family: "Courier New", monospace; font-size: clamp(17px,1.35vw,23px); line-height: 1.18; letter-spacing: -0.04em; }
+.ticketField p { margin: 6px 0 0; font-family: "Courier New", monospace; color: var(--muted); font-size: 14px; font-weight: 900; }
+.ticketField.luggage strong { white-space: nowrap; font-size: clamp(14px,1vw,17px); }
+.boardingFooterNote { margin-top: 30px; font-family: "Courier New", monospace; font-size: 12px; font-weight: 900; letter-spacing: 0.08em; }
+.boardingStubSide { padding: 34px 30px; display: grid; align-content: center; gap: 14px; border-left: 2px dashed rgba(120,113,108,0.34); min-width: 0; }
+.boardingStubSide h3 { margin: 0 0 12px; font-size: 22px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: #9f1239; }
+.stubMiniGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stubMiniGrid strong { font-size: 17px; }
+.stubBarcode { height: 54px; display: flex; gap: 3px; align-items: stretch; margin-top: 8px; overflow: hidden; }
+.stubBarcode span { display: block; width: 4px; background: var(--ink); border-radius: 2px; }
+.stubBarcode span:nth-child(3n) { width: 8px; }
+.stubBarcode span:nth-child(4n) { width: 2px; }
+.typewriterName { display: inline-flex !important; align-items: baseline; min-height: 1.2em; white-space: nowrap; font-family: "Courier New", monospace !important; font-size: clamp(17px,1.35vw,23px) !important; font-weight: 900 !important; line-height: 1.18; letter-spacing: -0.04em !important; color: var(--ink) !important; }
+.typewriterName .typedText { display: inline-block !important; min-width: 160px; font: inherit !important; letter-spacing: inherit !important; color: inherit !important; text-transform: none !important; margin: 0 !important; }
+.typewriterName .typeCursor { display: none !important; }
+
+/* =========================================================
+   ACCOMMODATION + MODALS
+   ========================================================= */
+
+.accommodationPage { position: relative; min-height: 100vh; padding: 88px 24px 46px; overflow: hidden; isolation: isolate; }
+.accommodationBg { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.08) 42%, rgba(247,241,232,0.44)), url("https://cdn.mos.cms.futurecdn.net/xhDkbUESGzwLyVzMG9mcQ8.jpg"); background-size: cover; background-position: center; background-repeat: no-repeat; pointer-events: none; }
+.accommodationHero,
+.stayGrid { position: relative; z-index: 2; }
+.accommodationHero.compact { text-align: center; color: white; margin-bottom: 14px; }
+.accommodationHero.compact .infoIcon { width: 42px; height: 42px; margin-bottom: 6px; }
+.accommodationHero h1 { margin: 6px 0 0; font-size: clamp(32px,4.4vw,50px); line-height: 0.95; }
+.stayGrid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.stayCard.compact { overflow: hidden; border-radius: 30px; background: rgba(255,250,245,0.92); border: 1px solid rgba(255,255,255,0.78); box-shadow: 0 24px 60px rgba(0,0,0,0.22); }
+.stayCard { transform: translateY(0); transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s cubic-bezier(0.22,1,0.36,1); }
+.stayCard:hover { transform: translateY(-8px); box-shadow: 0 34px 78px rgba(0,0,0,0.28); }
+.stayImage { position: relative; min-height: 220px; background-size: cover; background-position: center; overflow: hidden; }
+.stayImage::before { content: ""; position: absolute; inset: 0; background: inherit; background-size: cover; background-position: center; transform: scale(1); transition: transform 0.75s cubic-bezier(0.22,1,0.36,1); z-index: 0; }
+.stayImage:hover::before,
+.stayCard:hover .stayImage::before { transform: scale(1.08); }
+.stayImage::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.42)); }
+.stayImage > * { position: absolute; }
+.stayImage span { left: 22px; bottom: 20px; z-index: 5; padding: 9px 14px; border-radius: var(--radius-pill); background: rgba(185,28,28,0.85); color: white; font-size: 12px; font-weight: 900; letter-spacing: 0.24em; text-transform: uppercase; }
+.photoButton { right: 18px; bottom: 18px; z-index: 5; border: 0; border-radius: var(--radius-pill); padding: 11px 16px; background: rgba(255,255,255,0.92); color: var(--ink); font-weight: 850; cursor: pointer; box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
+.stayContent { padding: 18px 22px 20px; }
+.stayContent h2 { margin: 6px 0 14px; font-size: clamp(26px,3vw,38px); line-height: 0.95; letter-spacing: -0.06em; }
+.stayDetails { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.stayDetails div { padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,0.72); border: 1px solid rgba(120,113,108,0.1); }
+.stayDetails span { display: block; margin-bottom: 7px; font-size: 10px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); }
+.stayDetails strong { font-size: 15px; line-height: 1.3; }
+.stayActions { margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stayActions a,
+.stayActions button { border: 0; display: flex; justify-content: center; padding: 13px 16px; border-radius: var(--radius-pill); background: var(--ink); color: white; text-decoration: none; font-weight: 850; cursor: pointer; }
+.stayActions button { background: var(--red); }
+.transitBubbleButton { margin-top: 12px; display: grid; gap: 5px; width: 100%; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,0.72); border: 1px solid rgba(120,113,108,0.1); color: var(--ink); text-decoration: none; }
+.transitBubbleButton span { font-size: 14px; font-weight: 900; }
+.transitBubbleButton small { font-size: 13px; color: var(--muted); }
+.photoButton,
+.stayActions a,
+.stayActions button,
+.transitBubbleButton { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s cubic-bezier(0.22,1,0.36,1), background 0.35s ease; }
+.photoButton:hover,
+.stayActions a:hover,
+.stayActions button:hover,
+.transitBubbleButton:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(0,0,0,0.22); }
+.galleryModal,
+.floorPlanModal { position: relative; width: min(980px,100%); max-height: 92vh; overflow: hidden; border-radius: var(--radius-xl); background: var(--cream); box-shadow: 0 34px 100px rgba(0,0,0,0.38); }
+.galleryImageWrap { position: relative; height: 520px; background: #111; }
+.galleryImageWrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galleryArrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border: 0; border-radius: var(--radius-pill); background: rgba(255,255,255,0.88); font-size: 34px; cursor: pointer; transition: transform 0.25s ease, background 0.25s ease; }
+.galleryArrow.left { left: 18px; }
+.galleryArrow.right { right: 18px; }
+.galleryArrow:hover { transform: translateY(-50%) scale(1.08); background: white; }
+.galleryInfo { padding: 22px 28px 26px; display: flex; justify-content: space-between; align-items: flex-end; background: #f8eee6; }
+.galleryInfo h2 { margin: 4px 0 0; font-size: clamp(26px,2.4vw,38px); line-height: 1.05; }
+.galleryInfo > span { font-weight: 900; color: #78716c; }
+.galleryThumbs { padding: 0 24px 24px; display: flex; gap: 10px; overflow-x: auto; }
+.galleryThumbs button { flex: 0 0 86px; height: 64px; padding: 0; border: 3px solid transparent; border-radius: 14px; overflow: hidden; cursor: pointer; background: none; transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease; }
+.galleryThumbs button.active { border-color: var(--red); }
+.galleryThumbs button:hover { transform: translateY(-3px); opacity: 0.88; }
+.galleryThumbs img { width: 100%; height: 100%; object-fit: cover; }
+.floorPlanModal { padding: 34px; }
+.floorPlanModal.large { width: min(1180px,96vw); max-height: 94vh; padding: 0; }
+.floorPlanImageWrap { position: relative; height: 65vh; padding: 20px 20px 0; background: white; display: flex; align-items: center; justify-content: center; }
+.floorPlanImageWrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.roomTabs { padding: 18px 20px; display: flex; gap: 10px; background: var(--cream); border-bottom: 1px solid rgba(120,113,108,0.12); overflow-x: auto; }
+.roomTabs button { border: 0; white-space: nowrap; padding: 11px 16px; border-radius: var(--radius-pill); background: var(--soft); color: #44403c; font-weight: 850; cursor: pointer; }
+.roomTabs button.active { background: var(--ink); color: white; }
+
+/* =========================================================
+   EXPENSES
+   ========================================================= */
+
+.expensesPage { position: relative; min-height: 100vh; padding: 42px 24px 70px; overflow: visible; isolation: isolate; }
+.expensesBg { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(to bottom, rgba(255,250,245,0.08), rgba(247,241,232,0.16)), url("https://images.wallpapersden.com/image/download/japan-yamaguchi-pond_ZmpsZ2mUmZqaraWkpJRpbWVlrWhnZWU.jpg"); background-size: cover; background-position: center top; background-repeat: no-repeat; pointer-events: none; }
+.paperReceipt { position: relative; z-index: 2; width: min(720px,100%); margin: 0 auto; background: var(--paper); box-shadow: 0 30px 90px rgba(0,0,0,0.28); overflow: hidden; }
+.paperReceipt::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 18px; background: linear-gradient(135deg, transparent 50%, var(--paper) 50%) 0 0 / 18px 18px, linear-gradient(225deg, transparent 50%, var(--paper) 50%) 0 0 / 18px 18px; }
+.receiptInner { padding: 38px 48px 46px; font-family: "Courier New", monospace; color: #111; }
+.thermalHeader { text-align: center; }
+.thermalHeader h1 { margin: 0 0 16px; font-family: "Courier New", monospace; font-size: clamp(28px,4vw,42px); letter-spacing: 0.14em; text-transform: uppercase; }
+.thermalHeader p { margin: 6px 0; font-size: 17px; line-height: 1.35; }
+.receiptDivider { margin: 18px 0; border-top: 2px dashed #111; }
+.receiptDivider.slim { margin: 8px 0 10px; }
+.receiptMeta { text-align: center; }
+.receiptMeta p { margin: 8px 0; font-size: 18px; letter-spacing: 0.04em; }
+.receiptControlsSimple { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 14px; }
+.thermalToggle { display: inline-flex; border: 1.8px solid #111; border-radius: 8px; overflow: hidden; background: white; }
+.thermalToggle button { border: 0; padding: 10px 18px; background: transparent; font-family: "Courier New", monospace; font-size: 16px; font-weight: 900; cursor: pointer; transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease; }
+.thermalToggle button:hover { transform: translateY(-1px); }
+.thermalToggle button.active { background: #111; color: white; }
+.thermalBudget { display: flex; align-items: center; gap: 8px; font-size: 16px; white-space: nowrap; }
+.thermalBudget span { font-weight: 900; }
+.thermalBudget input,
+.thermalAmount input,
+.exchangeRateEditor input { border: 0 !important; border-bottom: 2px solid #111 !important; border-radius: 0 !important; background: transparent !important; padding: 4px 2px 6px !important; box-shadow: none !important; font-family: "Courier New", monospace; font-weight: 900; text-align: right; }
+.thermalBudget input { width: 92px; font-size: 16px; }
+.thermalTable { margin-top: 6px; }
+.thermalRow { display: grid; grid-template-columns: 58px minmax(0,1fr) 120px 140px; gap: 12px; align-items: center; min-height: 38px; font-size: 16px; }
+.thermalHead { font-weight: 900; letter-spacing: 0.08em; }
+.thermalRow > span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.thermalAmount { text-align: right; }
+.thermalAmount input { width: 100%; max-width: 86px; font-size: 16px; }
+.thermalAmount input:focus,
+.thermalBudget input:focus,
+.exchangeRateEditor input:focus { outline: none; }
+.thermalTotals { display: grid; gap: 12px; margin-top: 8px; }
+.thermalTotals div { display: flex; justify-content: space-between; gap: 20px; font-size: 18px; align-items: baseline; }
+.thermalTotals strong { font-size: 18px; font-weight: 900; }
+.exchangeRateLine { display: grid; gap: 8px; text-align: center; font-family: "Courier New", monospace; }
+.exchangeRateLine span { font-size: 14px; font-weight: 900; letter-spacing: 0.08em; }
+.exchangeRateDisplay,
+.exchangeRateEditor { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; }
+.exchangeRateDisplay strong,
+.exchangeRateEditor strong { display: inline-flex; align-items: center; white-space: nowrap; font-size: 16px; }
+.exchangeRateEditor input { width: 78px; text-align: center; font-size: 15px; }
+.exchangeRateDisplay button,
+.exchangeRateEditor button { border: 0; border-radius: var(--radius-pill); padding: 7px 13px; background: #111; color: white; font-family: "Courier New", monospace; font-size: 11px; font-weight: 900; letter-spacing: 0.08em; cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.18); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+.exchangeRateDisplay button:hover,
+.exchangeRateEditor button:hover { transform: translateY(-2px); background: var(--red); box-shadow: 0 10px 24px rgba(0,0,0,0.24); }
+.thermalFooter { margin: 26px 0; text-align: center; font-size: 18px; letter-spacing: 0.04em; }
+
+/* =========================================================
+   PLACES / MAP
+   ========================================================= */
+
+.placesPage { position: relative; min-height: 100vh; padding: 76px 24px 42px; overflow: hidden; isolation: isolate; }
+.placesBg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(247,241,232,0.18)), url("https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?q=80&w=1920&auto=format&fit=crop"); background-size: cover; background-position: center; background-repeat: no-repeat; pointer-events: none; }
+.placesHero,
+.mapExperience { position: relative; z-index: 2; }
+.placesHero.compact { text-align: center; color: white; margin-bottom: 16px; }
+.placesHero.compact .infoIcon { width: 44px; height: 44px; margin-bottom: 8px; }
+.placesHero h1 { margin: 8px 0 0; font-size: clamp(34px,5vw,58px); line-height: 0.95; letter-spacing: -0.07em; text-shadow: 0 18px 46px rgba(0,0,0,0.5); }
+.mapExperience.bigMap { max-width: 1420px; height: calc(100vh - 170px); min-height: 680px; margin: 0 auto; position: relative; }
+.interactiveMapFrame { width: 100%; height: 100%; overflow: hidden; border-radius: 38px; background: rgba(255,250,245,0.92); border: 1px solid rgba(255,255,255,0.78); box-shadow: 0 28px 80px rgba(0,0,0,0.32); }
+.interactiveMapFrame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.floatingMapGuide { position: absolute; right: 24px; bottom: 24px; width: min(360px, calc(100% - 48px)); padding: 24px; border-radius: 28px; background: rgba(255,250,245,0.92); border: 1px solid rgba(255,255,255,0.78); box-shadow: 0 24px 60px rgba(0,0,0,0.24); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 5; animation: fadeGuideIn 0.45s ease; }
+.closeGuide { top: 14px; right: 16px; width: 30px; height: 30px; font-size: 20px; background: rgba(0,0,0,0.06); box-shadow: none; }
+.floatingMapGuide h2 { margin: 8px 0 18px; font-size: 32px; line-height: 0.96; letter-spacing: -0.06em; }
+.guideSteps { display: grid; gap: 10px; }
+.guideSteps div { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 18px; background: rgba(255,255,255,0.7); }
+.guideSteps span { flex-shrink: 0; width: 24px; height: 24px; border-radius: var(--radius-pill); background: var(--red); color: white; display: grid; place-items: center; font-size: 12px; font-weight: 900; }
+.guideSteps p { margin: 0; font-size: 14px; line-height: 1.45; color: #44403c; }
+.floatingMapGuide a { display: none; }
+.openFullMapBubble { position: relative; z-index: 2; width: fit-content; margin: 18px auto 0; display: flex; justify-content: center; padding: 14px 22px; border-radius: var(--radius-pill); background: rgba(255,250,245,0.92); color: var(--ink); text-decoration: none; font-weight: 900; box-shadow: 0 18px 42px rgba(0,0,0,0.2); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, background 0.35s ease; }
+.openFullMapBubble:hover { transform: translateY(-5px); background: white; box-shadow: 0 26px 58px rgba(0,0,0,0.26); }
+@keyframes fadeGuideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================================
+   NEW GALLERY PAGE / FILM ROLLS
+   ========================================================= */
+
+.galleryPage { position: relative; min-height: 100vh; padding: 92px 24px 70px; overflow: hidden; isolation: isolate; color: white; }
+.galleryBg { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(to bottom, rgba(0,0,0,0.46), rgba(0,0,0,0.82)), url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2000&auto=format&fit=crop"); background-size: cover; background-position: center; }
+.galleryHero { position: relative; z-index: 2; max-width: 920px; margin: 0 auto 36px; text-align: center; }
+.galleryHero .infoIcon { width: 54px; height: 54px; margin-bottom: 14px; background: rgba(255,255,255,0.16); color: white; border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.galleryHero h1 { margin: 10px 0 0; font-size: clamp(44px,7vw,86px); line-height: 0.92; letter-spacing: -0.07em; text-shadow: 0 22px 70px rgba(0,0,0,0.65); }
+.galleryHero p:last-child { max-width: 680px; margin: 20px auto 0; color: rgba(255,255,255,0.82); font-size: 18px; line-height: 1.65; }
+.filmPackStage { position: relative; z-index: 2; max-width: 1320px; margin: 0 auto; padding: 28px 0 50px; overflow: visible; }
+.filmPackIntro { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin: 0 0 26px; color: white; }
+.filmPackIntro h2 { margin: 4px 0 0; font-size: clamp(34px,4vw,58px); line-height: 0.95; letter-spacing: -0.06em; }
+.filmPackIntro span { color: rgba(255,255,255,0.7); font-weight: 700; }
+.filmPackTrack { display: flex; gap: 22px; width: max-content; padding: 16px 12px 34px; cursor: grab; }
+.filmPackTrack:active { cursor: grabbing; }
+.filmProfileCard { position: relative; width: 270px; height: 420px; flex: 0 0 auto; border: 0; border-radius: 32px; overflow: hidden; cursor: pointer; padding: 0; color: white; background: #111; box-shadow: 0 28px 70px rgba(0,0,0,0.36); transform-origin: center bottom; }
+.filmCardImage { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.02); transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+.filmProfileCard:hover .filmCardImage { transform: scale(1.1); }
+.filmCardOverlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.18) 36%, rgba(0,0,0,0.76)); }
+.filmCardTop { position: absolute; top: 18px; left: 18px; right: 18px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+.filmCardTop span { padding: 8px 12px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.28); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 11px; font-weight: 900; letter-spacing: 0.16em; }
+.filmCardText { position: absolute; left: 22px; right: 22px; bottom: 24px; z-index: 2; text-align: left; }
+.filmCardText p { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.72); font-weight: 850; }
+.filmCardText h3 { margin: 0; font-size: 32px; line-height: 0.94; letter-spacing: -0.06em; text-shadow: 0 10px 30px rgba(0,0,0,0.65); }
+.filmCardText span { display: block; margin-top: 12px; font-size: 13px; line-height: 1.35; color: rgba(255,255,255,0.78); }
+.filmViewerBackdrop { z-index: 400; align-items: start; place-items: start center; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.filmViewer { position: relative; width: min(1120px, 100%); margin: 42px auto; border-radius: 38px; background: rgba(255,250,245,0.96); color: var(--ink); overflow: hidden; box-shadow: 0 36px 110px rgba(0,0,0,0.48); }
+.filmViewerClose { top: 20px; right: 20px; }
+.filmViewerHeader { padding: 42px 42px 26px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,238,230,0.96)); }
+.filmViewerHeader h2 { margin: 8px 0 8px; font-size: clamp(38px,6vw,72px); line-height: 0.92; letter-spacing: -0.07em; }
+.filmViewerHeader span { color: var(--muted); font-weight: 650; }
+.filmViewerBadge { min-width: 92px; height: 92px; border-radius: 28px; display: grid; place-items: center; gap: 4px; background: #111; color: white; }
+.filmViewerBadge strong { font-size: 14px; letter-spacing: 0.1em; }
+.filmPhotoMasonry { padding: 24px 28px 38px; column-count: 3; column-gap: 16px; background: var(--cream); }
+.filmPhotoTile { position: relative; display: inline-block; width: 100%; margin: 0 0 16px; padding: 0; border: 0; border-radius: 22px; overflow: hidden; background: #111; cursor: pointer; box-shadow: 0 14px 32px rgba(0,0,0,0.12); break-inside: avoid; }
+.filmPhotoTile img { display: block; width: 100%; height: auto; min-height: 210px; object-fit: cover; }
+.filmPhotoTile.large img { min-height: 320px; }
+.filmPhotoTile span { position: absolute; right: 10px; bottom: 10px; padding: 6px 9px; border-radius: var(--radius-pill); background: rgba(0,0,0,0.56); color: white; font-size: 12px; font-weight: 900; }
+.filmLightbox { position: fixed; inset: 0; z-index: 450; display: grid; place-items: center; padding: 24px; background: rgba(0,0,0,0.88); color: white; }
+.filmLightbox button { position: absolute; top: 20px; right: 20px; width: 44px; height: 44px; border: 0; border-radius: var(--radius-pill); background: rgba(255,255,255,0.94); color: #111; font-size: 28px; cursor: pointer; }
+.filmLightbox img { max-width: min(94vw, 980px); max-height: 82vh; object-fit: contain; border-radius: 22px; box-shadow: 0 30px 90px rgba(0,0,0,0.5); }
+.filmLightbox p { position: absolute; bottom: 18px; left: 24px; right: 24px; text-align: center; color: rgba(255,255,255,0.82); }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .homeCards { grid-template-columns: repeat(3, 1fr); }
+  .filmPhotoMasonry { column-count: 2; }
+}
+
+@media (max-width: 900px) {
+  .placesPage { padding: 92px 18px 60px; overflow: visible; }
+  .mapExperience.bigMap { height: 720px; min-height: 720px; }
+  .floatingMapGuide { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 16px; }
+}
+
+@media (max-width: 850px) {
+  .floatingMenuWrap { top: 20px; left: 20px; }
+  .floatingMenu { padding: 7px 14px 7px 7px; }
+
+  .container { padding: 70px 18px 80px; }
+  .heroImageWrapper { height: 100svh; min-height: 100svh; padding: 0 18px; place-items: center; }
+  .heroContent { width: 100%; max-width: 360px; padding: 0; margin: 0 auto; transform: translateY(-8px); }
+  .heroTag { font-size: 11px; letter-spacing: 0.28em; margin-bottom: 14px; }
+  .heroContent h1 { font-size: clamp(58px,18vw,78px); line-height: 0.9; letter-spacing: -0.08em; }
+  .rotatingQuoteWrap { min-height: 70px; margin-top: 22px; }
+  .rotatingQuote { font-size: 20px; line-height: 1.35; }
+  .heroButton { margin-top: 18px; }
+  .scrollHintWrap { bottom: 84px; }
+
+  .countdownSection { margin: 0 auto 44px; padding: 22px 0 18px; width: 100%; }
+  .countdownSection h2 { font-size: clamp(38px,11vw,54px); line-height: 0.95; }
+  .countdownSubtitle { max-width: 330px; font-size: 15px; line-height: 1.55; margin-top: 18px; }
+  .countdownGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 28px; }
+  .countdownGrid div { min-width: 0; padding: 0; }
+  .countdownGrid div:not(:last-child)::after { right: -7px; top: 1px; font-size: clamp(34px,9vw,48px); }
+  .countdownGrid strong { font-size: clamp(34px,10vw,48px); }
+  .countdownGrid span { margin-top: 9px; font-size: 9px; letter-spacing: 0.08em; }
+
+  .homeCards { grid-template-columns: 1fr; gap: 18px; margin-top: 30px; }
+  .upgradedHomeCards { width: 100%; max-width: 340px; }
+  .upgradedHomeCards button { min-height: 116px; padding: 20px; border-radius: 30px; display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; align-items: center; }
+  .upgradedHomeCards svg { grid-row: span 2; width: 30px; height: 30px; }
+  .upgradedHomeCards h3 { margin: 0; font-size: 23px; }
+  .upgradedHomeCards p { margin: 8px 0 0; font-size: 14px; line-height: 1.4; }
+
+  .calendarPage { background: #080808; scroll-snap-type: y proximity; overflow-x: hidden; }
+  .tearScene { min-height: 100svh; scroll-snap-align: start; scroll-snap-stop: normal; background: #080808; }
+  .calendarSheetFull { min-height: 100svh; background: #080808; display: flex; flex-direction: column; }
+  .calendarCover { min-height: 58svh; height: 58svh; padding: 96px 22px 88px; display: flex; align-items: flex-end; }
+  .calendarCoverOverlay { background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72)), linear-gradient(to top, rgba(0,0,0,0.78), transparent 48%); }
+  .calendarHeaderFloating { top: 92px !important; right: 20px !important; }
+  .calendarHeaderFloating span { padding: 7px 12px !important; font-size: 12px; background: rgba(255,255,255,0.18) !important; color: white; }
+  .calendarCoverText { width: 100%; max-width: 360px; margin-top: 0; }
+  .dayLocation { margin-bottom: 12px; font-size: 10px; letter-spacing: 0.22em; }
+  .calendarCoverText > span { font-size: 11px; letter-spacing: 0.26em; margin-bottom: 10px; }
+  .calendarCoverText h2 { font-size: clamp(34px,11vw,48px); line-height: 0.96; }
+  .calendarCoverText p { display: block; position: relative; z-index: 8; margin-top: 14px; font-size: 14px; color: rgba(255,255,255,0.88); }
+  .calendarContent { flex: 1; min-height: auto; display: block; padding: 0 18px 34px; background: linear-gradient(to bottom, rgba(0,0,0,0.88), #080808); }
+  .calendarBigNumber,
+  .calendarCopy h3 { display: none; }
+  .calendarCopy { margin-top: -72px; position: relative; z-index: 6; padding: 24px 20px; border-radius: 32px; background: linear-gradient(145deg, rgba(255,255,255,0.34), rgba(255,255,255,0.12)); border: 1px solid rgba(255,255,255,0.34); backdrop-filter: blur(22px) saturate(145%); -webkit-backdrop-filter: blur(22px) saturate(145%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.45), 0 24px 70px rgba(0,0,0,0.38); color: white; }
+  .calendarCopy p { margin: 0; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.88); }
+  .highlightList { margin-top: 18px; grid-template-columns: 1fr; gap: 10px; padding-bottom: 36px; }
+  .highlightButton { padding: 15px 16px; border-radius: 20px; background: rgba(255,255,255,0.9); color: var(--ink); }
+
+  .placeBubbleBackdrop,
+  .galleryBackdrop { align-items: start; place-items: start center; padding: 78px 14px 28px; overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+  .placeBubble,
+  .galleryModal,
+  .floorPlanModal { width: min(100%,420px); max-height: calc(100svh - 110px); overflow-y: auto; border-radius: 30px; }
+  .bubbleClose { position: absolute !important; top: 14px !important; right: 14px !important; margin: 0 !important; z-index: 90 !important; }
+  .bubbleImages { height: 220px !important; grid-template-columns: 1fr; margin-top: 0 !important; border-radius: 30px 30px 0 0; }
+  .bubbleImages img { height: 220px !important; border-radius: 30px 30px 0 0; }
+  .bubbleContent { padding: 20px 18px 22px !important; }
+  .bubbleContent h2 { font-size: clamp(30px,8vw,38px) !important; line-height: 0.98 !important; margin: 8px 0 10px !important; }
+  .bubbleContent > p:not(.smallLabel) { font-size: 14px !important; line-height: 1.45 !important; }
+  .placeMetaGrid { grid-template-columns: 1fr !important; gap: 9px !important; margin-top: 16px !important; }
+  .placeMetaGrid div,
+  .placeMetaGrid a { padding: 13px 14px !important; border-radius: 16px !important; }
+
+  .flightPage { padding: 92px 20px 80px; overflow-x: hidden; }
+  .flightHero h1 { font-size: clamp(38px,12vw,54px); max-width: 360px; margin-left: auto; margin-right: auto; }
+  .flightSwitcher { width: 100%; max-width: 420px; margin-bottom: 22px; }
+  .flightSwitcher button { flex: 1; padding: 12px 8px; font-size: 13px; }
+  .boardingPass { width: min(410px, calc(100vw - 38px)); border-radius: 14px; background: #fffdf6; color: #111; }
+  .boardingHeader { height: auto; display: grid; grid-template-columns: 1fr auto; padding: 20px 20px 8px; background: #fffdf6; color: #111; }
+  .boardingAirline { grid-column: 1; grid-row: 1; justify-self: start; align-self: start; padding-left: 0; font-size: 0; }
+  .boardingAirline svg,
+  .boardingTitle,
+  .boardingTitle.small { display: none !important; }
+  .boardingAirline::before { content: "AirAsia"; display: inline-block; padding: 7px 14px 8px; background: var(--airasia); color: white; border-radius: 2px 12px 2px 12px; font-size: 25px; line-height: 1; font-weight: 900; font-style: italic; letter-spacing: -0.06em; text-transform: none; }
+  .mobileFlightMeta { grid-column: 2; grid-row: 1; display: grid; grid-template-columns: auto auto; gap: 2px 12px; text-align: right; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  .mobileFlightMeta span { font-size: 10px; color: #555; letter-spacing: 0.04em; font-weight: 700; }
+  .mobileFlightMeta strong { font-size: 16px; color: #111; font-weight: 500; line-height: 1; }
+  .boardingTicketBody { display: block; min-height: auto; }
+  .boardingMainSide { padding: 10px 20px 22px; }
+  .routeReveal { padding: 14px 0 20px; min-height: 112px; text-align: center; }
+  .desktopRouteText { display: none; }
+  .mobileRouteText { display: block; width: 100%; white-space: nowrap; font-size: clamp(48px,16vw,66px); color: #111 !important; font-weight: 400; letter-spacing: -0.04em; text-align: center; }
+  .routePlane { display: block; top: 28px; font-size: 34px; color: #555; }
+  .ticketDetails { grid-template-columns: 1.15fr 0.9fr 0.9fr; gap: 20px 18px; }
+  .ticketField.wide { grid-column: 1 / 2; }
+  .ticketField.luggage { grid-column: 1 / -1; }
+  .ticketField span,
+  .boardingStubSide span { color: #4b5563; font-size: 10px; letter-spacing: 0.05em; font-weight: 800; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  .ticketField strong,
+  .boardingStubSide strong,
+  .typewriterName { color: #111 !important; font-size: 18px !important; font-weight: 400 !important; line-height: 1.05; letter-spacing: -0.035em !important; font-family: Inter, ui-sans-serif, system-ui, sans-serif !important; }
+  .ticketField p { color: #111; font-size: 15px; font-weight: 500; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  .ticketField.wide strong { max-width: 120px; white-space: normal !important; overflow-wrap: break-word; }
+  .typewriterName,
+  .typewriterName .typedText { display: block !important; min-width: 0 !important; white-space: normal !important; }
+  .boardingFooterNote { display: none; }
+  .boardingStubSide { padding: 0 24px 30px; border: 0; display: block; }
+  .boardingStubSide h3,
+  .boardingStubSide > div:not(.stubBarcode) { display: none; }
+  .stubBarcode { height: 76px; width: 76%; margin: 36px auto 10px; padding: 14px 18px; background: white; border-radius: 6px; justify-content: center; }
+  .boardingPass::before,
+  .boardingPass::after { content: ""; position: absolute; top: 30%; width: 14px; height: 14px; border-radius: var(--radius-pill); background: rgba(0,0,0,0.86); z-index: 5; }
+  .boardingPass::before { left: -7px; }
+  .boardingPass::after { right: -7px; }
+
+  .accommodationPage { padding: 100px 18px 70px; overflow: visible; }
+  .stayGrid,
+  .stayDetails,
+  .stayActions { grid-template-columns: 1fr; }
+  .stayImage { min-height: 240px; }
+  .galleryImageWrap { height: 360px; }
+  .galleryInfo { align-items: flex-start; gap: 12px; flex-direction: column; }
+  .floorPlanImageWrap { height: 52vh; }
+
+  .expensesPage { padding: 82px 14px 24px; overflow: visible; }
+  .paperReceipt { height: auto; min-height: calc(100vh - 106px); }
+  .receiptInner { padding: 28px 20px 38px; }
+  .receiptControlsSimple { flex-direction: column; align-items: stretch; gap: 14px; }
+  .thermalToggle { width: 100%; display: grid; grid-template-columns: 1fr 1fr; border-radius: 8px; }
+  .thermalToggle button { width: 100%; padding: 12px 10px; font-size: 15px; }
+  .thermalBudget { width: 100%; justify-content: space-between; gap: 10px; }
+  .thermalBudget span { font-size: 13px; }
+  .thermalBudget input { width: 90px; }
+  .thermalRow { grid-template-columns: minmax(0,1fr) 98px; gap: 12px; font-size: 13px; align-items: center; }
+  .thermalRow > span:first-child,
+  .thermalHead span:first-child,
+  .thermalHead span:nth-child(3),
+  .thermalRow > span:nth-child(3) { display: none; }
+  .thermalHead { font-size: 12px; }
+  .thermalRow > span:nth-child(2) { white-space: normal; overflow: visible; text-overflow: unset; line-height: 1.25; }
+  .thermalAmount { text-align: right; }
+  .thermalAmount input { max-width: 76px; font-size: 13px; }
+  .thermalHeader p,
+  .receiptMeta p { font-size: 14px; }
+  .thermalTotals div,
+  .thermalTotals strong { font-size: 16px; }
+  .exchangeRateLine strong { font-size: 13px; }
+  .exchangeRateDisplay,
+  .exchangeRateEditor { gap: 10px; }
+  .exchangeRateDisplay button,
+  .exchangeRateEditor button { font-size: 10px; padding: 6px 11px; }
+  .exchangeRateEditor input { width: 68px; font-size: 13px; }
+  .thermalFooter { font-size: 15px; }
+
+  .galleryPage { padding: 94px 16px 56px; overflow-x: hidden; }
+  .galleryHero { margin-bottom: 26px; }
+  .galleryHero h1 { font-size: clamp(42px,13vw,62px); }
+  .galleryHero p:last-child { font-size: 15px; line-height: 1.55; }
+  .filmPackIntro { display: block; padding: 0 4px; }
+  .filmPackIntro h2 { font-size: 38px; }
+  .filmPackIntro span { display: block; margin-top: 8px; font-size: 13px; }
+  .filmPackTrack { gap: 16px; padding: 14px 8px 30px; }
+  .filmProfileCard { width: 245px; height: 385px; border-radius: 30px; }
+  .filmCardText h3 { font-size: 28px; }
+  .filmViewerBackdrop { padding: 78px 12px 28px; }
+  .filmViewer { margin: 0 auto; width: min(100%, 430px); border-radius: 30px; max-height: calc(100svh - 112px); overflow-y: auto; }
+  .filmViewerHeader { padding: 28px 22px 20px; display: block; }
+  .filmViewerHeader h2 { font-size: clamp(34px,11vw,48px); }
+  .filmViewerBadge { display: none; }
+  .filmPhotoMasonry { column-count: 2; column-gap: 10px; padding: 16px 14px 28px; }
+  .filmPhotoTile { border-radius: 16px; margin-bottom: 10px; }
+  .filmPhotoTile img { min-height: 150px; }
+  .filmPhotoTile.large img { min-height: 220px; }
+  .filmLightbox { padding: 16px; }
+  .filmLightbox img { max-height: 78vh; border-radius: 18px; }
+}
+
+/* Gallery profile cards — clean glass profile style */
+.filmProfileCard {
+  flex: 0 0 310px;
+  height: 430px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 34px;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 28px 70px rgba(0, 0, 0, 0.35);
+  transform: none !important;
+}
+
+.filmProfileCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.filmProfileFade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 34%, rgba(0, 0, 0, 0.18) 52%, rgba(0, 0, 0, 0.78) 100%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.2), transparent 42%);
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+}
+
+.filmProfileInfo {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  color: white;
+  text-align: left;
+  z-index: 2;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+.filmProfileInfo span {
+  display: inline-flex;
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.filmProfileInfo h2 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.filmProfileInfo p {
+  margin: 10px 0 0;
+  font-size: 15px;
+  font-weight: 700;
   opacity: 0.9;
 }
 
-.upgradedHomeCards svg,
-.upgradedHomeCards h3,
-.upgradedHomeCards p {
+.filmProfileInfo small {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.74;
+}
+
+@media (max-width: 850px) {
+  .filmProfileCard {
+    flex-basis: 265px;
+    height: 380px;
+    border-radius: 30px;
+  }
+
+  .filmProfileInfo {
+    left: 20px;
+    right: 20px;
+    bottom: 22px;
+  }
+
+  .filmProfileInfo h2 {
+    font-size: 32px;
+  }
+}
+
+/* Gallery — smoother full-height cinematic carousel */
+.galleryPage {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.compactGalleryHero {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  pointer-events: none;
+  text-align: center;
+}
+
+.compactGalleryHero .infoIcon {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  backdrop-filter: blur(12px);
+}
+
+.compactGalleryHero .smallLabel {
+  color: white;
+  letter-spacing: 0.28em;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.compactGalleryHero span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.45;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+}
+
+.heroGalleryStage {
+  height: 100svh;
+  padding-top: 116px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.filmPackIntro.minimal {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.filmPackIntro.minimal h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(48px, 5vw, 76px);
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  text-align: center;
+  text-shadow:
+    0 8px 26px rgba(0, 0, 0, 0.55),
+    0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.filmPackTrack {
   position: relative;
   z-index: 2;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 46px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px calc((100vw - 340px) / 2) 36px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y pan-x;
+  scrollbar-width: none;
+  scroll-behavior: auto;
+  will-change: scroll-position;
 }
 
-.upgradedHomeCards svg {
+.filmPackTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.filmPackTrack.dragging {
+  cursor: grabbing;
+}
+
+.filmProfileCard {
+  flex: 0 0 340px;
+  height: min(620px, calc(100svh - 250px));
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 40px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: grab;
+  transform-origin: center center;
+  transform: scale(0.52);
+  opacity: 0.2;
+  filter: blur(5px) saturate(0.5);
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1s ease,
+    filter 1s ease,
+    box-shadow 1s ease;
+}
+
+.filmProfileCard.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: blur(0) saturate(1.08);
+  z-index: 5;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 42px 100px rgba(0, 0, 0, 0.58);
+}
+
+.filmProfileCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.filmProfileFade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(0, 0, 0, 0.16) 58%,
+      rgba(0, 0, 0, 0.88) 100%
+    );
+  pointer-events: none;
+}
+
+.filmProfileInfo {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+  z-index: 2;
   color: white;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+  text-align: left;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
 }
 
-.upgradedHomeCards h3 {
-  color: white;
-  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
+.filmProfileInfo span {
+  display: inline-flex;
+  margin-bottom: 13px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.82;
 }
 
-.upgradedHomeCards p {
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+.filmProfileInfo h2 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 0.88;
+  letter-spacing: -0.08em;
+}
+
+.filmProfileInfo small {
+  display: block;
+  margin-top: 13px;
+  font-size: 14px;
+  opacity: 0.84;
+}
+
+.theirPovButton {
+  margin-top: 22px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 22px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1c1917;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .compactGalleryHero {
+    top: 96px;
+    padding: 0 24px;
+    gap: 4px;
+  }
+
+  .compactGalleryHero .infoIcon {
+    display: none;
+  }
+
+  .compactGalleryHero .smallLabel {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  .compactGalleryHero span {
+    font-size: 12px;
+    max-width: 280px;
+  }
+
+  .heroGalleryStage {
+    height: 100svh;
+    padding-top: 162px;
+    justify-content: center;
+  }
+
+  .filmPackIntro.minimal {
+    text-align: left;
+    padding: 0 28px;
+    margin-bottom: 10px;
+  }
+
+  .filmPackIntro.minimal h2 {
+    font-size: clamp(40px, 11vw, 54px);
+    text-align: left;
+  }
+
+  .filmPackTrack {
+    gap: 28px;
+    padding: 0 calc((100vw - 310px) / 2) 28px;
+  }
+
+  .filmProfileCard {
+    flex: 0 0 310px;
+    height: min(590px, calc(100svh - 280px));
+    min-height: 500px;
+    border-radius: 38px;
+    transform: scale(0.5);
+    opacity: 0.2;
+    filter: blur(5px) saturate(0.48);
+  }
+
+  .filmProfileCard.active {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0) saturate(1.08);
+  }
+
+  .filmProfileInfo {
+    left: 24px;
+    right: 24px;
+    bottom: 28px;
+  }
+
+  .filmProfileInfo h2 {
+    font-size: 40px;
+  }
+
+  .theirPovButton {
+    display: none;
+  }
+}
+
+/* =========================
+   FINAL GALLERY SPACING FIX
+========================= */
+
+.galleryPage {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* TOP HEADER */
+.compactGalleryHero {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.compactGalleryHero .infoIcon {
+  margin: 0;
+}
+
+.compactGalleryHero .smallLabel {
+  margin: 0;
+  letter-spacing: 0.28em;
+}
+
+.compactGalleryHero span {
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* MAIN HERO AREA */
+.heroGalleryStage {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 70px;
+  overflow: hidden;
+}
+
+/* OPEN THE PACK */
+.filmPackIntro.minimal {
+  width: 100%;
+  margin: 0 0 26px;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.filmPackIntro.minimal h2 {
+  margin: 0;
+  text-align: center;
+
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.95;
+}
+
+/* CAROUSEL */
+.filmPackTrack {
+  margin-top: 0 !important;
 }
 
 /* MOBILE */
 @media (max-width: 850px) {
-  html,
-  body {
-    overflow-x: hidden;
+
+  .compactGalleryHero {
+    top: 92px;
+    gap: 4px;
   }
 
-  /* countdown */
-  .countdownSection {
-    padding: 22px 0 18px;
-    margin-bottom: 44px;
+  .compactGalleryHero span {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    max-width: 260px;
   }
 
-  .countdownSection h2 {
-    font-size: clamp(38px, 11vw, 54px);
+  .heroGalleryStage {
+    justify-content: flex-start;
+    padding-top: 180px;
   }
 
-  .countdownSubtitle {
-    max-width: 330px;
-    font-size: 15px;
+  .filmPackIntro.minimal {
+    justify-content: flex-start;
+    text-align: left;
+
+    margin-bottom: 18px;
+    padding: 0 28px;
   }
 
-  .countdownGrid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    margin-top: 28px;
-  }
-
-  .countdownGrid div {
-    min-width: 0;
-  }
-
-  .countdownGrid div:not(:last-child)::after {
-    right: -7px;
-    top: 1px;
-    font-size: clamp(34px, 9vw, 48px);
-  }
-
-  .countdownGrid strong {
-    font-size: clamp(34px, 10vw, 48px);
-  }
-
-  .countdownGrid span {
-    margin-top: 9px;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-  }
-
-  /* home hero centering */
-  .heroImageWrapper {
-    height: 100svh;
-    min-height: 100svh;
-    padding: 0 22px;
-    place-items: center;
-  }
-
-  .heroContent {
-    max-width: 360px;
-    margin: 0 auto;
-    padding: 0;
-    transform: translateY(-10px);
-  }
-
-  .heroContent h1 {
-    font-size: clamp(58px, 17vw, 76px);
-  }
-
-  .scrollHintWrap {
-    bottom: 82px;
-  }
-
-  /* liquid glass home cards mobile */
-  .homeCards {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 30px;
-  }
-
-  .upgradedHomeCards {
-    max-width: 380px;
-    width: 100%;
-  }
-
-  .upgradedHomeCards button {
-    min-height: 142px;
-    padding: 24px 24px;
-    border-radius: 34px;
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    column-gap: 18px;
-    align-items: center;
-  }
-
-  .upgradedHomeCards svg {
-    grid-row: span 2;
-    width: 34px;
-    height: 34px;
-  }
-
-  .upgradedHomeCards h3 {
-    margin: 0;
-    font-size: 27px;
-    letter-spacing: -0.04em;
-  }
-
-  .upgradedHomeCards p {
-    margin: 8px 0 0;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-
-  /* AirAsia-style mobile boarding pass */
-  .boardingPass {
-    width: min(430px, 100%);
-    border-radius: 18px;
-    background: #fffdf5;
-    color: #1f2933;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-  }
-
-  .boardingHeader {
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 22px 24px 8px;
-    background: #fffdf5;
-    color: #111;
-  }
-
-  .boardingAirline {
-    padding-left: 0;
-    justify-self: start;
-    color: #ef1c25;
-    font-size: 0;
-  }
-
-  .boardingAirline::before {
-    content: "AirAsia";
-    display: inline-block;
-    padding: 7px 13px 8px;
-    border-radius: 2px 12px 2px 12px;
-    background: #ef1c25;
-    color: white;
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -0.06em;
-    text-transform: none;
-  }
-
-  .boardingAirline svg {
-    display: none;
-  }
-
-  .boardingTitle {
-    display: none;
-  }
-
-  .boardingTitle.small {
-    display: grid !important;
-    justify-self: end;
-    align-self: start;
-    height: auto;
-    color: #333;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-  }
-
-  .boardingTicketBody {
-    display: block;
-    min-height: auto;
-  }
-
-  .boardingMainSide {
-    padding: 8px 24px 26px;
-  }
-
-  .routeReveal {
-    padding: 20px 0 26px;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  .desktopRouteText {
-    display: none;
-  }
-
-  .mobileRouteText {
-    display: block;
-    width: 100%;
-    white-space: nowrap;
-    font-size: clamp(48px, 18vw, 74px);
-    line-height: 0.9;
-    letter-spacing: -0.07em;
-    color: #111;
-    text-align: center;
-  }
-
-  .routePlane {
-    display: block;
-    top: 18px;
-    font-size: clamp(28px, 9vw, 42px);
-    color: #555;
-  }
-
-  .ticketDetails {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 22px 18px;
-  }
-
-  .ticketField.wide {
-    grid-column: 1 / 2;
-  }
-
-  .ticketField.luggage {
-    grid-column: 1 / -1;
-  }
-
-  .ticketField span,
-  .boardingStubSide span {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    color: #4b5563;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-  }
-
-  .ticketField strong,
-  .boardingStubSide strong,
-  .typewriterName {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
-    color: #ef6c00 !important;
-    font-size: 21px !important;
-    font-weight: 500 !important;
-    letter-spacing: -0.04em !important;
-    line-height: 1.05;
-  }
-
-  .ticketField p {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-    color: #ef6c00;
-    font-size: 18px;
-    margin-top: 4px;
-  }
-
-  .typewriterName .typedText {
-    min-width: 0;
-  }
-
-  .boardingFooterNote {
-    display: none;
-  }
-
-  .boardingStubSide {
-    padding: 0 24px 30px;
-    border: 0;
-    display: block;
-  }
-
-  .boardingStubSide h3,
-  .boardingStubSide > div:not(.stubBarcode) {
-    display: none;
-  }
-
-  .stubBarcode {
-    height: 82px;
-    width: 80%;
-    margin: 42px auto 12px;
-    padding: 14px 18px;
-    background: white;
-    border-radius: 6px;
-    justify-content: center;
-  }
-
-  .boardingPass::before,
-  .boardingPass::after {
-    content: "";
-    position: absolute;
-    top: 30%;
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.86);
-    z-index: 5;
-  }
-
-  .boardingPass::before {
-    left: -7px;
-  }
-
-  .boardingPass::after {
-    right: -7px;
-  }
-
-  /* mobile expenses: remove item no column, give description more space */
-  .thermalRow {
-    grid-template-columns: minmax(0, 1.55fr) 82px 112px;
-    gap: 8px;
-  }
-
-  .thermalRow > span:first-child {
-    display: none;
-  }
-
-  .thermalHead span:first-child {
-    display: none;
-  }
-
-  .thermalRow > span:nth-child(2) {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
-    line-height: 1.25;
-  }
-
-  .thermalRow > span:nth-child(3) {
-    font-size: 11px;
-  }
-
-  .thermalAmount input {
-    max-width: 112px;
-  }
-
-  /* itinerary / accommodation modals: make close button always visible */
-  .placeBubbleBackdrop,
-  .galleryBackdrop {
-    align-items: start;
-    place-items: start center;
-    padding: 82px 14px 28px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .placeBubble,
-  .galleryModal,
-  .floorPlanModal {
-    max-height: calc(100svh - 110px);
-    overflow-y: auto;
-    border-radius: 26px;
-  }
-
-  .bubbleClose,
-  .galleryClose {
-    position: sticky;
-    top: 12px;
-    margin-left: auto;
-    display: grid;
-    place-items: center;
-    z-index: 50;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-  }
-
-  .bubbleImages {
-    height: 220px;
-    grid-template-columns: 1fr;
-  }
-
-  .bubbleImages img {
-    height: 220px;
-  }
-
-  .bubbleContent {
-    padding: 24px;
-  }
-
-  .placeMetaGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .galleryImageWrap {
-    height: 330px;
-  }
-
-  .floorPlanImageWrap {
-    height: 48vh;
+  .filmPackIntro.minimal h2 {
+    text-align: left;
+    font-size: clamp(2.8rem, 12vw, 4.6rem);
   }
 }
 
-/* =========================================================
-   FINAL POLISH OVERRIDES — DESKTOP COUNTDOWN + MOBILE CARDS/PASS
-   ========================================================= */
+/* =========================
+   GALLERY CAROUSEL WIDTH FIX
+========================= */
 
-.mobileFlightMeta {
+.galleryPage {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.filmPackStage.heroGalleryStage {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 105px 0 0 !important;
+  overflow: visible !important;
+  align-items: stretch !important;
+}
+
+.compactGalleryHero {
+  top: 18px !important;
+}
+
+.compactGalleryHero span {
+  margin-top: 3px !important;
+}
+
+.filmPackIntro.minimal {
+  width: 100% !important;
+  margin: 0 0 32px !important;
+  padding: 0 24px !important;
+  text-align: center !important;
+  display: block !important;
+}
+
+.filmPackIntro.minimal h2 {
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* make carousel span full viewport width again */
+.filmPackTrack {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  transform: none !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 46px !important;
+
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+
+  padding: 8px calc((100vw - 340px) / 2) 46px !important;
+
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  scrollbar-width: none;
+}
+
+.filmPackTrack::-webkit-scrollbar {
   display: none;
 }
 
-/* desktop countdown spacing fix */
-@media (min-width: 851px) {
-  .countdownSection {
-    max-width: 1180px;
+.filmProfileCard {
+  flex: 0 0 340px !important;
+  width: 340px !important;
+  height: min(620px, calc(100svh - 245px)) !important;
+  min-height: 500px !important;
+}
+
+@media (max-width: 850px) {
+  .filmPackStage.heroGalleryStage {
+    padding-top: 168px !important;
   }
 
-  .countdownGrid {
-    gap: 0;
+  .filmPackIntro.minimal {
+    margin-bottom: 16px !important;
+    padding: 0 28px !important;
+    text-align: left !important;
   }
 
-  .countdownGrid div {
-    min-width: 160px;
-    padding: 0 34px !important;
+  .filmPackIntro.minimal h2 {
+    margin: 0 !important;
+    text-align: left !important;
   }
 
-  .countdownGrid div:not(:last-child)::after {
-    right: -10px;
-    top: 8px;
-    font-size: clamp(48px, 5vw, 76px);
+  .filmPackTrack {
+    width: 100vw !important;
+    gap: 28px !important;
+    padding: 0 calc((100vw - 310px) / 2) 34px !important;
   }
 
-  .countdownGrid strong {
-    font-size: clamp(64px, 7vw, 98px);
-    letter-spacing: -0.045em;
-  }
-
-  .countdownGrid span {
-    font-size: 13px;
-    letter-spacing: 0.14em;
+  .filmProfileCard {
+    flex: 0 0 310px !important;
+    width: 310px !important;
+    height: min(590px, calc(100svh - 285px)) !important;
+    min-height: 500px !important;
   }
 }
 
-/* mobile refinements */
+/* Force Gallery top label to true viewport center — desktop only */
+@media (min-width: 851px) {
+  .compactGalleryHero {
+    position: fixed !important;
+    top: 18px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    transform: none !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .compactGalleryHero .infoIcon,
+  .compactGalleryHero .smallLabel,
+  .compactGalleryHero span {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}
+
+/* Gallery POV button click fix */
+@media (min-width: 851px) {
+  .filmProfileCard {
+    pointer-events: none;
+  }
+
+  .filmProfileCard.active {
+    pointer-events: auto;
+  }
+
+  .filmProfileCard:not(.active) .theirPovButton {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .filmProfileCard.active .theirPovButton {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    z-index: 20;
+  }
+}
+
+/* Gallery POV button click fix — desktop */
+@media (min-width: 851px) {
+  .filmProfileCard {
+    pointer-events: auto !important;
+  }
+
+  .filmProfileCard:not(.active) {
+    cursor: grab;
+  }
+
+  .filmProfileCard:not(.active) .theirPovButton {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .filmProfileCard.active .theirPovButton {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 999 !important;
+    cursor: pointer !important;
+  }
+
+  .theirPovButton {
+    pointer-events: auto !important;
+  }
+}
+
+/* FINAL POV BUTTON FIX */
+@media (min-width: 851px) {
+
+  .filmProfileCard.active {
+    pointer-events: auto !important;
+  }
+
+  .filmProfileCard.active * {
+    pointer-events: auto !important;
+  }
+
+  .filmProfileCard:not(.active) .theirPovButton {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .filmProfileCard.active .theirPovButton {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 99999 !important;
+    position: relative !important;
+    cursor: pointer !important;
+  }
+}
+
+.theirPovButton {
+  touch-action: manipulation !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* MOBILE GALLERY HEIGHT + SPACING FIX */
 @media (max-width: 850px) {
-  /* smaller liquid glass buttons */
-  .upgradedHomeCards {
-    max-width: 340px;
+  .compactGalleryHero {
+    top: 106px !important;
+    padding: 0 84px 0 28px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
 
-  .upgradedHomeCards button {
-    min-height: 116px;
-    padding: 20px 20px;
-    border-radius: 30px;
-    grid-template-columns: 48px 1fr;
-    column-gap: 14px;
+  .compactGalleryHero .smallLabel,
+  .compactGalleryHero span {
+    text-align: left !important;
+    margin: 0 !important;
   }
 
-  .upgradedHomeCards svg {
-    width: 30px;
-    height: 30px;
+  .compactGalleryHero span {
+    max-width: 240px !important;
+    line-height: 1.3 !important;
   }
 
-  .upgradedHomeCards h3 {
-    font-size: 23px;
+  .heroGalleryStage {
+    height: 100svh !important;
+    padding-top: 235px !important;
+    justify-content: flex-start !important;
   }
 
-  .upgradedHomeCards p {
-    font-size: 14px;
-    line-height: 1.4;
+  .filmPackIntro.minimal {
+    margin-bottom: 14px !important;
+    padding: 0 28px !important;
   }
 
-  /* AirAsia mobile boarding pass */
-  .boardingPass {
-    width: min(410px, calc(100vw - 38px));
-    border-radius: 14px;
-    background: #fffdf6;
+  .filmPackIntro.minimal h2 {
+    font-size: clamp(38px, 11vw, 52px) !important;
+    line-height: 0.9 !important;
   }
 
-  .boardingHeader {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    padding: 20px 20px 8px;
-    background: #fffdf6;
+  .filmPackTrack {
+    padding-top: 0 !important;
+    padding-bottom: 20px !important;
   }
 
-  .boardingAirline {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-    align-self: start;
-    font-size: 0;
+  .filmProfileCard {
+    height: calc(100svh - 390px) !important;
+    min-height: 455px !important;
+    max-height: 540px !important;
   }
+}
 
-  .boardingAirline::before {
-    content: "AirAsia";
-    display: inline-block;
-    padding: 7px 14px 8px;
-    background: #ed1c24;
-    color: white;
-    border-radius: 2px 12px 2px 12px;
-    font-size: 25px;
-    line-height: 1;
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: -0.06em;
-  }
-
-  .boardingTitle,
-  .boardingTitle.small {
+/* MOBILE GALLERY — prioritize full card height */
+@media (max-width: 850px) {
+  .compactGalleryHero {
     display: none !important;
   }
 
-  .mobileFlightMeta {
-    grid-column: 2;
-    grid-row: 1;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 2px 12px;
-    align-items: start;
-    text-align: right;
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  .heroGalleryStage {
+    height: 100svh !important;
+    padding-top: 104px !important;
+    justify-content: flex-start !important;
   }
 
-  .mobileFlightMeta span {
-    font-size: 10px;
-    color: #555;
-    letter-spacing: 0.04em;
-    font-weight: 700;
+  .filmPackIntro.minimal {
+    width: 100% !important;
+    padding: 0 24px !important;
+    margin: 0 0 12px !important;
+    text-align: center !important;
   }
 
-  .mobileFlightMeta strong {
-    font-size: 16px;
-    color: #111;
-    font-weight: 500;
-    line-height: 1;
+  .filmPackIntro.minimal h2 {
+    text-align: center !important;
+    margin: 0 auto !important;
+    font-size: clamp(40px, 12vw, 56px) !important;
+    line-height: 0.9 !important;
   }
 
-  .boardingMainSide {
-    padding: 10px 20px 22px;
+  .filmPackTrack {
+    padding-top: 0 !important;
+    padding-bottom: 18px !important;
   }
 
-  .routeReveal {
-    padding: 14px 0 20px;
-    min-height: 112px;
-  }
-
-  .mobileRouteText {
-    font-size: clamp(48px, 16vw, 66px);
-    color: #111 !important;
-    font-weight: 400;
-    letter-spacing: -0.04em;
-  }
-
-  .routePlane {
-    display: block;
-    top: 28px;
-    font-size: 34px;
-    color: #555;
-  }
-
-  .ticketDetails {
-    grid-template-columns: 1.15fr 0.9fr 0.9fr;
-    gap: 20px 18px;
-    align-items: start;
-  }
-
-  .ticketField span,
-  .boardingStubSide span {
-    color: #4b5563;
-    font-size: 10px;
-    letter-spacing: 0.05em;
-    font-weight: 800;
-  }
-
-  .ticketField strong,
-  .boardingStubSide strong,
-  .typewriterName {
-    color: #111 !important;
-    font-size: 18px !important;
-    font-weight: 400 !important;
-    line-height: 1.05;
-    letter-spacing: -0.035em !important;
-  }
-
-  .ticketField p {
-    color: #111;
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  .ticketField.wide {
-    grid-column: 1 / 2;
-  }
-
-  .ticketField.wide strong {
-    max-width: 120px;
-    white-space: normal !important;
-    overflow-wrap: break-word;
-  }
-
-  .typewriterName {
-    display: block !important;
-    white-space: normal !important;
-  }
-
-  .typewriterName .typedText {
-    min-width: 0 !important;
-    white-space: normal !important;
-  }
-
-  .ticketField.luggage {
-    grid-column: 1 / -1;
-  }
-
-  .ticketField.luggage strong {
-    font-size: 16px !important;
-  }
-
-  .stubBarcode {
-    height: 76px;
-    width: 76%;
-    margin: 36px auto 10px;
+  .filmProfileCard {
+    height: calc(100svh - 205px) !important;
+    min-height: 560px !important;
+    max-height: 660px !important;
   }
 }
 
-/* =========================================================
-   EXPENSES PAGE CLEANUP — MOBILE + INPUT STYLE
-   ========================================================= */
-
-/* slimmer input style for both desktop and mobile */
-.thermalAmount input,
-.thermalBudget input {
-  border: 0 !important;
-  border-bottom: 2px solid #111 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  padding: 4px 2px 6px !important;
-  box-shadow: none !important;
-}
-
-.thermalAmount input {
-  max-width: 86px;
-}
-
-.thermalBudget input {
-  width: 92px;
-}
-
-/* receipt total should feel like receipt text, not huge display text */
-.thermalTotals div {
-  font-size: 18px;
-  align-items: baseline;
-}
-
-.thermalTotals strong {
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.exchangeRateLine {
-  display: grid;
-  gap: 4px;
-  text-align: center;
-  font-family: "Courier New", monospace;
-}
-
-.exchangeRateLine span {
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.exchangeRateLine strong {
-  font-size: 16px;
-}
-
-.exchangeRateLine small {
-  font-size: 12px;
-  color: #57534e;
-}
-
-/* mobile receipt cleanup */
+/* MOBILE — remove top dead space and show full card */
 @media (max-width: 850px) {
-  .receiptControlsSimple {
-    gap: 14px;
+
+  .galleryPage {
+    overflow: hidden !important;
   }
 
-  .thermalToggle {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-radius: 8px;
+  .heroGalleryStage {
+    padding-top: 58px !important;
+    height: 100svh !important;
+    justify-content: flex-start !important;
   }
 
-  .thermalToggle button {
-    width: 100%;
-    padding: 12px 10px;
-    font-size: 15px;
+  .filmPackIntro.minimal {
+    margin-bottom: 6px !important;
+    padding-top: 0 !important;
   }
 
-  .thermalBudget {
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
+  .filmPackIntro.minimal h2 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 0.88 !important;
   }
 
-  .thermalBudget span {
-    font-size: 13px;
+  .filmPackTrack {
+    margin-top: -6px !important;
+    align-items: flex-start !important;
   }
 
-  .thermalBudget input {
-    width: 90px;
-    text-align: right;
+  .filmProfileCard {
+    height: calc(100svh - 135px) !important;
+    min-height: 650px !important;
+    max-height: none !important;
+
+    border-radius: 38px !important;
+    overflow: hidden !important;
   }
 
-  /* remove STATUS column on mobile */
-  .thermalRow {
-    grid-template-columns: minmax(0, 1fr) 98px;
-    gap: 12px;
-    font-size: 13px;
-    align-items: center;
-  }
-
-  .thermalHead span:nth-child(3),
-  .thermalRow > span:nth-child(3) {
-    display: none;
-  }
-
-  .thermalHead {
-    font-size: 12px;
-  }
-
-  .thermalHead span:nth-child(2)::after {
-    content: "";
-  }
-
-  .thermalRow > span:nth-child(2) {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
-    line-height: 1.25;
-  }
-
-  .thermalAmount {
-    text-align: right;
-  }
-
-  .thermalAmount input {
-    max-width: 76px;
-    font-size: 13px;
-  }
-
-  .thermalTotals div {
-    font-size: 16px;
-  }
-
-  .thermalTotals strong {
-    font-size: 16px;
-  }
-
-  .thermalFooter {
-    font-size: 15px;
+  .filmProfileCard img {
+    border-radius: 38px !important;
   }
 }
 
-/* Exchange rate edit button polish */
-.exchangeRateDisplay button,
-.exchangeRateEditor button {
-  border: 0 !important;
-  border-radius: 999px !important;
-  padding: 7px 13px !important;
-  background: #111 !important;
-  color: #fff !important;
-  font-family: "Courier New", monospace !important;
-  font-size: 11px !important;
-  font-weight: 900 !important;
-  letter-spacing: 0.08em !important;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
-  transform: translateY(-1px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.exchangeRateDisplay button:hover,
-.exchangeRateEditor button:hover {
-  transform: translateY(-3px);
-  background: #b91c1c !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
-}
-
-.exchangeRateDisplay {
-  gap: 8px;
-}
-
-.exchangeRateEditor {
-  gap: 8px;
-}
-
+/* MOBILE GALLERY — force everything higher */
 @media (max-width: 850px) {
-  .exchangeRateDisplay,
-  .exchangeRateEditor {
-    gap: 7px;
+  .heroGalleryStage {
+    padding-top: 0 !important;
   }
 
-  .exchangeRateDisplay button,
-  .exchangeRateEditor button {
-    padding: 6px 11px !important;
-    font-size: 10px !important;
-  }
-}
-
-.exchangeRateDisplay,
-.exchangeRateEditor {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px !important;
-  flex-wrap: wrap;
-}
-
-.exchangeRateDisplay strong,
-.exchangeRateEditor strong {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.exchangeRateDisplay button,
-.exchangeRateEditor button {
-  margin-left: 6px !important;
-}
-
-@media (max-width: 850px) {
-  .exchangeRateDisplay,
-  .exchangeRateEditor {
-    gap: 10px !important;
+  .filmPackIntro.minimal {
+    position: absolute !important;
+    top: 96px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 8 !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
   }
 
-  .exchangeRateDisplay button,
-  .exchangeRateEditor button {
-    margin-left: 4px !important;
+  .filmPackIntro.minimal h2 {
+    text-align: center !important;
+    font-size: clamp(38px, 11vw, 54px) !important;
+  }
+
+  .filmPackTrack {
+    position: absolute !important;
+    top: 150px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: calc(100svh - 150px) !important;
+    padding-top: 0 !important;
+  }
+
+  .filmProfileCard {
+    height: calc(100svh - 170px) !important;
+    min-height: unset !important;
+    max-height: unset !important;
   }
 }
