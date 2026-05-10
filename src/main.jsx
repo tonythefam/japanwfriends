@@ -454,6 +454,10 @@ const tripQuotes = [
     name: "Paul",
   },
   {
+    quote: "I can't wait to rent a girlfriend for my boyfriend",
+    name: "Natalie",
+  },
+  {
     quote: "What could possibly go wrong?",
     name: "Zhao Yang",
   },
@@ -469,26 +473,79 @@ const tripQuotes = [
     quote: "I want to relax, good food and shopping",
     name: "Yujing",
   },
+  {
+    quote: "I want 10 plates of sashimi please!",
+    name: "Natalie",
+  },
+  {
+    quote: "No fighting on my trip",
+    name: "Lee Quan",
+  }
 ];
 
 function RotatingQuote() {
+  const hasBackToBackNames = (quotes) => {
+    return quotes.some((quote, index) => {
+      if (index === 0) return false;
+      return quote.name === quotes[index - 1].name;
+    });
+  };
+
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  };
+
+  const createNewRound = () => {
+    const firstQuote = tripQuotes[0];
+    const remainingQuotes = tripQuotes.slice(1);
+
+    let attempt = 0;
+    let shuffled = shuffleArray(remainingQuotes);
+    let round = [firstQuote, ...shuffled];
+
+    while (hasBackToBackNames(round) && attempt < 100) {
+      shuffled = shuffleArray(remainingQuotes);
+      round = [firstQuote, ...shuffled];
+      attempt += 1;
+    }
+
+    return round;
+  };
+
+  const [quoteQueue, setQuoteQueue] = useState(() => createNewRound());
   const [quoteIndex, setQuoteIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setQuoteIndex((prev) => (prev + 1) % tripQuotes.length);
+      setQuoteIndex((prevIndex) => {
+        const nextIndex = prevIndex + 1;
+
+        if (nextIndex < quoteQueue.length) {
+          return nextIndex;
+        }
+
+        setQuoteQueue(createNewRound());
+        return 0;
+      });
     }, 4500);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [quoteQueue]);
 
-  const currentQuote = tripQuotes[quoteIndex];
+  const currentQuote = quoteQueue[quoteIndex];
 
   return (
     <div className="rotatingQuoteWrap">
       <AnimatePresence mode="wait">
         <motion.p
-          key={currentQuote.name}
+          key={`${currentQuote.name}-${currentQuote.quote}-${quoteIndex}`}
           className="rotatingQuote"
           initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
