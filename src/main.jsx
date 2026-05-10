@@ -2078,30 +2078,11 @@ const galleryProfiles = [
     vibe: "Osaka Night Roll",
     avatar: natalieAvatar,
   },
-
-  {
-    id: "yujing",
-    fullName: "Tan Yujing",
-    name: "Yujing",
-    roll: "ROLL 03",
-    vibe: "Kyoto Street Diary",
-    avatar: yujingAvatar,
-  },
-
-  {
-    id: "zhaoyang",
-    fullName: "Low Zhao Yang",
-    name: "Zhao Yang",
-    roll: "ROLL 04",
-    vibe: "Fuji Soft Frame",
-    avatar: zhaoyangAvatar,
-  },
-
   {
     id: "anthony",
     fullName: "Siak Xiang Jun",
     name: "Anthony",
-    roll: "ROLL 05",
+    roll: "ROLL 03",
     vibe: "Food & Friends",
     avatar: anthonyAvatar,
   },
@@ -2110,29 +2091,44 @@ const galleryProfiles = [
     id: "ashley",
     fullName: "Low Yue Tong",
     name: "Ashley",
-    roll: "ROLL 06",
+    roll: "ROLL 04",
     vibe: "Soft Memories",
     avatar: ashleyAvatar,
-  },
-
-  {
-    id: "paul",
-    fullName: "Lim Paul Lim",
-    name: "Paul",
-    roll: "ROLL 07",
-    vibe: "City Walk Roll",
-    avatar: paulAvatar,
   },
 
   {
     id: "leequan",
     fullName: "Tan Lee Quan",
     name: "Lee Quan",
-    roll: "ROLL 08",
+    roll: "ROLL 05",
     vibe: "Good Food Roll",
     avatar: leequanAvatar,
   },
+  {
+    id: "yujing",
+    fullName: "Tan Yujing",
+    name: "Yujing",
+    roll: "ROLL 06",
+    vibe: "Kyoto Street Diary",
+    avatar: yujingAvatar,
+  },
 
+  {
+    id: "zhaoyang",
+    fullName: "Low Zhao Yang",
+    name: "Zhao Yang",
+    roll: "ROLL 07",
+    vibe: "Fuji Soft Frame",
+    avatar: zhaoyangAvatar,
+  },
+  {
+    id: "paul",
+    fullName: "Lim Paul Lim",
+    name: "Paul",
+    roll: "ROLL 08",
+    vibe: "City Walk Roll",
+    avatar: paulAvatar,
+  },
   {
     id: "jiansheng",
     fullName: "Chew Jian Sheng",
@@ -2602,71 +2598,90 @@ transition={{
   );
 }
 
-function FilmRollViewer({ profile, onClose, selectedPhoto, setSelectedPhoto }) {
+function FilmRollViewer({
+  profile,
+  onClose,
+  selectedPhoto,
+  setSelectedPhoto,
+}) {
   return (
-    <motion.div
-      className="filmViewerBackdrop"
-      onClick={onClose}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <>
+      {/* MAIN VIEWER */}
       <motion.div
-        className="filmViewer"
-        onClick={(e) => e.stopPropagation()}
-        initial={{ opacity: 0, y: 38, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 38, scale: 0.96 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="filmViewerBackdrop"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
-        <button className="filmViewerClose" onClick={onClose}>
-          ×
-        </button>
+        <motion.div
+          className="filmViewer"
+          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, y: 38, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 38, scale: 0.96 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+        >
+          <button className="filmViewerClose" onClick={onClose}>
+            ×
+          </button>
 
-        <header className="filmViewerHeader">
-          <div>
-            <p className="smallLabel">{profile.roll} · 27 Photos</p>
-            <h2>{profile.name}</h2>
-            <span>{profile.vibe} · Developed after Japan 2026</span>
-          </div>
+          <header className="filmViewerHeader">
+            <div>
+              <p className="smallLabel">{profile.roll} · 27 Photos</p>
+              <h2>{profile.name}</h2>
+              <span>{profile.vibe} · Developed after Japan 2026</span>
+            </div>
 
-          <div className="filmViewerBadge">
-            <Aperture size={20} />
-            <strong>35mm</strong>
-          </div>
-        </header>
+            <div className="filmViewerBadge">
+              <Aperture size={20} />
+              <strong>35mm</strong>
+            </div>
+          </header>
 
-        <section className="filmPhotoMasonry">
-          {profile.photos.map((photo, index) => (
-            <motion.button
-              className={`filmPhotoTile ${index % 5 === 0 ? "large" : ""}`}
-              key={photo.id}
-              onClick={() => setSelectedPhoto({ ...photo, index })}
-              whileHover={{ y: -6 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <img src={photo.src} alt={photo.caption} />
-              <span>{String(index + 1).padStart(2, "0")}</span>
-            </motion.button>
-          ))}
-        </section>
+          <section className="filmPhotoMasonry">
+            {profile.photos.map((photo, index) => (
+              <motion.button
+                className={`filmPhotoTile ${
+                  index % 5 === 0 ? "large" : ""
+                }`}
+                key={photo.id}
+                onClick={() => setSelectedPhoto({ ...photo, index })}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <img src={photo.src} alt={photo.caption} />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </motion.button>
+            ))}
+          </section>
+        </motion.div>
       </motion.div>
 
+      {/* LIGHTBOX */}
       <AnimatePresence>
         {selectedPhoto && (
           <motion.div
             className="filmLightbox"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedPhoto(null);
-            }}
+            onClick={() => setSelectedPhoto(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <button onClick={() => setSelectedPhoto(null)}>×</button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedPhoto(null);
+              }}
+            >
+              ×
+            </button>
 
-            <img src={selectedPhoto.src} alt={selectedPhoto.caption} />
+            <img
+              src={selectedPhoto.src}
+              alt={selectedPhoto.caption}
+              onClick={(e) => e.stopPropagation()}
+            />
 
             <p>
               {profile.name} · Photo {selectedPhoto.index + 1} /{" "}
@@ -2675,7 +2690,7 @@ function FilmRollViewer({ profile, onClose, selectedPhoto, setSelectedPhoto }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </>
   );
 }
 

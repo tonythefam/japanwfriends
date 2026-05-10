@@ -2119,3 +2119,153 @@ button { -webkit-tap-highlight-color: transparent; }
     0 0 34px rgba(255, 255, 255, 0.28),
     0 42px 100px rgba(0, 0, 0, 0.58) !important;
 }
+
+/* DESKTOP HOME BUTTONS — floating glass dock */
+@media (min-width: 851px) {
+  .upgradedHomeCards {
+    max-width: 1120px !important;
+    margin-top: 64px !important;
+    padding: 14px !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 14px !important;
+
+    border-radius: 34px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(26px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(150%) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 28px 80px rgba(0,0,0,0.32) !important;
+  }
+
+  .upgradedHomeCards button {
+    min-height: 150px !important;
+    border-radius: 24px !important;
+    padding: 22px !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: none !important;
+  }
+
+  .upgradedHomeCards button:hover {
+    transform: translateY(-10px) scale(1.035) !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.45),
+      0 24px 50px rgba(0,0,0,0.28) !important;
+  }
+
+  .upgradedHomeCards svg {
+    width: 26px !important;
+    height: 26px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .upgradedHomeCards h3 {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .upgradedHomeCards p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* DESKTOP GALLERY PHOTO LIGHTBOX FIX */
+@media (min-width: 851px) {
+  .filmLightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 32px !important;
+    overflow: hidden !important;
+  }
+
+  .filmLightbox img {
+    max-width: min(92vw, 1100px) !important;
+    max-height: 82vh !important;
+    object-fit: contain !important;
+  }
+
+  .filmLightbox p {
+    position: fixed !important;
+    bottom: 24px !important;
+  }
+
+  .filmLightbox button {
+    position: fixed !important;
+    top: 24px !important;
+    right: 24px !important;
+  }
+}
+
+.filmLightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.88) !important;
+  padding: 32px !important;
+}
+
+.filmLightbox img {
+  max-width: min(92vw, 1100px) !important;
+  max-height: 82vh !important;
+  object-fit: contain !important;
+}
+
+.filmLightbox button {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  z-index: 100000 !important;
+}
+
+/* FILM VIEWER — photo order left-to-right */
+.filmPhotoMasonry {
+  column-count: unset !important;
+  column-gap: unset !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+}
+
+.filmPhotoTile {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  break-inside: unset !important;
+}
+
+.filmPhotoTile img,
+.filmPhotoTile.large img {
+  width: 100% !important;
+  height: 260px !important;
+  min-height: unset !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 850px) {
+  .filmPhotoMasonry {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 18px !important;
+  }
+
+  .filmPhotoTile img,
+  .filmPhotoTile.large img {
+    height: 190px !important;
+  }
+}
