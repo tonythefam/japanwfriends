@@ -44,29 +44,44 @@ const heroImages = [
 
 const dayCoverPhotos = {
   1: [
-    "https://kyototravelandtours.com/wp-content/uploads/sites/kyoto/kyoto-image.jpg",
+    "https://images.unsplash.com/photo-1674814343675-23c631bfd3ab?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8amFwYW4lMjBhaXJwb3J0fGVufDB8fDB8fHww",
     "https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/a85329c6-aef2-47d1-3de1-ce2b8bcf5200/width=1920,quality=80",
+    "https://images.unsplash.com/photo-1701001909948-8048598fbc92?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmlzaGlraSUyMG1hcmtldHxlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1768162126000-b6060d02f4bb?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5pc2hpa2klMjBtYXJrZXR8ZW58MHx8MHx8fDA%3D",
   ],
   2: [
-    "https://4kwallpapers.com/images/wallpapers/arashiyama-bamboo-2880x1800-15688.jpg",
-    "https://asset.japan.travel/image/upload/v1645169091/kyoto/M_00187_001.jpg",
+    "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a3lvdG98ZW58MHx8MHx8fDA%3D",
+    "https://www.rappler.com/tachyon/2025/12/HAMBURG.jpg",
+    "https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGt5b3RvfGVufDB8fDB8fHww",
   ],
   3: [
-    "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a3lvdG98ZW58MHx8MHx8fDA%3D",
-    "https://i.redd.it/tqt2ewnd9m901.jpg",
-    "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1612890877778-f7d9703c6023?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJhc2hpeWFtYSUyMGJhbWJvbyUyMGZvcmVzdCUyQyUyMGt5b3RvJTJDJTIwamFwYW58ZW58MHx8MHx8fDA%3D",
+    "https://images.unsplash.com/photo-1610265082060-7234c9de51ab?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2lua2FrdWppfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1767704519293-257ea44d06c1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
   ],
   4: [
-    "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1539036982489-398455e43248?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVzaGltaSUyMGluYXJpfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1558862107-d49ef2a04d72?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZnVzaGltaSUyMGluYXJpfGVufDB8fDB8fHww",
+    "https://img.goodfon.com/wallpaper/nbig/0/23/yoshimine-dera-temple-kyoto.webp",
+    "https://images.unsplash.com/photo-1765692120897-6d032b0a21e4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
   ],
   5: [
-    "https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG90b25ib3JpfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1596240748549-6ec0f32d4c95?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG9zYWthJTIwY2FzdGxlfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1571242352061-7611fbafbd42?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D",
   ],
   6: [
-    "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1530708780517-cc640cf05561?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmFyYXxlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1578507080088-e843868f8f13?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bmFyYXxlbnwwfHwwfHx8MA%3D%3D",
+    "https://images.unsplash.com/photo-1700843788786-ca0b7a5cf373?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG9kYWlqaXxlbnwwfHwwfHx8MA%3D%3D",
   ],
   7: [
-    "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?q=80&w=1800&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1612404459571-ccef4b6588e7?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2FsJTIwc3R1ZGlvcyUyMGphcGFufGVufDB8fDB8fHww",
+    "https://plus.unsplash.com/premium_photo-1733342572346-5420c95f7556?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8b3Nha2F8ZW58MHx8MHx8fDA%3D",
+    "https://images.unsplash.com/photo-1582706883126-8cd659cf1594?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG9zYWthfGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1569789010436-421d71a9fc38?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dW5pdmVyc2FsJTIwc3R1ZGlvfGVufDB8fDB8fHww",
+    "https://plus.unsplash.com/premium_photo-1693723596989-5ff69b878ed4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b3Nha2ElMjBhcXVhcml1bSUyMGthaXl1a2FufGVufDB8fDB8fHww",
+    "https://images.unsplash.com/photo-1699413081249-39d0f868f97a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8b3Nha2ElMjBhcXVhcml1bSUyMGthaXl1a2FufGVufDB8fDB8fHww",
   ],
   8: [
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1800&auto=format&fit=crop",
@@ -78,52 +93,52 @@ const tripDays = [
     day: 1,
     date: "10 Jun 2026 · Wednesday",
     city: "Kyoto",
-    title: "Arrival, teamLab & Gion Evening",
-    mood: "Soft arrival day with art, ramen and an evening walk.",
+    title: "Arrival, teamLab & Kyoto First Night",
+    mood: "A soft landing in Kyoto with digital art, luggage drop, markets and the first Kyoto night atmosphere.",
     highlights: [
-      "teamLab Kyoto · 3:30 PM",
-      "Dinner at Gion / Kawaramachi",
-      "Honke Daiichi Asahi Honten",
-      "Ichiran Ramen",
+      "teamLab Kyoto",
+      "Kansai Airport to Kyoto",
+      "RESI Stay Tsubaki Check-in",
+      "Nishiki Market / Kawaramachi Dinner",
     ],
   },
   {
     day: 2,
     date: "11 Jun 2026 · Thursday",
     city: "Kyoto",
-    title: "Arashiyama & Daikaku-ji Temple",
-    mood: "Bamboo forest, temple scenery and quiet northwest Kyoto.",
+    title: "Kimono Day at Kiyomizu-dera",
+    mood: "Traditional Kyoto streets, kimono photos, temple scenery and a slow evening around Gion.",
     highlights: [
-      "Arashiyama Bamboo Forest",
-      "Daikaku-ji Temple",
-      "Hikiniku to Come reservation",
-      "Six Dews matcha dessert",
+      "Kiyomizu-dera Temple",
+      "Hikiniku to Come Reservation",
+      "Kimono Rental First Kiyomizu",
+      "Ninenzaka / Sannenzaka Evening",
     ],
   },
   {
     day: 3,
     date: "12 Jun 2026 · Friday",
     city: "Kyoto",
-    title: "Kimono Day at Kiyomizu-dera",
-    mood: "Traditional streets, temple views and Nishiki Market snacks.",
+    title: "Arashiyama & Northern Kyoto",
+    mood: "Early bamboo forest walks, quieter Kyoto streets, hidden temples and a slower scenic day.",
     highlights: [
-      "Kiyomizu-dera Temple",
-      "Kimono rental",
-      "Nishiki Market",
-      "Japanese Noodle ISSUN BOUSH",
+      "Arashiyama Bamboo Forest",
+      "Saga-Toriimoto Preserved Street",
+      "Otagi Nenbutsuji Temple",
+      "Kinkaku-ji Temple Option",
     ],
   },
   {
     day: 4,
     date: "13 Jun 2026 · Saturday",
     city: "Kyoto",
-    title: "Nara Day Trip or Fushimi Inari",
-    mood: "A flexible day for hiking, shrines or a short out-of-city escape.",
+    title: "Fushimi Inari & Flexible Kyoto Afternoon",
+    mood: "A shrine morning followed by either hydrangeas in Uji or a relaxing Kyoto cycling route.",
     highlights: [
       "Fushimi Inari Taisha",
-      "Optional Nara day trip",
-      "Early morning start",
-      "Half-day shrine walk",
+      "Lunch near Fushimi Inari",
+      "Mimuroto-ji Hydrangea Option",
+      "Kamo River Cycling Option",
     ],
   },
   {
@@ -131,287 +146,743 @@ const tripDays = [
     date: "14 Jun 2026 · Sunday",
     city: "Osaka",
     title: "Kyoto to Osaka, Castle & Dotonbori",
-    mood: "Transfer day with Osaka Castle, Umeda and neon food streets.",
+    mood: "A transfer into Osaka filled with castles, shopping, desserts and neon city nights.",
     highlights: [
-      "Leave hotel by 8:30 AM",
-      "JR Umeda luggage deposit",
       "Osaka Castle",
-      "Namba / Dotonbori night walk",
+      "Kyo-train Garaku to Osaka",
+      "Umeda Gashapon & Dessert Stop",
+      "Dotonbori Night Walk",
     ],
   },
   {
     day: 6,
     date: "15 Jun 2026 · Monday",
-    city: "Osaka",
-    title: "Shinsekai, Tsutenkaku & Shinsaibashi",
-    mood: "Retro Osaka in the day, shopping streets at night.",
+    city: "Osaka → Nara",
+    title: "Nara Day Trip",
+    mood: "Historic temples, deer parks, panoramic halls and a slower cultural day outside Osaka.",
     highlights: [
-      "Shinsekai",
-      "Tsutenkaku Tower",
-      "Shinsaibashi shopping",
-      "Night city walk",
+      "Nara Day Trip",
+      "AONIYOSHI / JR Train to Nara",
+      "Todai-ji Great Buddha Hall",
+      "Osaka Free & Easy Night",
     ],
   },
   {
     day: 7,
     date: "16 Jun 2026 · Tuesday",
     city: "Osaka",
-    title: "Free & Easy Day",
-    mood: "Choose between aquarium, theme park or slow exploration.",
+    title: "Free & Easy Osaka",
+    mood: "A flexible Osaka day for shopping, sightseeing, theme parks or aquarium visits.",
     highlights: [
-      "Osaka Aquarium Kaiyukan",
-      "Universal Studios Osaka",
-      "Flexible shopping",
-      "Café / food hunting",
+      "Universal Studios Japan Option",
+      "Shopping around Osaka",
+      "Minoh Falls Option",
+      "Osaka Aquarium Kaiyukan Option",
     ],
   },
   {
     day: 8,
     date: "17 Jun 2026 · Wednesday",
-    city: "Osaka → KIX",
-    title: "Airport Morning",
-    mood: "A calm goodbye morning before the 11:05 AM flight.",
+    city: "Osaka → Kuala Lumpur",
+    title: "Goodbye Japan",
+    mood: "A calm airport morning before heading back home to Kuala Lumpur.",
     highlights: [
-      "Go to airport",
-      "Flight at 11:05 AM",
-      "Breakfast if time allows",
-      "Start work after trip",
+      "Flight to Kuala Lumpur",
+      "Namba to Kansai Airport",
+      "Airport Breakfast",
+      "Back to KLIA2",
     ],
   },
 ];
 
 const placeInfo = {
-  "teamLab Kyoto · 3:30 PM": {
+  "Kansai Airport to Kyoto": {
+    type: "minor",
+    title: "Kansai Airport to Kyoto",
+    desc: "Arrive at Kansai Airport, settle immigration and begin the Kyoto part of the journey by Haruka JR line.",
+    details: [
+      {
+        title: "Arrival Flow",
+        text: "After landing at KIX, gather together and prepare for the transfer into Kyoto.",
+      },
+      {
+        title: "Train Journey",
+        text: "Take the Haruka JR line towards JR Kyoto Station. The journey is around 1 hour 30 minutes.",
+      },
+      {
+        title: "Soft First Day",
+        text: "Since this comes after an overnight flight, the first day is intentionally kept lighter before the main Kyoto days begin.",
+      },
+    ],
+  },
+
+  "RESI Stay Tsubaki Check-in": {
+    type: "minor",
+    title: "RESI Stay Tsubaki Check-in",
+    desc: "Drop luggage, take the shuttle service and settle into the Kyoto accommodation before the first night begins.",
+    details: [
+      {
+        title: "Luggage Drop",
+        text: "Luggage can be dropped at RESI Stay Reception before heading out for the first attraction.",
+      },
+      {
+        title: "Shuttle Service",
+        text: "After teamLab, return to the reception and use the shuttle service to RESI Stay Tsubaki.",
+      },
+      {
+        title: "Evening Reset",
+        text: "Check in, freshen up and get ready for the first Kyoto dinner around Nishiki Market or Kawaramachi.",
+      },
+    ],
+  },
+
+  "Nishiki Market / Kawaramachi Dinner": {
+    type: "minor",
+    title: "Nishiki Market / Kawaramachi Dinner",
+    desc: "A flexible Kyoto first-night food hunt around Nishiki Market and Kawaramachi.",
+    details: [
+      {
+        title: "Food Choices",
+        text: "Possible choices include Ichiran Ramen, CoCo Curry, Tendon Makino Kyoto Teramachi, Honke Daiichi-Asahi Karasuma, Captain1, Hitomebore Kyoto and Kiku.",
+      },
+      {
+        title: "Flexible Dinner",
+        text: "The idea is to keep the first night easy. Walk around, check queues and decide what to eat based on energy level.",
+      },
+      {
+        title: "Night Walk",
+        text: "If not too tired, the evening can continue with a short Gion, Yasaka Shrine or Pontocho Alley walk.",
+      },
+    ],
+  },
+
+  "Hikiniku to Come Reservation": {
+    type: "minor",
+    title: "Hikiniku to Come Reservation",
+    desc: "An early reservation mission before kimono day starts.",
+    details: [
+      {
+        title: "Reservation Strategy",
+        text: "Only 2–3 people may need to go early to secure the dinner reservation, while the rest can prepare for kimono day.",
+      },
+      {
+        title: "Kombini Breakfast",
+        text: "This can be combined with a simple convenience store breakfast run before the group heads out.",
+      },
+      {
+        title: "Dinner Backup",
+        text: "If the reservation cannot be secured, dinner can remain flexible around Nishiki Market, Kawaramachi or Gion.",
+      },
+    ],
+  },
+
+  "Kimono Rental First Kiyomizu": {
+    type: "minor",
+    title: "Kimono Rental First Kiyomizu",
+    desc: "Prepare for the Kyoto kimono experience before heading towards Kiyomizu-dera.",
+    details: [
+      {
+        title: "Photo Day Setup",
+        text: "This is the main kimono photo day, so the morning allows time for outfit selection, changing and group preparation.",
+      },
+      {
+        title: "Hair Styling",
+        text: "Complimentary hair service is available for girls. Guys can get ready separately while waiting.",
+      },
+      {
+        title: "Walking Route",
+        text: "After changing, the route naturally continues towards Kiyomizu-dera and the surrounding old streets.",
+      },
+    ],
+  },
+
+  "Ninenzaka / Sannenzaka Evening": {
+    type: "minor",
+    title: "Ninenzaka / Sannenzaka Evening",
+    desc: "Explore Kyoto’s preserved old streets filled with snacks, traditional shops and photo spots.",
+    details: [
+      {
+        title: "Old Kyoto Streets",
+        text: "Ninenzaka, Sannenzaka and Chawanzaka are classic Kyoto walking streets with preserved buildings and souvenir stores.",
+      },
+      {
+        title: "Snack Stops",
+        text: "This area is good for small desserts, matcha stops and casual snack hunting after temple walking.",
+      },
+      {
+        title: "Mochi Area",
+        text: "The famous mochi-making shop area is around here, where visitors often stop to watch and take photos.",
+      },
+    ],
+  },
+
+  "Saga-Toriimoto Preserved Street": {
+    type: "minor",
+    title: "Saga-Toriimoto Preserved Street",
+    desc: "A quieter preserved Kyoto district north of the busy Arashiyama area.",
+    details: [
+      {
+        title: "Quieter Route",
+        text: "After the bamboo forest, continue north towards a calmer side of Arashiyama with preserved street scenery.",
+      },
+      {
+        title: "Old Street Atmosphere",
+        text: "The area has traditional architecture and a slower feeling compared to the main tourist crowd.",
+      },
+    ],
+  },
+
+  "Otagi Nenbutsuji Temple": {
+    type: "minor",
+    title: "Otagi Nenbutsuji Temple",
+    desc: "A hidden temple stop known for its many expressive stone statues.",
+    details: [
+      {
+        title: "Hidden Temple Feeling",
+        text: "This temple is further north and feels quieter than the usual Arashiyama tourist route.",
+      },
+      {
+        title: "Stone Statues",
+        text: "The temple is known for its many unique stone figures, each with different expressions and character.",
+      },
+    ],
+  },
+
+  "Lunch near Fushimi Inari": {
+    type: "minor",
+    title: "Lunch near Fushimi Inari",
+    desc: "Take a slower lunch after the shrine hike around the Fushimi Inari area.",
+    details: [
+      {
+        title: "Food Choices",
+        text: "Nearby options include unagi rice bowls, ramen, udon and Kyoto-style restaurants around the shrine area.",
+      },
+      {
+        title: "Post-Hike Break",
+        text: "This stop gives the group time to rest after walking through the torii gate route.",
+      },
+    ],
+  },
+
+  "Kyo-train Garaku to Osaka": {
+    type: "minor",
+    title: "Kyo-train Garaku to Osaka",
+    desc: "Transfer from Kyoto into Osaka aboard the Kyo-train Garaku.",
+    details: [
+      {
+        title: "Train Experience",
+        text: "The Kyo-train Garaku is treated like a regular train, but with a more stylish and scenic interior feel.",
+      },
+      {
+        title: "No Reservation",
+        text: "No reservation is required, so the group should arrive at Kyoto Kawaramachi station early enough.",
+      },
+      {
+        title: "Osaka Transition",
+        text: "This marks the shift from Kyoto’s slower temple atmosphere to Osaka’s city energy.",
+      },
+    ],
+  },
+
+  "Umeda Gashapon & Dessert Stop": {
+    type: "minor",
+    title: "Umeda Gashapon & Dessert Stop",
+    desc: "Explore Osaka-Umeda before heading deeper into Osaka nightlife.",
+    details: [
+      {
+        title: "Gashapon Stop",
+        text: "Gachagacha no Mori Osaka Umeda Chayamachi is noted as one of the biggest gashapon stores around the area.",
+      },
+      {
+        title: "Dessert Stop",
+        text: "Grenier Umeda Branch is known for its crème brûlée pie and closes around evening, so it is best treated as a quick stop.",
+      },
+    ],
+  },
+
+  "AONIYOSHI / JR Train to Nara": {
+    type: "minor",
+    title: "AONIYOSHI / JR Train to Nara",
+    desc: "Travel out of Osaka towards Nara either by JR line or the sightseeing-style AONIYOSHI train.",
+    details: [
+      {
+        title: "Train Choice",
+        text: "The group can take the normal JR route or choose the AONIYOSHI sightseeing train from Osaka-Namba to Kintetsu-Nara.",
+      },
+      {
+        title: "Scenic Option",
+        text: "The AONIYOSHI train is more special and requires reservation, making it a nicer option if seats are still available.",
+      },
+    ],
+  },
+
+  "Osaka Free & Easy Night": {
+    type: "minor",
+    title: "Osaka Free & Easy Night",
+    desc: "A flexible Osaka night after returning from Nara.",
+    details: [
+      {
+        title: "Flexible Evening",
+        text: "Dinner, shopping, arcade visits or resting are all possible depending on energy level after the day trip.",
+      },
+      {
+        title: "Late-Night Option",
+        text: "If the group is still active, Osaka has many late-night areas around Namba and Dotonbori.",
+      },
+    ],
+  },
+
+  "Shopping around Osaka": {
+    type: "minor",
+    title: "Shopping around Osaka",
+    desc: "Spend the Osaka free day exploring the city’s shopping districts.",
+    details: [
+      {
+        title: "Shopping Areas",
+        text: "Possible areas include Shinsaibashi, Shinsekai, Nipponbashi and Osaka-Umeda.",
+      },
+      {
+        title: "Flexible Day",
+        text: "This day can be shaped around shopping, food, rest or whatever the group feels like doing.",
+      },
+    ],
+  },
+
+  "Minoh Falls Option": {
+    type: "minor",
+    title: "Minoh Falls Option",
+    desc: "A quieter nature-side Osaka option away from the city centre.",
+    details: [
+      {
+        title: "Nature Route",
+        text: "Minoh Falls offers a slower walking route with greenery and waterfall scenery.",
+      },
+      {
+        title: "Alternative Option",
+        text: "This is a calmer alternative to shopping, USJ or aquarium plans.",
+      },
+    ],
+  },
+
+  "Namba to Kansai Airport": {
+    type: "minor",
+    title: "Namba to Kansai Airport",
+    desc: "The final Osaka train transfer back towards Kansai Airport.",
+    details: [
+      {
+        title: "Morning Transfer",
+        text: "Depart from Apartment 11 Kuromon towards Namba Station, then take the Nankai Line to Kansai Airport.",
+      },
+      {
+        title: "Airport Target",
+        text: "The aim is to reach Kansai Airport early enough for breakfast, check-in and final departure preparation.",
+      },
+    ],
+  },
+
+  "Airport Breakfast": {
+    type: "minor",
+    title: "Airport Breakfast",
+    desc: "One final breakfast at Kansai Airport before boarding the flight home.",
+    details: [
+      {
+        title: "Final Morning",
+        text: "Keep this simple and relaxed before the flight back to Kuala Lumpur.",
+      },
+    ],
+  },
+
+  "Back to KLIA2": {
+    type: "minor",
+    title: "Back to KLIA2",
+    desc: "Arrive back in Malaysia and officially conclude the Japan trip.",
+    details: [
+      {
+        title: "End of Journey",
+        text: "Return to Kuala Lumpur after the Kyoto, Osaka and Nara journey.",
+      },
+    ],
+  },
+
+  "teamLab Kyoto": {
     type: "major",
     title: "teamLab Kyoto",
-    desc: "An immersive digital art experience with light, movement and interactive installations.",
-    hours: "9:00 AM - 9:30 PM",
+    desc: "An immersive digital art experience filled with reflections, lights and interactive installations.",
+    hours: "3:30 PM onwards",
     budget: "RM113",
-    address: "21-5 Higashikujo Higashiiwamotocho, Minami Ward, Kyoto, 601-8006, Japan",
+    address: "Kyoto",
     map: "https://maps.app.goo.gl/avZJaAaKBuPMwKxE9",
     images: [
       "https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/a85329c6-aef2-47d1-3de1-ce2b8bcf5200/width=1920,quality=80",
       "https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/3900183c-a549-4a0a-b673-dbf33d6c1000/width=1920,quality=80",
-      "https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/90e343c6-f3bf-427d-53e0-1169a2fbc500/width=1920,quality=80",
-      "https://assets.team-lab.com/b5EBo9Uo-OK6SM09ZTkEZQ/8ab537cc-fe7b-48e5-a284-ef5ed954f800/width=1920,quality=80",
     ],
   },
-  "Dinner at Gion / Kawaramachi": {
-    type: "minor",
-    title: "Gion / Kawaramachi Dinner Area",
-    desc: "Good evening area for food, shopping streets and Kyoto night atmosphere.",
-    hours: "Depends on restaurant",
-    budget: "Approx. ¥1,500–¥4,000 per person",
-    address: "Gion / Kawaramachi, Kyoto",
-    map: "https://maps.app.goo.gl/J3pru94KS8LtwTPP8",
+
+  "Kiyomizu-dera Temple": {
+    type: "major",
+    title: "Kiyomizu-dera Temple",
+    desc: "One of Kyoto’s most iconic temple experiences, filled with traditional architecture, mountain scenery and historic temple grounds.",
+    hours: "Late morning to afternoon",
+    budget: "Approx. ¥500 admission",
+    address: "Higashiyama, Kyoto",
+    map: "https://maps.app.goo.gl/FsUPgjRAJ455bqcu7",
+    images: [
+      "https://images.unsplash.com/photo-1669954791579-15a45890449f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2l5b21penUlMjB0ZW1wbGV8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1729864881494-d96345092845?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
+    suggestedItinerary: [
+      {
+        title: "Nio-mon Gate",
+        text: "Enter through the main temple gate. The gate is guarded by the Nio, the Deva Kings that protect the temple grounds.",
+      },
+      {
+        title: "Tiger Stone Lamp & Seiryu Dragon",
+        text: "Look for the tiger stone lamp near the stairs. Its eyes are said to follow you no matter where you stand. Nearby, the Seiryu dragon statue adds another symbolic detail to the entrance area.",
+      },
+      {
+        title: "West Gate & Three-Story Pagoda",
+        text: "Climb towards the West Gate and the Three-Story Pagoda. From here, the elevated view over Kyoto gives one of the first beautiful city panoramas of the route.",
+      },
+      {
+        title: "Restorer’s Hall",
+        text: "Pass by the Restorer’s Hall, a reminder of how Shinto and Buddhist elements used to exist together within temple grounds.",
+      },
+      {
+        title: "Thousand Stone Buddhas",
+        text: "Continue towards the Thousand Stone Buddhas. These Buddhist images were gathered and preserved here during a time when many Buddhist statues were destroyed.",
+      },
+      {
+        title: "Joju-in Temple Area",
+        text: "Walk through the quieter Joju-in Temple area and enjoy the pond scenery. It is a good slower moment within the temple route.",
+      },
+      {
+        title: "Tamurado Shrine",
+        text: "Visit the shrine dedicated to Tamuramaro, one of the founders linked to Kiyomizu-dera’s history.",
+      },
+      {
+        title: "Main Hall & Kiyomizu Stage",
+        text: "Enter the Main Hall and reach the famous Kiyomizu stage. This is the most iconic viewpoint of the temple, overlooking Kyoto and the surrounding hillside.",
+      },
+      {
+        title: "Small Kannon & Okuno-in Viewpoint",
+        text: "Continue along the route towards the Small Kannon and the Okuno-in viewpoint, where you can look back at the Kiyomizu stage from a distance.",
+      },
+      {
+        title: "Otowa Waterfall",
+        text: "Walk down towards Otowa Waterfall. Visitors traditionally drink from one stream using ladles, with the water considered sacred.",
+      },
+      {
+        title: "Hojo-ike Pond",
+        text: "End the temple route near Hojo-ike Pond, where the temple scenery can be reflected beautifully on the water.",
+      },
+    ],
   },
-  "Honke Daiichi Asahi Honten": {
-    type: "minor",
-    title: "Honke Daiichi Asahi Honten",
-    desc: "Popular ramen shop near Kyoto Station, useful as a lunch option after arrival.",
-    hours: "Check latest opening hours",
-    budget: "Approx. ¥1,000–¥1,500 per person",
-    address: "Near Kyoto Station, Kyoto",
-    map: "https://maps.app.goo.gl/aqTikKtNf1dba6JUA",
-  },
-  "Ichiran Ramen": {
-    type: "minor",
-    title: "Ichiran Ramen",
-    desc: "Well-known ramen chain with individual booth-style seating.",
-    hours: "Varies by branch",
-    budget: "Approx. ¥1,000–¥2,000 per person",
-    address: "Kyoto, Japan",
-    map: "https://maps.app.goo.gl/J3pru94KS8LtwTPP8",
-  },
+
   "Arashiyama Bamboo Forest": {
     type: "major",
     title: "Arashiyama Bamboo Forest",
-    desc: "A scenic bamboo grove in northwest Kyoto. Best visited early morning to avoid crowds.",
-    hours: "Open outdoor area; best visited early morning",
+    desc: "An early Kyoto morning surrounded by bamboo groves, preserved streets and quieter northern Kyoto scenery.",
+    hours: "Early morning",
     budget: "Free",
     address: "Arashiyama, Kyoto",
     map: "https://maps.app.goo.gl/pZJdWWGueULytFCo8",
     images: [
-      "https://4kwallpapers.com/images/wallpapers/arashiyama-bamboo-2880x1800-15688.jpg",
+      "https://images.unsplash.com/photo-1632923754832-60642c12a7ed?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJhc2hpeWFtYSUyMGJhbWJvbyUyMGZvcmVzdCUyQyUyMGt5b3RvJTJDJTIwamFwYW58ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1698618988744-737573cb6a7a?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM3fHx8ZW58MHx8fHx8",
+    ],
+    suggestedItinerary: [
+      {
+        title: "Arashiyama Bamboo Grove",
+        text: "Start early at the bamboo grove before the main crowd arrives. This keeps the morning calmer and gives better photo opportunities.",
+      },
+      {
+        title: "Ogura Pond",
+        text: "Walk along Ogura Pond and continue north. This moves the route away from the busiest tourist area.",
+      },
+      {
+        title: "Saga-Toriimoto Preserved Street",
+        text: "Explore the preserved street with traditional Kyoto atmosphere and a slower, quieter feel.",
+      },
+      {
+        title: "Adashino Nenbutsuji",
+        text: "Visit Adashino Nenbutsuji, a temple known for its many stone memorial statues and calm setting.",
+      },
+      {
+        title: "Otagi Nenbutsuji",
+        text: "Continue towards Otagi Nenbutsuji, a more hidden temple known for expressive stone figures.",
+      },
+      {
+        title: "Coffee java.java",
+        text: "Take a slower coffee break at java.java before continuing the day.",
+      },
+      {
+        title: "Kotouen Pottery Stop",
+        text: "Browse pottery souvenirs nearby for a quieter, local-style shopping stop.",
+      },
+      {
+        title: "Kimono Forest Option",
+        text: "If there is extra time, stop by Kimono Forest for a short photo-friendly detour.",
+      },
+      {
+        title: "Kinkaku-ji Afternoon Option",
+        text: "If energy allows, continue towards Kinkaku-ji for the golden pavilion and garden scenery.",
+      },
     ],
   },
-  "Daikaku-ji Temple": {
-    type: "minor",
-    title: "Daikaku-ji Temple",
-    desc: "A peaceful temple near Arashiyama, good for a slower Kyoto temple experience.",
-    hours: "Check latest temple hours",
-    budget: "Approx. ¥500–¥800",
-    address: "Kyoto, Japan",
-    map: "https://maps.app.goo.gl/LCPcZkbKrS7vXQPWA",
-  },
-  "Hikiniku to Come reservation": {
-    type: "minor",
-    title: "Hikiniku to Come",
-    desc: "Hamburger rice restaurant. Your note says to be there around 7:30 AM to get a dinner reservation.",
-    hours: "Reservation timing to be confirmed",
-    budget: "Approx. ¥1,500–¥3,000 per person",
-    address: "Kyoto, Japan",
-    map: "https://maps.app.goo.gl/qtrpnrAcmZptVMKv7",
-  },
-  "Six Dews matcha dessert": {
-    type: "minor",
-    title: "Six Dews",
-    desc: "Dessert place for matcha and sweet treats.",
-    hours: "Check latest opening hours",
-    budget: "Approx. ¥800–¥1,800 per person",
-    address: "Kyoto, Japan",
-    map: "https://maps.app.goo.gl/Z3jvM1LXCrG8VSYX6",
-  },
-  "Kiyomizu-dera Temple": {
+
+  "Kinkaku-ji Temple Option": {
     type: "major",
-    title: "Kiyomizu-dera Temple",
-    desc: "One of Kyoto’s most iconic temples, known for its large wooden stage and historic streets nearby.",
-    hours: "Check latest temple hours",
-    budget: "Approx. ¥400–¥500",
-    address: "Higashiyama, Kyoto",
-    map: "https://maps.app.goo.gl/FsUPgjRAJ455bqcu7",
+    title: "Kinkaku-ji Temple Option",
+    desc: "The golden pavilion afternoon option after Arashiyama, offering a completely different Kyoto atmosphere with reflective garden scenery.",
+    hours: "Afternoon",
+    budget: "Temple admission + lunch",
+    address: "Kinkaku-ji, Kyoto",
+    map: "https://maps.app.goo.gl/gSXk2SJJcWHfKtRa6",
     images: [
-      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1610265082060-7234c9de51ab?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8a2lua2FrdWppfGVufDB8fDB8fHww",
+      "https://plus.unsplash.com/premium_photo-1716968595951-dfa28803cc28?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8a2lua2FrdSUyMGppJTIwdGVtcGxlfGVufDB8fDB8fHww",
     ],
   },
-  "Kimono rental": {
-    type: "minor",
-    title: "Kimono Rental",
-    desc: "Good pairing with Kiyomizu-dera and nearby historic streets for photos.",
-    hours: "Depends on rental shop",
-    budget: "Approx. ¥3,000–¥6,000 per person",
-    address: "Kiyomizu / Higashiyama area, Kyoto",
-    map: "https://maps.app.goo.gl/FsUPgjRAJ455bqcu7",
-  },
-  "Nishiki Market": {
-    type: "minor",
-    title: "Nishiki Market",
-    desc: "A famous food market street in Kyoto, good for snacks and light food hunting.",
-    hours: "Most shops open daytime; varies by shop",
-    budget: "Approx. ¥1,000–¥3,000",
-    address: "Nishiki Market, Kyoto",
-    map: "https://maps.app.goo.gl/oy8Lts1A4ZwoYa4g9",
-  },
-  "Japanese Noodle ISSUN BOUSH": {
-    type: "minor",
-    title: "Japanese Noodle ISSUN BOUSH",
-    desc: "Recommended ramen store from your itinerary notes.",
-    hours: "Check latest opening hours",
-    budget: "Approx. ¥1,000–¥2,000 per person",
-    address: "Kyoto, Japan",
-    map: "https://maps.app.goo.gl/775JWfLSJxLcWWQD6",
-  },
+
   "Fushimi Inari Taisha": {
     type: "major",
     title: "Fushimi Inari Taisha",
-    desc: "Famous for thousands of red torii gates leading up the mountain trail.",
-    hours: "Shrine grounds generally accessible all day",
+    desc: "A famous shrine mountain route filled with thousands of red torii gates stretching into the forest.",
+    hours: "Early morning",
     budget: "Free",
     address: "Fushimi Ward, Kyoto",
     map: "https://maps.app.goo.gl/ARZgjLiGXykyn9Vw5",
     images: [
-      "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1539036982489-398455e43248?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVzaGltaSUyMGluYXJpfGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1571754687694-15eb9a3ac00b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZ1c2hpbWklMjBpbmFyaXxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1749350904772-befec896634a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fHw%3D",
     ],
   },
-  "Optional Nara day trip": {
-    type: "minor",
-    title: "Optional Nara Day Trip",
-    desc: "Alternative day trip from Kyoto if you prefer deer park, temples and a slower sightseeing day.",
-    hours: "Day trip timing depends on train schedule",
-    budget: "Approx. ¥2,000–¥5,000 excluding food",
-    address: "Nara, Japan",
-    map: "https://maps.app.goo.gl/",
-  },
+
+"Mimuroto-ji Hydrangea Option": {
+  type: "minor",
+  title: "Mimuroto-ji Hydrangea Option",
+  desc: "A seasonal flower-viewing option after Fushimi Inari, heading towards Uji for hydrangea scenery.",
+  details: [
+    {
+      title: "Hydrangea Temple",
+      text: "Mimuroto-ji is also known as the flower temple, and June is a good season to visit for hydrangeas.",
+    },
+    {
+      title: "Travel Route",
+      text: "From Fushimi Inari, travel towards Mimurodo Station, then walk around 15 minutes to the temple.",
+    },
+    {
+      title: "Planning Note",
+      text: "This option is more suitable if the group wants scenery and seasonal flowers. Many famous Uji matcha stores may already be closed by the time the temple visit ends.",
+    },
+    {
+      title: "Afterwards",
+      text: "If time allows, continue towards central Uji for simple matcha café hunting before returning to Kyoto.",
+    },
+  ],
+},
+
+ "Kamo River Cycling Option": {
+  type: "minor",
+  title: "Kamo River Cycling Option",
+  desc: "A relaxing half-day cycling option through Kyoto after returning from Fushimi Inari.",
+  details: [
+    {
+      title: "Cycling Idea",
+      text: "Rest first after Fushimi Inari, then rent bicycles around Gion Shijo and explore Kyoto at a slower pace.",
+    },
+    {
+      title: "Suggested Route",
+      text: "Possible stops include Kamo River, the stepping stones at Kojin, Demachi Masugata Shopping Street and Kyoto Botanical Gardens.",
+    },
+    {
+      title: "Rental Note",
+      text: "Regular bicycles are around ¥1,300, electric bicycles around ¥2,300 and hybrid bicycles around ¥1,800. Reservation may be needed earlier.",
+    },
+    {
+      title: "Important Cycling Notes",
+      text: "Do not cycle side by side, use bicycle lights at night, ride carefully near pedestrians and only park at proper bicycle parking areas.",
+    },
+  ],
+},
+
+
   "Osaka Castle": {
     type: "major",
     title: "Osaka Castle",
-    desc: "A major Osaka landmark surrounded by gardens and wide open park areas.",
-    hours: "Check latest castle museum hours",
-    budget: "Approx. ¥600–¥1,200",
-    address: "Osaka Castle, Osaka",
+    desc: "One of Osaka’s most iconic landmarks surrounded by wide park scenery and city views.",
+    hours: "Afternoon",
+    budget: "Approx. ¥1200 admission",
+    address: "Osaka Castle",
     map: "https://maps.app.goo.gl/6Mrfyz9C7RVKkRuy9",
     images: [
-      "https://images.unsplash.com/photo-1590559899731-a382839e5549?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1590559899731-a382839e5549?q=90&w=1800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=90&w=1800&auto=format&fit=crop",
     ],
   },
-  "Namba / Dotonbori night walk": {
-    type: "minor",
-    title: "Namba / Dotonbori",
-    desc: "Osaka’s lively food and nightlife district, good for street food, photos and night walking.",
-    hours: "Best visited evening/night",
-    budget: "Approx. ¥2,000–¥5,000 per person",
+
+  "Dotonbori Night Walk": {
+    type: "major",
+    title: "Dotonbori Night Walk",
+    desc: "The classic Osaka neon night atmosphere filled with food streets, arcades and the famous Glico sign.",
+    hours: "Night",
+    budget: "Flexible dinner budget",
     address: "Dotonbori, Osaka",
     map: "https://maps.app.goo.gl/",
-  },
-  "JR Umeda luggage deposit": {
-    type: "minor",
-    title: "JR Umeda Luggage Deposit",
-    desc: "Useful transfer stop before exploring Osaka Castle and checking in later.",
-    hours: "Depends on coin locker / luggage service availability",
-    budget: "Approx. ¥500–¥1,000 per locker",
-    address: "JR Umeda / Osaka Station area",
-    map: "https://maps.app.goo.gl/TPBTRA2EvfRSigir6",
-  },
-  "Shinsekai": {
-    type: "major",
-    title: "Shinsekai",
-    desc: "Retro Osaka district known for food streets, old-school atmosphere and views of Tsutenkaku Tower.",
-    hours: "Best visited day to evening",
-    budget: "Approx. ¥1,500–¥4,000 per person",
-    address: "Shinsekai, Osaka",
-    map: "https://maps.app.goo.gl/",
     images: [
-      "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1601823984263-b87b59798b70?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1589452271712-64b8a66c7b71?q=90&w=1800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=90&w=1800&auto=format&fit=crop",
     ],
   },
-  "Tsutenkaku Tower": {
-    type: "minor",
-    title: "Tsutenkaku Tower",
-    desc: "Iconic tower in Shinsekai with observation deck and retro Osaka feel.",
-    hours: "Check latest opening hours",
-    budget: "Approx. ¥1,000–¥1,500",
-    address: "Shinsekai, Osaka",
-    map: "https://maps.app.goo.gl/",
-  },
-  "Shinsaibashi shopping": {
-    type: "minor",
-    title: "Shinsaibashi Shopping",
-    desc: "Popular Osaka shopping district for fashion, cosmetics, snacks and souvenirs.",
-    hours: "Most shops open late morning to night",
-    budget: "Flexible shopping budget",
-    address: "Shinsaibashi, Osaka",
-    map: "https://maps.app.goo.gl/",
-  },
-  "Osaka Aquarium Kaiyukan": {
+
+  "Nara Day Trip": {
     type: "major",
-    title: "Osaka Aquarium Kaiyukan",
-    desc: "Large aquarium in Osaka, good for a slower indoor attraction day.",
-    hours: "Check latest aquarium hours",
-    budget: "Approx. ¥2,700+ per adult",
-    address: "Osaka Aquarium Kaiyukan, Osaka",
-    map: "https://maps.app.goo.gl/CCuPc7zy6EtvusUF9",
+    title: "Nara Day Trip",
+    desc: "A slower cultural day exploring Nara’s temples, deer parks and panoramic viewpoints.",
+    hours: "Full day",
+    budget: "Temple admissions + transport",
+    address: "Nara",
+    map: "https://maps.app.goo.gl/",
     images: [
-      "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1669692233264-f818c9a46d21?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmFyYSUyMGphcGFufGVufDB8fDB8fHww",
+      "https://images.unsplash.com/photo-1735820431976-9bc3cff4e3a2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5hcmElMjBqYXBhbnxlbnwwfHwwfHx8MA%3D%3D",
+    ],
+    suggestedItinerary: [
+      {
+        title: "Nandaimon Gate",
+        text: "Begin at the famous entrance to Todai-ji Temple, guarded by two large guardian statues.",
+      },
+      {
+        title: "Mirror Pond",
+        text: "Walk towards Todaiji Kagami-ike Pond, a calm scenic spot where the temple scenery reflects like a mirror.",
+      },
+      {
+        title: "Todai-ji Central Gate",
+        text: "Approach the central gate area. The main entrance route continues from the side where tickets are purchased.",
+      },
+      {
+        title: "Great Buddha Hall",
+        text: "Enter the massive Great Buddha Hall and see the Great Buddha inside one of Japan’s most impressive wooden temple structures.",
+      },
+      {
+        title: "Traditional Nara Sweets",
+        text: "Pause for snacks nearby. Warabi starch mochi is one of the traditional sweets worth trying.",
+      },
+      {
+        title: "Cat Stairs",
+        text: "Walk up towards Nekodan, also known as the Cat Stairway, as part of the route deeper into the temple grounds.",
+      },
+      {
+        title: "Karakuni Shinto Shrine",
+        text: "Visit the shrine connected to Korean immigrants who helped with the construction history of Todai-ji.",
+      },
+      {
+        title: "Bell Tower",
+        text: "Continue towards Todaiji Shoro, the temple bell tower area.",
+      },
+      {
+        title: "Urasando Walkway",
+        text: "Walk along Urasando Path, a scenic walkway often used by photographers leading towards Nigatsu-do.",
+      },
+      {
+        title: "Nigatsu-do Hall",
+        text: "Reach Nigatsu-do Hall for an elevated view over Nara. The hall is also tied to the Shuni-e ritual and Fire Ceremony.",
+      },
+      {
+        title: "Sacred Well",
+        text: "Pass by the sacred well connected to the water used in the Shuni-e ceremony.",
+      },
+      {
+        title: "Hokkedo Hall",
+        text: "Visit Hokkedo Hall, one of the oldest halls of Todai-ji, with history linked to Emperor Shomu and Kannon worship.",
+      },
+      {
+        title: "Tamukeyama Hachimangu Shrine",
+        text: "Finish the cultural route at the shrine dedicated to Hachiman, the guardian deity watching over Todai-ji.",
+      },
+      {
+        title: "Nara Park Free Walk",
+        text: "End with free and easy time around Nara Park before heading back to Osaka.",
+      },
     ],
   },
-  "Universal Studios Osaka": {
-    type: "major",
-    title: "Universal Studios Japan",
-    desc: "Theme park option for your free-and-easy day in Osaka.",
-    hours: "Check latest park operating calendar",
-    budget: "Varies by ticket date and pass type",
-    address: "Universal Studios Japan, Osaka",
-    map: "https://maps.app.goo.gl/LQWtrSyrTBYgNyQr7",
-    images: [
-      "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1597466599360-3b9775841aec?q=80&w=1200&auto=format&fit=crop",
+
+  "Todai-ji Great Buddha Hall": {
+    type: "minor",
+    title: "Todai-ji Great Buddha Hall",
+    desc: "The central temple highlight of the Nara route.",
+    details: [
+      {
+        title: "Main Temple Experience",
+        text: "The Great Buddha Hall is a massive wooden structure housing the Great Buddha of Nara.",
+      },
+      {
+        title: "Temple Grounds",
+        text: "The surrounding area is filled with deer, wide paths and classic Nara temple scenery.",
+      },
     ],
   },
+
+  "Universal Studios Japan Option": {
+  type: "minor",
+  title: "Universal Studios Japan Option",
+  desc: "A full-day theme park option for the Osaka free-and-easy day.",
+  details: [
+    {
+      title: "Free Day Option",
+      text: "This is one possible plan for the Osaka free day if the group wants a full theme park experience.",
+    },
+    {
+      title: "Experience",
+      text: "Expect rides, shows, themed zones and a much more energetic day compared to shopping or aquarium plans.",
+    },
+    {
+      title: "Planning Note",
+      text: "This option should be decided earlier because tickets, express passes and crowd levels can affect the experience.",
+    },
+  ],
+},
+
+"Osaka Aquarium Kaiyukan Option": {
+  type: "minor",
+  title: "Osaka Aquarium Kaiyukan Option",
+  desc: "A slower indoor option for the Osaka free-and-easy day.",
+  details: [
+    {
+      title: "Aquarium Day",
+      text: "Kaiyukan is one of Osaka’s well-known aquarium attractions and is a good slower-paced alternative to USJ.",
+    },
+    {
+      title: "Main Highlight",
+      text: "The aquarium is known for its large central tank, including the whale shark display.",
+    },
+    {
+      title: "Planning Note",
+      text: "This is a good option if the group wants something indoors, less tiring and easier to manage than a full theme park day.",
+    },
+  ],
+},
+
+  "Flight to Kuala Lumpur": {
+  type: "minor",
+  title: "Flight to Kuala Lumpur",
+  desc: "The final travel leg from Kansai Airport back to Kuala Lumpur.",
+  details: [
+    {
+      title: "Morning Flight",
+      text: "The return flight departs from Kansai Airport at around 11:05 AM.",
+    },
+    {
+      title: "Airport Timing",
+      text: "Aim to reach Kansai Airport by around 8:00 AM so there is enough time for check-in, breakfast and boarding.",
+    },
+    {
+      title: "Arrival",
+      text: "Arrival back at KLIA2 is expected around 4:55 PM.",
+    },
+  ],
+},
 };
 
 const pages = [
@@ -830,9 +1301,63 @@ function HomePage({ setPage }) {
 
 function CalendarPage() {
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const scrollTimer = useRef(null);
+
+  useEffect(() => {
+    const setRealViewportHeight = () => {
+      document.documentElement.style.setProperty(
+        "--real-vh",
+        `${window.innerHeight * 0.01}px`
+      );
+    };
+
+    setRealViewportHeight();
+
+    window.addEventListener("resize", setRealViewportHeight);
+    window.addEventListener("orientationchange", setRealViewportHeight);
+
+    return () => {
+      window.removeEventListener("resize", setRealViewportHeight);
+      window.removeEventListener("orientationchange", setRealViewportHeight);
+    };
+  }, []);
+
+  const handleCalendarScroll = () => {
+    if (scrollTimer.current) {
+      clearTimeout(scrollTimer.current);
+    }
+
+    scrollTimer.current = setTimeout(() => {
+      const scroller = document.querySelector(".calendarPage");
+      const days = Array.from(document.querySelectorAll(".tearScene"));
+      if (!scroller || !days.length) return;
+
+      const scrollerRect = scroller.getBoundingClientRect();
+
+      const nearestDay = days.reduce((closest, day) => {
+        const rect = day.getBoundingClientRect();
+        const distance = Math.abs(rect.top - scrollerRect.top);
+
+        if (!closest || distance < closest.distance) {
+          return { day, distance };
+        }
+
+        return closest;
+      }, null);
+
+      const threshold = window.innerWidth <= 850 ? 8 : 36;
+
+      if (nearestDay?.day && nearestDay.distance > threshold) {
+        nearestDay.day.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, window.innerWidth <= 850 ? 180 : 140);
+  };
 
   return (
-    <main className="calendarPage">
+    <main className="calendarPage" onScroll={handleCalendarScroll}>
       <div className="calendarStack">
         {tripDays.map((item, index) => (
           <CalendarDayPage
@@ -888,65 +1413,250 @@ function DayCoverSlideshow({ photos }) {
   );
 }
 
-function CalendarDayPage({ item, index, total, setSelectedPlace }) {
+const june2026TripDates = {
+  10: { day: 1, city: "Kyoto" },
+  11: { day: 2, city: "Kyoto" },
+  12: { day: 3, city: "Kyoto" },
+  13: { day: 4, city: "Kyoto" },
+  14: { day: 5, city: "Osaka" },
+  15: { day: 6, city: "Nara" },
+  16: { day: 7, city: "Osaka" },
+  17: { day: 8, city: "Return" },
+};
+
+const desktopCalendarLabels = {
+  1: "Day 1 - Kyoto",
+  2: "Day 2 - Kyoto",
+  3: "Day 3 - Kyoto",
+  4: "Day 4 - Kyoto",
+  5: "Day 5 - Osaka",
+  6: "Day 6 - Nara",
+  7: "Day 7 - Osaka",
+  8: "Day 8 - Return",
+};
+
+function DesktopTripCalendar({ item }) {
+  const currentDate = 9 + item.day;
+  const currentLabel = desktopCalendarLabels[item.day] || `Day ${item.day}`;
+
+  const scrollToTripDay = (dayNumber) => {
+    const target = document.querySelector(`[data-trip-day="${dayNumber}"]`);
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const goPrevious = () => {
+    if (item.day > 1) scrollToTripDay(item.day - 1);
+  };
+
+  const goNext = () => {
+    if (item.day < 8) scrollToTripDay(item.day + 1);
+  };
+
+  const juneDays = Array.from({ length: 30 }, (_, i) => i + 1);
+
   return (
-    <section className="tearScene">
+    <div className="desktopTripCalendar">
+      <div className="desktopCalendarTop">
+        <h4>June 2026</h4>
+      </div>
+
+      <div className="desktopCalendarCurrent">
+        <span>{currentLabel}</span>
+
+        <div className="desktopCalendarArrows">
+          <button
+            onClick={goPrevious}
+            disabled={item.day === 1}
+            aria-label="Previous day"
+          >
+            ‹
+          </button>
+
+          <button
+            onClick={goNext}
+            disabled={item.day === 8}
+            aria-label="Next day"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      <div className="desktopCalendarWeekdays">
+        <span>Mo</span>
+        <span>Tu</span>
+        <span>We</span>
+        <span>Th</span>
+        <span>Fr</span>
+        <span>Sa</span>
+        <span>Su</span>
+      </div>
+
+      <div className="desktopCalendarGrid">
+        {juneDays.map((date) => {
+          const tripInfo = june2026TripDates[date];
+          const isTripDate = Boolean(tripInfo);
+          const isActive = date === currentDate;
+
+          return (
+            <button
+              key={date}
+              className={[
+                "desktopCalendarDate",
+                isTripDate ? "tripDate" : "",
+                isActive ? "active" : "",
+              ].join(" ")}
+              disabled={!isTripDate}
+              onClick={() => tripInfo && scrollToTripDay(tripInfo.day)}
+            >
+              {date}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function CalendarDayPage({ item, index, total, setSelectedPlace }) {
+  const [mobileExpanded, setMobileExpanded] = useState(false);
+
+  const dayRef = useRef(null);
+  const calendarCopyRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!dayRef.current || !calendarCopyRef.current) return;
+
+    const updateCalendarHeight = () => {
+      if (window.innerWidth <= 850) return;
+
+      const bubbleHeight = calendarCopyRef.current.offsetHeight;
+
+      dayRef.current.style.setProperty(
+        "--desktop-bubble-height",
+        `${bubbleHeight}px`
+      );
+    };
+
+    updateCalendarHeight();
+
+    const observer = new ResizeObserver(updateCalendarHeight);
+    observer.observe(calendarCopyRef.current);
+
+    window.addEventListener("resize", updateCalendarHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateCalendarHeight);
+    };
+  }, []);
+
+  const handleSeeMore = () => {
+    const nextState = !mobileExpanded;
+
+    if (window.innerWidth <= 850 && dayRef.current) {
+      dayRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      if (nextState) {
+        setTimeout(() => {
+          setMobileExpanded(true);
+        }, 260);
+      } else {
+        setMobileExpanded(false);
+      }
+
+      return;
+    }
+
+    setMobileExpanded(nextState);
+  };
+
+  return (
+    <section className="tearScene" ref={dayRef} data-trip-day={item.day}>
       <motion.div
         className="calendarSheetFull"
-        initial={{ opacity: 0, y: 80 }}
+        initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ amount: 0.45 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <div className="calendarCover">
-          <DayCoverSlideshow photos={dayCoverPhotos[item.day]} />
-          <div className="calendarCoverOverlay" />
+        <DayCoverSlideshow photos={dayCoverPhotos[item.day]} />
 
-          <div className="calendarHeaderFloating">
-            <span>
-              {index + 1} / {total}
-            </span>
-          </div>
+        <div className="calendarFullOverlay" />
 
-          <div className="calendarCoverText">
-            <div className="dayLocation">{item.city}</div>
-            <span>DAY {item.day}</span>
-            <h2>{item.title}</h2>
-            <p>{item.date}</p>
-          </div>
+        <div className="calendarHeaderFloating">
+          <span>
+            {index + 1} / {total}
+          </span>
         </div>
 
-        <div className="calendarContent">
-          <div className="calendarBigNumber">
-            <div className="calendarCityTag">{item.city}</div>
-            <span>DAY</span>
-            {item.day}
+        <a
+          className="detailedItineraryLink"
+          href="/Japan-Detailed-Itinerary-2026.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="desktopPdfText">View detailed itinerary</span>
+          <span className="mobilePdfText">PDF</span>
+        </a>
+
+        <div className="calendarFullContent">
+          <div className="calendarNumberBlock">
+            <DesktopTripCalendar item={item} />
           </div>
 
-          <div className="calendarCopy">
+          <div
+            ref={calendarCopyRef}
+            className={`calendarCopy ${
+              mobileExpanded ? "mobileDetailsOpen" : ""
+            }`}
+          >
+            <div className="mobileDayKicker">
+              Day {item.day} <span>·</span> {item.city}
+            </div>
+
             <h3>{item.title}</h3>
+
             <p>{item.mood}</p>
 
-            <div className="highlightList">
+            <button className="mobileSeeMoreButton" onClick={handleSeeMore}>
+              {mobileExpanded ? "HIDE DETAILS" : "SEE MORE"}
+            </button>
+
+            <div
+              className={[
+                "highlightList",
+                mobileExpanded ? "mobileExpanded" : "",
+              ].join(" ")}
+            >
               {item.highlights.map((highlight) => {
                 const info = placeInfo[highlight];
+                const isMajor = info?.type === "major";
 
                 return (
                   <button
                     key={highlight}
-                    className={
-                      info ? "highlightButton clickable" : "highlightButton"
-                    }
+                    className={[
+                      "highlightButton",
+                      info ? "clickable" : "",
+                      isMajor ? "majorHighlightButton" : "minorHighlightButton",
+                    ].join(" ")}
                     onClick={() => info && setSelectedPlace(info)}
                   >
                     <strong>{highlight}</strong>
-                    {info && (
-                      <span>
-                        {info.type === "major"
-                          ? "View photos & details"
-                          : "Quick info"}
-                      </span>
-                    )}
+                    <span>
+                      {isMajor
+                        ? "Main event · Open story"
+                        : "Travel note · Tap to view"}
+                    </span>
                   </button>
                 );
               })}
@@ -959,9 +1669,17 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
 }
 
 function PlaceBubble({ place, onClose }) {
+  const [showItinerary, setShowItinerary] = useState(false);
+
+  useEffect(() => {
+    setShowItinerary(false);
+  }, [place]);
+
   if (!place) return null;
 
   const isMajor = place.type === "major";
+  const hasSuggestedItinerary =
+    isMajor && place.suggestedItinerary && place.suggestedItinerary.length > 0;
 
   return (
     <AnimatePresence>
@@ -984,7 +1702,7 @@ function PlaceBubble({ place, onClose }) {
             ×
           </button>
 
-          {isMajor && (
+          {isMajor && place.images?.length > 0 && (
             <div className="bubbleImages">
               {place.images.map((img) => (
                 <img key={img} src={img} alt={place.title} />
@@ -994,31 +1712,72 @@ function PlaceBubble({ place, onClose }) {
 
           <div className="bubbleContent">
             <p className="smallLabel">
-              {isMajor ? "Major Highlight" : "Quick Stop"}
+              {isMajor ? "Major Highlight" : "Travel Note"}
             </p>
+
             <h2>{place.title}</h2>
             <p>{place.desc}</p>
 
-            <div className="placeMetaGrid">
-              <div>
-                <span>Operating Hours</span>
-                <strong>{place.hours}</strong>
+            {!isMajor && place.details?.length > 0 && (
+              <div className="minorInfoList">
+                {place.details.map((detail, index) => (
+                  <div className="minorInfoItem" key={index}>
+                    <strong>{detail.title}</strong>
+                    <p>{detail.text}</p>
+                  </div>
+                ))}
               </div>
+            )}
 
-              <div>
-                <span>Budget</span>
-                <strong>{place.budget}</strong>
-              </div>
+            {isMajor && (
+              <>
+                <div className="placeMetaGrid">
+                  <div>
+                    <span>Best Timing</span>
+                    <strong>{place.hours}</strong>
+                  </div>
 
-              <div>
-                <span>Address</span>
-                <strong>{place.address}</strong>
-              </div>
+                  <div>
+                    <span>Budget</span>
+                    <strong>{place.budget}</strong>
+                  </div>
 
-              <a href={place.map} target="_blank" rel="noreferrer">
-                Open in Google Maps
-              </a>
-            </div>
+                  <div>
+                    <span>Area</span>
+                    <strong>{place.address}</strong>
+                  </div>
+
+                  <a href={place.map} target="_blank" rel="noreferrer">
+                    Open in Google Maps
+                  </a>
+                </div>
+
+                {hasSuggestedItinerary && (
+                  <button
+                    className="suggestedItineraryButton"
+                    onClick={() => setShowItinerary((prev) => !prev)}
+                  >
+                    {showItinerary
+                      ? "Hide Suggested Itinerary"
+                      : "Show Suggested Itinerary"}
+                  </button>
+                )}
+
+                {showItinerary && (
+                  <div className="suggestedItineraryPanel">
+                    {place.suggestedItinerary.map((step, index) => (
+                      <div className="suggestedStep" key={index}>
+                        <span>{String(index + 1).padStart(2, "0")}</span>
+                        <div>
+                          <strong>{step.title}</strong>
+                          <p>{step.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </motion.div>
       </motion.div>
@@ -1737,7 +2496,7 @@ const initialExpenses = [
   { name: "Transport to KIX", yen: null, myr: 30, fixed: false },
   { name: "Food", yen: null, myr: 1140, fixed: false },
   { name: "Sightseeing admission fees", yen: null, myr: 130, fixed: false },
-  { name: "City accommodation tax", yen: null, myr: 30, fixed: false },
+  { name: "City accommodation tax", yen: 1400, myr: null, fixed: false },
   { name: "Taxi and Uber", yen: null, myr: 100, fixed: false },
 ];
 

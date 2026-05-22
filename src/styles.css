@@ -2269,3 +2269,2895 @@ button { -webkit-tap-highlight-color: transparent; }
     height: 190px !important;
   }
 }
+
+.majorHighlightButton {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #7f1d1d, #b91c1c) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  box-shadow: 0 18px 38px rgba(127,29,29,0.28) !important;
+}
+
+.majorHighlightButton span {
+  color: rgba(255,255,255,0.82) !important;
+}
+
+.majorHighlightButton:hover {
+  background: linear-gradient(135deg, #991b1b, #dc2626) !important;
+  transform: translateY(-4px) !important;
+}
+
+.minorHighlightButton {
+  background: rgba(255,255,255,0.92);
+}
+
+.minorInfoList {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.minorInfoItem {
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+
+.minorInfoItem strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.minorInfoItem p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.suggestedItineraryButton {
+  margin-top: 22px;
+  width: 100%;
+  border: 0;
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: var(--ink);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.suggestedItineraryPanel {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.suggestedStep {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.72);
+}
+
+.suggestedStep > span {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fee2e2;
+  color: var(--red);
+  font-weight: 900;
+}
+
+.suggestedStep strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.suggestedStep p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.placeBubble {
+  max-height: calc(100svh - 56px);
+  overflow-y: auto;
+}
+
+.majorBubble {
+  width: min(920px, 100%);
+}
+
+.bubbleImages {
+  height: 260px;
+}
+
+.bubbleImages img {
+  height: 260px;
+}
+
+.calendarSheetFull {
+  min-height: 100svh;
+}
+
+.calendarCover {
+  min-height: 42svh;
+  padding: 76px 42px 36px;
+}
+
+.calendarContent {
+  min-height: 58svh;
+  padding: clamp(28px, 4vw, 48px);
+}
+
+.majorHighlightButton {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #7f1d1d, #b91c1c) !important;
+  color: white !important;
+}
+
+.majorHighlightButton span {
+  color: rgba(255,255,255,0.82) !important;
+}
+
+.suggestedItineraryPanel {
+  max-height: 52svh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.placeBubble {
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bubbleContent {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.majorBubble .bubbleContent {
+  max-height: calc(88vh - 300px);
+}
+
+.minorBubble .bubbleContent {
+  max-height: 82vh;
+}
+
+.calendarSheetFull {
+  min-height: 100svh;
+}
+
+.calendarCover {
+  min-height: 42svh;
+  padding: 76px 42px 36px;
+}
+
+.calendarContent {
+  min-height: 58svh;
+  padding: clamp(26px, 4vw, 46px);
+  align-items: center;
+}
+
+.majorHighlightButton {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #7f1d1d, #b91c1c) !important;
+  color: white !important;
+  box-shadow: 0 18px 38px rgba(127,29,29,0.28) !important;
+}
+
+.majorHighlightButton span {
+  color: rgba(255,255,255,0.82) !important;
+}
+
+.minorInfoList,
+.suggestedItineraryPanel {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.minorInfoItem,
+.suggestedStep {
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--soft);
+}
+
+.suggestedStep {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+}
+
+.suggestedStep > span {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #fee2e2;
+  color: var(--red);
+  font-weight: 900;
+}
+
+.suggestedItineraryButton {
+  margin-top: 22px;
+  width: 100%;
+  border: 0;
+  border-radius: 20px;
+  padding: 16px 18px;
+  background: var(--ink);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* ITINERARY SINGLE-SCREEN CINEMATIC FIX */
+
+.tearScene,
+.calendarSheetFull {
+  min-height: 100svh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.calendarCover {
+  height: 56svh;
+  min-height: 56svh;
+  padding: 88px 42px 44px;
+}
+
+.calendarCoverOverlay {
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.78)),
+    linear-gradient(to right, rgba(0,0,0,0.72), transparent 65%);
+}
+
+.calendarCoverText {
+  margin-top: 62px;
+  padding: 24px 28px;
+  width: fit-content;
+  max-width: 820px;
+  border-radius: 32px;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.24);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.38);
+}
+
+.calendarCoverText h2 {
+  color: white;
+  text-shadow:
+    0 4px 12px rgba(0,0,0,0.95),
+    0 22px 60px rgba(0,0,0,0.75);
+}
+
+.calendarCoverText p {
+  color: rgba(255,255,255,0.88);
+}
+
+.dayLocation {
+  background: rgba(185,28,28,0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.calendarContent {
+  height: 44svh;
+  min-height: 44svh;
+  padding: 28px 42px;
+  grid-template-columns: 0.48fr 1.52fr;
+  gap: 38px;
+  align-items: center;
+}
+
+.calendarBigNumber {
+  font-size: clamp(92px, 13vw, 170px);
+}
+
+.calendarBigNumber > span {
+  margin-bottom: 10px;
+}
+
+.calendarCopy h3 {
+  font-size: clamp(34px, 4.2vw, 58px);
+}
+
+.calendarCopy p {
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* Highlight buttons */
+.highlightList {
+  margin-top: 20px;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.highlightButton {
+  min-height: 82px;
+  border-radius: 24px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    0 18px 38px rgba(0,0,0,0.08);
+}
+
+.highlightButton strong {
+  font-size: 15px;
+}
+
+.highlightButton span {
+  font-size: 12px;
+  opacity: 0.78;
+}
+
+.majorHighlightButton {
+  grid-column: span 1;
+  min-height: 176px;
+  background:
+    linear-gradient(145deg, rgba(185,28,28,0.92), rgba(127,29,29,0.96)) !important;
+  color: white !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    0 28px 70px rgba(127,29,29,0.34) !important;
+}
+
+.majorHighlightButton strong {
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+.majorHighlightButton span {
+  color: rgba(255,255,255,0.82) !important;
+}
+
+/* Mobile */
+@media (max-width: 850px) {
+  .tearScene,
+  .calendarSheetFull {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  .calendarCover {
+    height: 48svh;
+    min-height: 48svh;
+    padding: 82px 18px 28px;
+  }
+
+  .calendarCoverText {
+    margin-top: 52px;
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .calendarCoverText h2 {
+    font-size: clamp(38px, 11vw, 58px);
+  }
+
+  .calendarContent {
+    height: auto;
+    min-height: 52svh;
+    padding: 24px 18px 30px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .calendarBigNumber {
+    display: none;
+  }
+
+  .highlightList {
+    grid-template-columns: 1fr;
+  }
+
+  .majorHighlightButton {
+    min-height: 118px;
+  }
+}
+
+/* FULLSCREEN ITINERARY DAY PAGE */
+
+.tearScene,
+.calendarSheetFull {
+  position: relative;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #111;
+}
+
+.calendarSheetFull .dayCoverSlideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.calendarSheetFull .dayCoverSlide {
+  background-size: cover;
+  background-position: center;
+}
+
+.calendarFullOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.12) 36%, rgba(0,0,0,0.78) 78%, rgba(0,0,0,0.92)),
+    linear-gradient(to right, rgba(0,0,0,0.52), transparent 55%);
+}
+
+.calendarFullContent {
+  position: relative;
+  z-index: 3;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: end;
+  padding: 0 clamp(28px, 5vw, 70px) clamp(34px, 5vw, 62px);
+}
+
+.calendarNumberBlock {
+  color: white;
+  padding-bottom: 8px;
+}
+
+.calendarCityTag {
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fecaca;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+
+.calendarBigNumber {
+  color: white;
+  font-size: clamp(120px, 16vw, 230px);
+  font-weight: 950;
+  letter-spacing: -0.1em;
+  line-height: 0.78;
+  text-shadow: 0 18px 55px rgba(0,0,0,0.75);
+}
+
+.calendarBigNumber > span {
+  display: block;
+  margin-bottom: 18px;
+  font-size: clamp(18px, 2vw, 28px);
+  letter-spacing: 0.4em;
+  color: #fecaca;
+}
+
+.calendarCopy {
+  color: white;
+  padding: 28px;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.32),
+    0 30px 90px rgba(0,0,0,0.38);
+}
+
+.calendarCopy h3 {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  color: white;
+  white-space: normal;
+  text-shadow: 0 12px 36px rgba(0,0,0,0.6);
+}
+
+.calendarCopy p {
+  margin: 16px 0 0;
+  max-width: 760px;
+  font-size: clamp(15px, 1.5vw, 19px);
+  line-height: 1.55;
+  color: rgba(255,255,255,0.84);
+}
+
+/* LIQUID GLASS BUTTONS */
+
+.highlightList {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.highlightButton {
+  min-height: 88px;
+  border-radius: 24px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  color: white;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 16px 38px rgba(0,0,0,0.26);
+  transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+}
+
+.highlightButton:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    0 24px 52px rgba(0,0,0,0.36);
+}
+
+.highlightButton strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.25;
+  color: white;
+  text-shadow: 0 8px 22px rgba(0,0,0,0.55);
+}
+
+.highlightButton span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.76);
+}
+
+.majorHighlightButton {
+  background:
+    linear-gradient(145deg, rgba(185,28,28,0.68), rgba(127,29,29,0.56)),
+    rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255,255,255,0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    0 22px 56px rgba(127,29,29,0.38) !important;
+}
+
+.majorHighlightButton strong {
+  font-size: 18px;
+}
+
+/* hide old split layout pieces if still present */
+.calendarCover,
+.calendarContent {
+  display: contents;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+  .calendarFullContent {
+    grid-template-columns: 1fr;
+    align-items: end;
+    gap: 18px;
+    padding: 0 18px 28px;
+  }
+
+  .calendarNumberBlock {
+    display: none;
+  }
+
+  .calendarCopy {
+    padding: 20px;
+    border-radius: 28px;
+  }
+
+  .calendarCopy h3 {
+    font-size: clamp(34px, 10vw, 54px);
+  }
+
+  .highlightList {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .highlightButton {
+    min-height: 76px;
+  }
+}
+
+.calendarFullContent {
+  position: relative;
+  z-index: 3;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: end;
+  padding: 0 clamp(32px, 5vw, 70px) clamp(42px, 5vw, 68px);
+}
+
+.calendarNumberBlock {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 8px;
+}
+
+.calendarDateBadge {
+  position: relative;
+  width: 190px;
+  min-height: 230px;
+  padding: 38px 22px 24px;
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,244,232,0.86));
+  border: 1px solid rgba(255,255,255,0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 26px 70px rgba(0,0,0,0.34);
+  text-align: center;
+  color: var(--ink);
+}
+
+.calendarDateBadge::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 48px;
+  border-radius: 34px 34px 22px 22px;
+  background: linear-gradient(135deg, #ef4444, #fb923c);
+}
+
+.calendarBadgeRings {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 52px;
+  z-index: 3;
+}
+
+.calendarBadgeRings span {
+  width: 18px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e5e7eb, #9ca3af);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.9);
+}
+
+.calendarBadgeCity {
+  position: relative;
+  z-index: 2;
+  margin-top: 4px;
+  color: white;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.28);
+}
+
+.calendarBadgeDay {
+  margin-top: 44px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: 0.32em;
+}
+
+.calendarBadgeNumber {
+  margin-top: 4px;
+  font-size: 86px;
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  color: var(--ink);
+}
+
+/* right-side glass panel alignment */
+.calendarCopy {
+  align-self: end;
+  color: white;
+  padding: 28px;
+  border-radius: 34px;
+  background: rgba(22, 18, 16, 0.46);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.24),
+    0 30px 90px rgba(0,0,0,0.42);
+}
+
+/* readable liquid-glass buttons */
+.highlightButton {
+  min-height: 88px;
+  border-radius: 24px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.86), rgba(255,255,255,0.64));
+  backdrop-filter: blur(20px) saturate(175%);
+  -webkit-backdrop-filter: blur(20px) saturate(175%);
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.88),
+    0 18px 42px rgba(0,0,0,0.18);
+}
+
+.highlightButton strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #1c1917;
+  text-shadow: none;
+}
+
+.highlightButton span {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 750;
+  color: #57534e;
+}
+
+.highlightButton:hover {
+  transform: translateY(-4px);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.74));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 26px 58px rgba(0,0,0,0.28);
+}
+
+.majorHighlightButton {
+  color: white;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent 38%),
+    linear-gradient(145deg, rgba(185,28,28,0.92), rgba(127,29,29,0.88)) !important;
+  border: 1px solid rgba(255,255,255,0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.38),
+    0 24px 60px rgba(127,29,29,0.42) !important;
+}
+
+.majorHighlightButton strong {
+  color: white;
+  font-size: 18px;
+  text-shadow: 0 8px 22px rgba(0,0,0,0.32);
+}
+
+.majorHighlightButton span {
+  color: rgba(255,255,255,0.82);
+}
+
+/* mobile */
+@media (max-width: 850px) {
+  .calendarFullContent {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 18px 28px;
+  }
+
+  .calendarNumberBlock {
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
+
+  .calendarDateBadge {
+    width: 118px;
+    min-height: 132px;
+    padding: 26px 14px 14px;
+    border-radius: 24px;
+  }
+
+  .calendarDateBadge::before {
+    height: 36px;
+    border-radius: 24px 24px 16px 16px;
+  }
+
+  .calendarBadgeRings {
+    top: -9px;
+    gap: 30px;
+  }
+
+  .calendarBadgeRings span {
+    width: 12px;
+    height: 30px;
+  }
+
+  .calendarBadgeCity {
+    font-size: 8px;
+  }
+
+  .calendarBadgeDay {
+    margin-top: 26px;
+    font-size: 9px;
+  }
+
+  .calendarBadgeNumber {
+    font-size: 48px;
+  }
+
+  .calendarCopy {
+    padding: 20px;
+    border-radius: 28px;
+  }
+}
+
+/* FINAL ITINERARY SNAP + CALENDAR BADGE FIX */
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.calendarPage,
+.calendarStack {
+  background: #111 !important;
+}
+
+.tearScene {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden !important;
+}
+
+.calendarSheetFull {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.calendarSheetFull .dayCoverSlideshow,
+.calendarSheetFull .dayCoverSlide {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.calendarSheetFull .dayCoverSlide {
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.calendarFullContent {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  padding-bottom: clamp(36px, 5vh, 64px) !important;
+}
+
+/* calendar badge text alignment */
+.calendarDateBadge {
+  padding: 58px 22px 24px !important;
+  overflow: visible !important;
+}
+
+.calendarDateBadge::before {
+  height: 52px !important;
+}
+
+.calendarBadgeCity {
+  position: relative !important;
+  z-index: 3 !important;
+  margin-top: 0 !important;
+  color: #1c1917 !important;
+  text-shadow: none !important;
+}
+
+.calendarBadgeDay {
+  margin-top: 28px !important;
+}
+
+/* =========================================================
+   MOBILE ITINERARY STORY-CARD MODE
+   ========================================================= */
+
+.mobileSeeMoreButton {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  .calendarPage,
+  .calendarStack {
+    background: #000 !important;
+  }
+
+  .tearScene,
+  .calendarSheetFull {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: #000 !important;
+  }
+
+  .calendarSheetFull .dayCoverSlideshow,
+  .calendarSheetFull .dayCoverSlide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .calendarSheetFull .dayCoverSlide {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .calendarFullOverlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.18) 34%,
+        rgba(0, 0, 0, 0.72) 68%,
+        rgba(0, 0, 0, 0.96) 100%
+      ) !important;
+  }
+
+  .calendarFullContent {
+    position: relative !important;
+    z-index: 3 !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: 0 22px 34px !important;
+    gap: 18px !important;
+  }
+
+  .calendarNumberBlock {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .calendarDateBadge {
+    width: 92px !important;
+    min-height: 96px !important;
+    padding: 28px 10px 12px !important;
+    border-radius: 22px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.9),
+      0 18px 45px rgba(0,0,0,0.45) !important;
+  }
+
+  .calendarDateBadge::before {
+    height: 30px !important;
+    border-radius: 22px 22px 14px 14px !important;
+    background: linear-gradient(135deg, #ef4444, #fb923c) !important;
+  }
+
+  .calendarBadgeRings {
+    top: -8px !important;
+    gap: 26px !important;
+  }
+
+  .calendarBadgeRings span {
+    width: 10px !important;
+    height: 28px !important;
+  }
+
+  .calendarBadgeCity {
+    display: none !important;
+  }
+
+  .calendarBadgeDay {
+    margin-top: 10px !important;
+    font-size: 8px !important;
+    letter-spacing: 0.25em !important;
+    color: var(--red) !important;
+  }
+
+  .calendarBadgeNumber {
+    margin-top: 2px !important;
+    font-size: 38px !important;
+    letter-spacing: -0.06em !important;
+    color: var(--ink) !important;
+  }
+
+  .calendarCopy {
+    width: 100% !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    color: white !important;
+  }
+
+  .calendarCopy h3 {
+    margin: 0 !important;
+    max-width: 92% !important;
+    font-size: clamp(30px, 10vw, 48px) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.055em !important;
+    color: white !important;
+    text-shadow:
+      0 4px 14px rgba(0,0,0,0.9),
+      0 18px 50px rgba(0,0,0,0.75) !important;
+  }
+
+  .calendarCopy p {
+    margin: 14px 0 0 !important;
+    max-width: 92% !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    color: rgba(255,255,255,0.82) !important;
+    text-shadow: 0 8px 28px rgba(0,0,0,0.72) !important;
+  }
+
+  .mobileSeeMoreButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 22px !important;
+    width: 132px !important;
+    height: 42px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: #35e0df !important;
+    color: #041313 !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    cursor: pointer !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.45),
+      0 16px 34px rgba(0,0,0,0.35) !important;
+  }
+
+  .highlightList {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 16px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+    transition:
+      max-height 0.5s ease,
+      opacity 0.35s ease,
+      transform 0.35s ease !important;
+  }
+
+  .highlightList.mobileExpanded {
+    max-height: 46vh !important;
+    overflow-y: auto !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    padding-right: 4px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .highlightList.mobileExpanded::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .highlightList.mobileExpanded::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.36);
+    border-radius: 999px;
+  }
+
+  .highlightButton {
+    min-height: 72px !important;
+    padding: 15px 16px !important;
+    border-radius: 18px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72)) !important;
+    border: 1px solid rgba(255,255,255,0.75) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.85),
+      0 14px 28px rgba(0,0,0,0.24) !important;
+  }
+
+  .highlightButton strong {
+    font-size: 14px !important;
+    color: #1c1917 !important;
+    text-shadow: none !important;
+  }
+
+  .highlightButton span {
+    margin-top: 6px !important;
+    font-size: 11px !important;
+    font-weight: 750 !important;
+    color: #57534e !important;
+  }
+
+  .majorHighlightButton {
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.3), transparent 40%),
+      linear-gradient(145deg, rgba(185,28,28,0.96), rgba(127,29,29,0.92)) !important;
+    border: 1px solid rgba(255,255,255,0.34) !important;
+  }
+
+  .majorHighlightButton strong {
+    color: white !important;
+    font-size: 15px !important;
+    text-shadow: 0 8px 22px rgba(0,0,0,0.32) !important;
+  }
+
+  .majorHighlightButton span {
+    color: rgba(255,255,255,0.82) !important;
+  }
+}
+
+/* =========================================================
+   FINAL MOBILE ITINERARY STORY MODE
+   Keeps desktop unchanged, improves mobile only
+   ========================================================= */
+
+.mobileDayKicker {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .calendarPage,
+  .calendarStack {
+    background: #000 !important;
+  }
+
+  .tearScene,
+  .calendarSheetFull {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    background: #000 !important;
+  }
+
+  .calendarSheetFull .dayCoverSlideshow,
+  .calendarSheetFull .dayCoverSlide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .calendarSheetFull .dayCoverSlide {
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .calendarFullOverlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.04) 0%,
+        rgba(0, 0, 0, 0.10) 28%,
+        rgba(0, 0, 0, 0.58) 58%,
+        rgba(0, 0, 0, 0.92) 84%,
+        rgba(0, 0, 0, 0.98) 100%
+      ) !important;
+  }
+
+  .calendarFullContent {
+    position: relative !important;
+    z-index: 3 !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: 0 26px max(38px, env(safe-area-inset-bottom)) !important;
+    gap: 0 !important;
+  }
+
+  /* Hide desktop calendar icon on mobile */
+  .calendarNumberBlock {
+    display: none !important;
+  }
+
+  .calendarCopy {
+    width: 100% !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    color: white !important;
+  }
+
+  .mobileDayKicker {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    margin-bottom: 14px !important;
+    padding: 9px 14px !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,0.14) !important;
+    backdrop-filter: blur(18px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+    border: 1px solid rgba(255,255,255,0.24) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.28),
+      0 16px 38px rgba(0,0,0,0.36) !important;
+    color: rgba(255,255,255,0.92) !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.55) !important;
+  }
+
+  .mobileDayKicker span {
+    margin: 0 8px !important;
+    opacity: 0.55 !important;
+  }
+
+  .calendarCopy h3 {
+    margin: 0 !important;
+    max-width: 96% !important;
+    font-size: clamp(34px, 11vw, 56px) !important;
+    line-height: 0.95 !important;
+    letter-spacing: -0.065em !important;
+    color: white !important;
+    text-shadow:
+      0 4px 14px rgba(0,0,0,0.95),
+      0 18px 50px rgba(0,0,0,0.78) !important;
+  }
+
+  .calendarCopy p {
+    margin: 16px 0 0 !important;
+    max-width: 94% !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    color: rgba(255,255,255,0.84) !important;
+    text-shadow:
+      0 4px 14px rgba(0,0,0,0.85),
+      0 14px 38px rgba(0,0,0,0.72) !important;
+  }
+
+  .mobileSeeMoreButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 24px !important;
+    min-width: 132px !important;
+    height: 44px !important;
+    padding: 0 22px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255,255,255,0.34) !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)) !important;
+    backdrop-filter: blur(22px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    cursor: pointer !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.36),
+      0 18px 42px rgba(0,0,0,0.42) !important;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.42) !important;
+  }
+
+  .mobileSeeMoreButton:hover {
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.32), rgba(255,255,255,0.12)) !important;
+  }
+
+  .highlightList {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(12px) !important;
+    transition:
+      max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease,
+      transform 0.35s ease !important;
+  }
+
+  .highlightList.mobileExpanded {
+    max-height: 42svh !important;
+    overflow-y: auto !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    padding: 2px 4px 4px 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .highlightList.mobileExpanded::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .highlightList.mobileExpanded::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.36);
+    border-radius: 999px;
+  }
+
+  .highlightButton {
+    min-height: 72px !important;
+    padding: 15px 16px !important;
+    border-radius: 20px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.90), rgba(255,255,255,0.68)) !important;
+    border: 1px solid rgba(255,255,255,0.76) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.88),
+      0 16px 32px rgba(0,0,0,0.28) !important;
+  }
+
+  .highlightButton strong {
+    font-size: 14px !important;
+    color: #1c1917 !important;
+    text-shadow: none !important;
+  }
+
+  .highlightButton span {
+    margin-top: 6px !important;
+    font-size: 11px !important;
+    font-weight: 750 !important;
+    color: #57534e !important;
+  }
+
+  .majorHighlightButton {
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.28), transparent 40%),
+      linear-gradient(145deg, rgba(185,28,28,0.94), rgba(127,29,29,0.92)) !important;
+    border: 1px solid rgba(255,255,255,0.34) !important;
+  }
+
+  .majorHighlightButton strong {
+    color: white !important;
+    font-size: 15px !important;
+    text-shadow: 0 8px 22px rgba(0,0,0,0.32) !important;
+  }
+
+  .majorHighlightButton span {
+    color: rgba(255,255,255,0.82) !important;
+  }
+}
+
+/* =========================================================
+   MOBILE ITINERARY REFINEMENT
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .calendarFullOverlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.02) 0%,
+        rgba(0, 0, 0, 0.08) 38%,
+        rgba(0, 0, 0, 0.42) 66%,
+        rgba(0, 0, 0, 0.82) 88%,
+        rgba(0, 0, 0, 0.94) 100%
+      ) !important;
+  }
+
+  .calendarFullContent {
+    justify-content: flex-end !important;
+    padding: 0 26px max(22px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .calendarCopy {
+    padding-bottom: 0 !important;
+  }
+
+  .mobileDayKicker {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: fit-content !important;
+    margin-bottom: 14px !important;
+    padding: 10px 16px !important;
+    border-radius: 999px !important;
+    background:
+      linear-gradient(145deg, rgba(124, 82, 58, 0.55), rgba(70, 44, 34, 0.42)) !important;
+    backdrop-filter: blur(18px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+    border: 1px solid rgba(255,255,255,0.24) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.20),
+      0 14px 32px rgba(0,0,0,0.34) !important;
+    color: rgba(255,255,255,0.96) !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.45) !important;
+  }
+
+  .mobileDayKicker span {
+    margin: 0 8px !important;
+    opacity: 0.55 !important;
+  }
+
+  .calendarCopy h3 {
+    display: block !important;
+    margin: 0 0 12px 0 !important;
+    max-width: 96% !important;
+    font-size: clamp(34px, 11vw, 54px) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.065em !important;
+    color: white !important;
+    text-shadow:
+      0 4px 14px rgba(0,0,0,0.95),
+      0 18px 50px rgba(0,0,0,0.78) !important;
+  }
+
+  .calendarCopy p {
+    margin: 0 !important;
+    max-width: 94% !important;
+    font-size: 15px !important;
+    line-height: 1.62 !important;
+    color: rgba(255,255,255,0.84) !important;
+    text-shadow:
+      0 4px 14px rgba(0,0,0,0.85),
+      0 14px 38px rgba(0,0,0,0.72) !important;
+  }
+
+  .mobileSeeMoreButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 22px !important;
+    min-width: 138px !important;
+    height: 46px !important;
+    padding: 0 22px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255,255,255,0.26) !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06)) !important;
+    backdrop-filter: blur(22px) saturate(175%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(175%) !important;
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.32),
+      0 16px 36px rgba(0,0,0,0.34) !important;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+  }
+
+  .mobileSeeMoreButton:hover {
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.10)) !important;
+  }
+
+  /* IMPORTANT: remove the hidden gap under SEE MORE when collapsed */
+  .highlightList {
+    margin-top: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(12px) !important;
+    transition:
+      max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease,
+      transform 0.35s ease !important;
+  }
+
+  .highlightList.mobileExpanded {
+    margin-top: 18px !important;
+    max-height: 42svh !important;
+    overflow-y: auto !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    padding: 2px 4px 4px 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* =========================================================
+   MOBILE ITINERARY EXPANDED STATE REFINEMENT
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .calendarFullContent {
+    padding: 0 26px max(18px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen {
+    max-height: calc(100svh - 118px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .mobileDayKicker {
+    margin-bottom: 10px !important;
+    padding: 7px 12px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+    opacity: 0.88 !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen h3 {
+    max-width: 96% !important;
+    font-size: clamp(24px, 7.4vw, 34px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.055em !important;
+    margin-bottom: 0 !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen p {
+    display: none !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .mobileSeeMoreButton {
+    margin-top: 14px !important;
+    height: 38px !important;
+    min-width: 128px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .highlightList.mobileExpanded {
+    margin-top: 14px !important;
+    max-height: 48svh !important;
+    padding-right: 4px !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .highlightButton {
+    min-height: 64px !important;
+    padding: 13px 15px !important;
+    border-radius: 18px !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .highlightButton strong {
+    font-size: 13px !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .highlightButton span {
+    font-size: 10px !important;
+    margin-top: 5px !important;
+  }
+
+  /* Keep top floating menu away from expanded itinerary content visually */
+  .floatingMenuWrap {
+    top: max(14px, env(safe-area-inset-top)) !important;
+  }
+}
+
+/* =========================================================
+   MOBILE ITINERARY SMOOTH EXPAND / COLLAPSE ANIMATION
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .calendarCopy,
+  .calendarCopy h3,
+  .calendarCopy p,
+  .mobileDayKicker,
+  .mobileSeeMoreButton,
+  .highlightList,
+  .highlightButton {
+    transition:
+      opacity 0.35s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      margin 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      font-size 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      line-height 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  /* normal description state */
+  .calendarCopy p {
+    display: block !important;
+    max-height: 120px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    overflow: hidden !important;
+  }
+
+  /* expanded mode: fade + collapse description smoothly */
+  .calendarCopy.mobileDetailsOpen p {
+    display: block !important;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    transform: translateY(-8px) !important;
+    pointer-events: none !important;
+  }
+
+  /* smooth shrink for Day 1 · Kyoto pill */
+  .calendarCopy.mobileDetailsOpen .mobileDayKicker {
+    transform: scale(0.92) translateY(2px) !important;
+    transform-origin: left center !important;
+    opacity: 0.88 !important;
+  }
+
+  /* smooth shrink for title */
+  .calendarCopy h3 {
+    transform-origin: left bottom !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen h3 {
+    transform: translateY(2px) !important;
+  }
+
+  /* make SEE MORE / HIDE DETAILS move naturally */
+  .mobileSeeMoreButton {
+    transform: translateY(0) !important;
+  }
+
+  .calendarCopy.mobileDetailsOpen .mobileSeeMoreButton {
+    transform: translateY(2px) scale(0.96) !important;
+  }
+
+  /* smoother list reveal */
+  .highlightList {
+    will-change: max-height, opacity, transform !important;
+  }
+
+  .highlightList.mobileExpanded {
+    animation: mobileListFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .highlightList.mobileExpanded .highlightButton {
+    animation: mobileBubbleIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .highlightList.mobileExpanded .highlightButton:nth-child(1) {
+    animation-delay: 0.04s;
+  }
+
+  .highlightList.mobileExpanded .highlightButton:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .highlightList.mobileExpanded .highlightButton:nth-child(3) {
+    animation-delay: 0.12s;
+  }
+
+  .highlightList.mobileExpanded .highlightButton:nth-child(4) {
+    animation-delay: 0.16s;
+  }
+
+  @keyframes mobileListFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobileBubbleIn {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+}
+
+/* =========================================================
+   MOBILE ITINERARY VIEWPORT + SNAP STABILITY FIX
+   ========================================================= */
+
+@media (max-width: 850px) {
+  html {
+    scroll-snap-type: none !important;
+  }
+
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  .calendarPage {
+    height: calc(var(--real-vh, 1vh) * 100) !important;
+    min-height: calc(var(--real-vh, 1vh) * 100) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scroll-snap-type: y mandatory !important;
+    scroll-behavior: smooth !important;
+    background: #000 !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .calendarStack {
+    height: auto !important;
+    background: #000 !important;
+  }
+
+  .tearScene,
+  .calendarSheetFull {
+    height: calc(var(--real-vh, 1vh) * 100) !important;
+    min-height: calc(var(--real-vh, 1vh) * 100) !important;
+    max-height: calc(var(--real-vh, 1vh) * 100) !important;
+    overflow: hidden !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+    background: #000 !important;
+  }
+
+  .calendarFullContent {
+    height: calc(var(--real-vh, 1vh) * 100) !important;
+    min-height: calc(var(--real-vh, 1vh) * 100) !important;
+    max-height: calc(var(--real-vh, 1vh) * 100) !important;
+    padding: 0 26px max(18px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .calendarSheetFull .dayCoverSlideshow,
+  .calendarSheetFull .dayCoverSlide {
+    height: calc(var(--real-vh, 1vh) * 100) !important;
+    min-height: calc(var(--real-vh, 1vh) * 100) !important;
+  }
+
+  .calendarFullOverlay {
+    height: calc(var(--real-vh, 1vh) * 100) !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP ITINERARY CALENDAR PANEL
+   ========================================================= */
+
+@media (min-width: 851px) {
+  .calendarFullContent {
+    grid-template-columns: 420px minmax(0, 1fr) !important;
+    gap: clamp(34px, 4vw, 64px) !important;
+    align-items: end !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    padding-bottom: 8px !important;
+  }
+
+  .desktopTripCalendar {
+    width: 360px;
+    overflow: hidden;
+    border-radius: 34px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,250,245,0.74));
+    backdrop-filter: blur(22px) saturate(155%);
+    -webkit-backdrop-filter: blur(22px) saturate(155%);
+    border: 1px solid rgba(255,255,255,0.78);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.86),
+      0 28px 80px rgba(0,0,0,0.34);
+    color: #1c1917;
+  }
+
+  .desktopCalendarTop {
+    padding: 18px 22px;
+    background: linear-gradient(135deg, rgba(248,113,113,0.82), rgba(251,146,60,0.78));
+    border-bottom: 1px solid rgba(28,25,23,0.08);
+  }
+
+  .desktopCalendarTop h4 {
+    margin: 0;
+    text-align: center;
+    font-size: 26px;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    font-weight: 950;
+    color: #111827;
+  }
+
+  .desktopCalendarCurrent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 22px 22px 20px;
+    border-bottom: 1px solid rgba(28,25,23,0.10);
+  }
+
+  .desktopCalendarCurrent > span {
+    min-width: 0;
+    flex: 1;
+    font-size: clamp(18px, 1.5vw, 24px);
+    line-height: 1.05;
+    font-weight: 950;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .desktopCalendarArrows {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .desktopCalendarArrows button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 800;
+    box-shadow: 0 12px 26px rgba(249,115,22,0.24);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .desktopCalendarArrows button:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  .desktopCalendarArrows button:disabled {
+    opacity: 0.28;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .desktopCalendarWeekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 20px 22px 8px;
+    gap: 4px;
+  }
+
+  .desktopCalendarWeekdays span {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 950;
+    color: #292524;
+  }
+
+  .desktopCalendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    padding: 6px 22px 24px;
+  }
+
+  .desktopCalendarDate {
+    aspect-ratio: 1 / 1;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: rgba(28,25,23,0.72);
+    font-size: 15px;
+    font-weight: 750;
+    cursor: default;
+  }
+
+  .desktopCalendarDate.tripDate {
+    cursor: pointer;
+    color: #1c1917;
+    background: rgba(255,255,255,0.50);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .desktopCalendarDate.tripDate:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.82);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  }
+
+  .desktopCalendarDate.active {
+    background: linear-gradient(135deg, #fb923c, #f97316) !important;
+    color: white !important;
+    font-weight: 950;
+    box-shadow: 0 12px 26px rgba(249,115,22,0.32);
+  }
+
+  .desktopCalendarDate:disabled {
+    pointer-events: none;
+  }
+
+  /* make the main glass bubble less opaque and more premium */
+  .calendarCopy {
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 34%),
+      linear-gradient(145deg, rgba(20,16,14,0.34), rgba(20,16,14,0.18)) !important;
+    backdrop-filter: blur(26px) saturate(165%) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(165%) !important;
+    border: 1px solid rgba(255,255,255,0.20) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 32px 90px rgba(0,0,0,0.34) !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP ITINERARY CALENDAR FINAL POLISH
+   ========================================================= */
+
+@media (min-width: 851px) {
+  .calendarPage {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scroll-snap-type: y proximity !important;
+    scroll-behavior: smooth !important;
+    background: #000 !important;
+  }
+
+  .calendarStack {
+    background: #000 !important;
+  }
+
+  .tearScene {
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+  }
+
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 40px !important;
+    align-items: center !important;
+    padding: 0 52px 52px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding-bottom: 0 !important;
+  }
+
+  .desktopTripCalendar {
+    width: 360px;
+    overflow: hidden;
+    border-radius: 34px;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 34%),
+      linear-gradient(145deg, rgba(20,16,14,0.34), rgba(20,16,14,0.18));
+    backdrop-filter: blur(26px) saturate(165%);
+    -webkit-backdrop-filter: blur(26px) saturate(165%);
+    border: 1px solid rgba(255,255,255,0.20);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.20),
+      0 30px 90px rgba(0,0,0,0.34);
+    color: white;
+    transform: translateY(-8px);
+  }
+
+  .desktopCalendarTop {
+    padding: 18px 22px;
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.82), rgba(127,29,29,0.74));
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .desktopCalendarTop h4 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.10em;
+    font-weight: 950;
+    color: white;
+  }
+
+  .desktopCalendarCurrent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 20px 22px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .desktopCalendarCurrent > span {
+    min-width: 0;
+    flex: 1;
+    font-size: clamp(18px, 1.4vw, 22px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .desktopCalendarArrows {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .desktopCalendarArrows button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.96), rgba(127,29,29,0.92));
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 800;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 12px 26px rgba(127,29,29,0.34);
+    transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+  }
+
+  .desktopCalendarArrows button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+
+  .desktopCalendarArrows button:disabled {
+    opacity: 0.32;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .desktopCalendarWeekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 18px 22px 8px;
+    gap: 4px;
+  }
+
+  .desktopCalendarWeekdays span {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.88);
+  }
+
+  .desktopCalendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    padding: 6px 22px 22px;
+  }
+
+  .desktopCalendarDate {
+    aspect-ratio: 1 / 1;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: rgba(255,255,255,0.62);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: default;
+  }
+
+  .desktopCalendarDate.tripDate {
+    cursor: pointer;
+    color: white;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .desktopCalendarDate.tripDate:hover {
+    transform: translateY(-2px);
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.08));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.16),
+      0 10px 24px rgba(0,0,0,0.18);
+  }
+
+  .desktopCalendarDate.active {
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.96), rgba(127,29,29,0.92)) !important;
+    color: white !important;
+    font-weight: 950;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.20),
+      0 12px 26px rgba(127,29,29,0.34) !important;
+  }
+
+  .desktopCalendarDate:disabled {
+    pointer-events: none;
+  }
+
+  /* make the main bubble more premium / more transparent */
+  .calendarCopy {
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 30%),
+      linear-gradient(145deg, rgba(18,14,12,0.28), rgba(18,14,12,0.14)) !important;
+    backdrop-filter: blur(28px) saturate(170%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(170%) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.20),
+      0 32px 90px rgba(0,0,0,0.34) !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP CALENDAR ALIGNMENT + WHITE PANEL REFINEMENT
+   ========================================================= */
+
+@media (min-width: 851px) {
+  /* make left and right blocks align to the same top/bottom line */
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: stretch !important;
+    padding: 0 52px 52px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* right bubble should stretch too, so both match height */
+  .calendarCopy {
+    align-self: stretch !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  /* left mini calendar */
+  .desktopTripCalendar {
+    width: 340px;
+    height: 100% !important;
+    min-height: 100% !important;
+    align-self: stretch !important;
+    transform: none !important; /* IMPORTANT: remove the old upward shift */
+    display: grid !important;
+    grid-template-rows: auto auto auto 1fr !important;
+    overflow: hidden;
+    border-radius: 34px;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,255,255,0.84)) !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    border: 1px solid rgba(255,255,255,0.72) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.86),
+      0 28px 70px rgba(0,0,0,0.24) !important;
+    color: #1c1917 !important;
+  }
+
+  .desktopCalendarTop {
+    padding: 18px 22px !important;
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.94), rgba(127,29,29,0.90)) !important;
+    border-bottom: 1px solid rgba(28,25,23,0.08) !important;
+  }
+
+  .desktopCalendarTop h4 {
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.10em !important;
+    font-weight: 950 !important;
+    color: white !important;
+  }
+
+  .desktopCalendarCurrent {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 20px 22px 18px !important;
+    border-bottom: 1px solid rgba(28,25,23,0.10) !important;
+  }
+
+  .desktopCalendarCurrent > span {
+    min-width: 0 !important;
+    flex: 1 !important;
+    font-size: clamp(17px, 1.35vw, 22px) !important;
+    line-height: 1.05 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.03em !important;
+    color: #1c1917 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .desktopCalendarArrows {
+    display: flex !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .desktopCalendarArrows button {
+    width: 38px !important;
+    height: 38px !important;
+    border: 0 !important;
+    border-radius: 11px !important;
+    display: grid !important;
+    place-items: center !important;
+    cursor: pointer !important;
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.96), rgba(127,29,29,0.92)) !important;
+    color: white !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 12px 26px rgba(127,29,29,0.26) !important;
+    transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease !important;
+  }
+
+  .desktopCalendarArrows button:hover:not(:disabled) {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.04) !important;
+  }
+
+  .desktopCalendarArrows button:disabled {
+    opacity: 0.28 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+  }
+
+  .desktopCalendarWeekdays {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    padding: 18px 22px 8px !important;
+    gap: 4px !important;
+  }
+
+  .desktopCalendarWeekdays span {
+    text-align: center !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    color: #292524 !important;
+  }
+
+  .desktopCalendarGrid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 6px !important;
+    padding: 6px 22px 22px !important;
+    align-content: start !important;
+  }
+
+  .desktopCalendarDate {
+    aspect-ratio: 1 / 1 !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    color: rgba(28,25,23,0.72) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    cursor: default !important;
+  }
+
+  .desktopCalendarDate.tripDate {
+    cursor: pointer !important;
+    color: #1c1917 !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.76)) !important;
+    border: 1px solid rgba(0,0,0,0.04) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.92),
+      0 8px 18px rgba(0,0,0,0.06) !important;
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease !important;
+  }
+
+  .desktopCalendarDate.tripDate:hover {
+    transform: translateY(-2px) !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,1), rgba(255,255,255,0.86)) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.96),
+      0 10px 20px rgba(0,0,0,0.10) !important;
+  }
+
+  .desktopCalendarDate.active {
+    background:
+      linear-gradient(145deg, rgba(185,28,28,0.96), rgba(127,29,29,0.92)) !important;
+    color: white !important;
+    font-weight: 950 !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.20),
+      0 12px 26px rgba(127,29,29,0.26) !important;
+  }
+
+  .desktopCalendarDate:disabled {
+    pointer-events: none !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP MINI CALENDAR POSITION FIX ONLY
+   Restore compact calendar and move it down
+   ========================================================= */
+
+@media (min-width: 851px) {
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: center !important;
+    padding: 0 52px 52px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  .desktopTripCalendar {
+    width: 360px !important;
+    height: auto !important;
+    min-height: auto !important;
+    align-self: auto !important;
+    display: block !important;
+
+    /* adjust this number only */
+    transform: translateY(52px) !important;
+
+    overflow: hidden !important;
+    border-radius: 34px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,255,255,0.84)) !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    border: 1px solid rgba(255,255,255,0.72) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.86),
+      0 28px 70px rgba(0,0,0,0.24) !important;
+    color: #1c1917 !important;
+  }
+
+  .calendarCopy {
+    align-self: auto !important;
+    min-height: auto !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP ITINERARY — BOTTOM LAYOUT + MINI CALENDAR ALIGN
+   ========================================================= */
+
+@media (min-width: 851px) {
+  /* Keep the whole itinerary block near the bottom of the screen */
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: end !important;
+    padding: 0 52px 72px !important;
+  }
+
+  /* Left calendar column stays bottom aligned */
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  /* Restore compact mini calendar, only move it down slightly */
+  .desktopTripCalendar {
+    width: 360px !important;
+    height: auto !important;
+    min-height: auto !important;
+    align-self: auto !important;
+    display: block !important;
+    transform: translateY(0px) !important;
+
+    overflow: hidden !important;
+    border-radius: 34px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,255,255,0.84)) !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    border: 1px solid rgba(255,255,255,0.72) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.86),
+      0 28px 70px rgba(0,0,0,0.24) !important;
+    color: #1c1917 !important;
+  }
+
+  /* Right bubble stays natural height and bottom aligned */
+  .calendarCopy {
+    align-self: auto !important;
+    min-height: auto !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP MINI CALENDAR HEIGHT MATCH — CONTROLLED VERSION
+   ========================================================= */
+
+@media (min-width: 851px) {
+  /* Keep both blocks at bottom */
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: end !important;
+    padding: 0 52px 72px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  /* Main right bubble visual height */
+  .calendarCopy {
+    min-height: 360px !important;
+    height: 360px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-self: auto !important;
+  }
+
+  /* Mini calendar same height as main bubble */
+  .desktopTripCalendar {
+    width: 360px !important;
+    height: 360px !important;
+    min-height: 360px !important;
+    max-height: 360px !important;
+    transform: none !important;
+    align-self: auto !important;
+    display: grid !important;
+    grid-template-rows: auto auto auto 1fr !important;
+    overflow: hidden !important;
+  }
+
+  /* Compact the calendar internals so it fits cleanly */
+  .desktopCalendarTop {
+    padding: 14px 20px !important;
+  }
+
+  .desktopCalendarTop h4 {
+    font-size: 22px !important;
+  }
+
+  .desktopCalendarCurrent {
+    padding: 16px 20px 14px !important;
+  }
+
+  .desktopCalendarCurrent > span {
+    font-size: 19px !important;
+  }
+
+  .desktopCalendarArrows button {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 24px !important;
+  }
+
+  .desktopCalendarWeekdays {
+    padding: 14px 20px 6px !important;
+  }
+
+  .desktopCalendarWeekdays span {
+    font-size: 14px !important;
+  }
+
+  .desktopCalendarGrid {
+    padding: 4px 20px 18px !important;
+    gap: 4px !important;
+    align-content: start !important;
+  }
+
+  .desktopCalendarDate {
+    font-size: 14px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP FIX — RESTORE MAIN BUBBLE, RESIZE MINI CALENDAR ONLY
+   ========================================================= */
+
+@media (min-width: 851px) {
+  /* Keep the whole desktop itinerary layout bottom-aligned */
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: end !important;
+    padding: 0 52px 72px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  /* IMPORTANT: restore the right bubble to natural/original height */
+  .calendarCopy {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    align-self: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  /* Resize the mini calendar only, not the main bubble */
+  .desktopTripCalendar {
+    width: 350px !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    align-self: auto !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  /* Make mini calendar shorter without stretching */
+  .desktopCalendarTop {
+    padding: 13px 20px !important;
+  }
+
+  .desktopCalendarTop h4 {
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+
+  .desktopCalendarCurrent {
+    padding: 14px 20px 12px !important;
+  }
+
+  .desktopCalendarCurrent > span {
+    font-size: 18px !important;
+    line-height: 1.05 !important;
+  }
+
+  .desktopCalendarArrows button {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 22px !important;
+    border-radius: 10px !important;
+  }
+
+  .desktopCalendarWeekdays {
+    padding: 12px 20px 4px !important;
+  }
+
+  .desktopCalendarWeekdays span {
+    font-size: 13px !important;
+  }
+
+  .desktopCalendarGrid {
+    padding: 4px 20px 18px !important;
+    gap: 3px !important;
+  }
+
+  .desktopCalendarDate {
+    font-size: 13px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* =========================================================
+   DESKTOP MINI CALENDAR MATCH RIGHT BUBBLE HEIGHT
+   Dynamic per day, does not force main bubble height
+   ========================================================= */
+
+@media (min-width: 851px) {
+  .calendarFullContent {
+    grid-template-columns: 390px minmax(0, 1fr) !important;
+    gap: 42px !important;
+    align-items: end !important;
+    padding: 0 52px 72px !important;
+  }
+
+  .calendarNumberBlock {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  /* Restore the right bubble to its natural/original size */
+  .calendarCopy {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    align-self: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  /* Mini calendar follows the measured height of the right bubble */
+  .desktopTripCalendar {
+    width: 360px !important;
+    height: var(--desktop-bubble-height, auto) !important;
+    min-height: var(--desktop-bubble-height, auto) !important;
+    max-height: var(--desktop-bubble-height, none) !important;
+    transform: none !important;
+    align-self: auto !important;
+
+    display: grid !important;
+    grid-template-rows: auto auto auto 1fr !important;
+    overflow: hidden !important;
+  }
+
+  /* Compact internals slightly so the calendar fits nicely when matched */
+  .desktopCalendarTop {
+    padding: 13px 20px !important;
+  }
+
+  .desktopCalendarTop h4 {
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+
+  .desktopCalendarCurrent {
+    padding: 14px 20px 12px !important;
+  }
+
+  .desktopCalendarCurrent > span {
+    font-size: 18px !important;
+    line-height: 1.05 !important;
+  }
+
+  .desktopCalendarArrows button {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 22px !important;
+    border-radius: 10px !important;
+  }
+
+  .desktopCalendarWeekdays {
+    padding: 12px 20px 4px !important;
+  }
+
+  .desktopCalendarWeekdays span {
+    font-size: 13px !important;
+  }
+
+  .desktopCalendarGrid {
+    padding: 4px 20px 14px !important;
+    gap: 3px !important;
+    align-content: start !important;
+  }
+
+  .desktopCalendarDate {
+    font-size: 13px !important;
+    border-radius: 10px !important;
+  }
+}
+
+@media (min-width: 851px) {
+  .desktopTripCalendar {
+    height: var(--desktop-bubble-height, auto) !important;
+    min-height: var(--desktop-bubble-height, auto) !important;
+    max-height: var(--desktop-bubble-height, none) !important;
+  }
+
+  .calendarCopy {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+}
+
+/* =========================================================
+   DETAILED ITINERARY PDF LINK
+   ========================================================= */
+
+.detailedItineraryLink {
+  position: absolute;
+  top: 86px;
+  right: 42px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.88);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.24),
+    0 14px 34px rgba(0,0,0,0.28);
+  transition: transform 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+}
+
+.detailedItineraryLink:hover {
+  transform: translateY(-2px);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.24), rgba(255,255,255,0.10));
+}
+
+/* keep it subtle on mobile */
+@media (max-width: 850px) {
+  .detailedItineraryLink {
+    top: 92px;
+    right: 28px;
+    padding: 8px 11px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    opacity: 0.82;
+  }
+}
+
+.mobilePdfText {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .desktopPdfText {
+    display: none;
+  }
+
+  .mobilePdfText {
+    display: inline;
+  }
+}
+
+/* =========================================================
+   FIX PDF LINK CLASHING WITH DAY COUNTER
+   ========================================================= */
+
+/* Desktop: keep 1/8 at far right, move PDF link to its left */
+.detailedItineraryLink {
+  top: 86px !important;
+  right: 112px !important;
+}
+
+.calendarHeaderFloating {
+  top: 86px !important;
+  right: 42px !important;
+}
+
+/* Mobile: place PDF below the 1/8 counter */
+@media (max-width: 850px) {
+  .calendarHeaderFloating {
+    top: 96px !important;
+    right: 28px !important;
+  }
+
+  .detailedItineraryLink {
+    top: 142px !important;
+    right: 28px !important;
+    padding: 8px 12px !important;
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .calendarHeaderFloating {
+    top: 96px !important;
+    right: 28px !important;
+  }
+
+  .detailedItineraryLink {
+    top: 96px !important;
+    right: 86px !important;
+    padding: 8px 12px !important;
+    font-size: 10px !important;
+  }
+}
+
+/* =========================================================
+   ITINERARY TOP-RIGHT PDF + DAY COUNTER POSITION FIX
+   ========================================================= */
+
+/* Desktop: align PDF + 1/8 closer to top menu height */
+@media (min-width: 851px) {
+  .calendarHeaderFloating {
+    top: 32px !important;
+    right: 42px !important;
+  }
+
+  .detailedItineraryLink {
+    top: 32px !important;
+    right: 112px !important;
+  }
+}
+
+/* Mobile: move PDF + 1/8 up to match left floating menu */
+@media (max-width: 850px) {
+  .calendarHeaderFloating {
+    top: max(96px, calc(env(safe-area-inset-top) + 78px)) !important;
+    right: 28px !important;
+  }
+
+  .detailedItineraryLink {
+    top: max(96px, calc(env(safe-area-inset-top) + 78px)) !important;
+    right: 88px !important;
+  }
+}
+
+/* =========================================================
+   MOBILE PDF + DAY COUNTER HIGHER POSITION FIX
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .calendarHeaderFloating {
+    top: max(38px, calc(env(safe-area-inset-top) + 26px)) !important;
+    right: 24px !important;
+  }
+
+  .detailedItineraryLink {
+    top: max(38px, calc(env(safe-area-inset-top) + 26px)) !important;
+    right: 88px !important;
+  }
+}
