@@ -1599,6 +1599,16 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
         </div>
 
         <a
+  className="videoPreviewLink"
+  href="https://youtu.be/LzrNMQ6CZx0"
+  target="_blank"
+  rel="noreferrer"
+>
+  <span className="desktopVideoText">VIDEO PREVIEW</span>
+  <span className="mobileVideoText">VIDEO</span>
+</a>
+
+        <a
           className="detailedItineraryLink"
           href="/Japan-Detailed-Itinerary-2026.pdf"
           target="_blank"
