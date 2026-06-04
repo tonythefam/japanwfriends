@@ -91,7 +91,7 @@ const dayCoverPhotos = {
 const tripDays = [
   {
     day: 1,
-    date: "10 Jun 2026 · Wednesday",
+    date: "10/6/2026 · Wednesday",
     city: "Kyoto",
     title: "Arrival, teamLab & Kyoto First Night",
     mood: "A soft landing in Kyoto with digital art, luggage drop, markets and the first Kyoto night atmosphere.",
@@ -104,7 +104,7 @@ const tripDays = [
   },
   {
     day: 2,
-    date: "11 Jun 2026 · Thursday",
+    date: "11/6/2026 · Thursday",
     city: "Kyoto",
     title: "Kimono Day at Kiyomizu-dera",
     mood: "Traditional Kyoto streets, kimono photos, temple scenery and a slow evening around Gion.",
@@ -117,7 +117,7 @@ const tripDays = [
   },
   {
     day: 3,
-    date: "12 Jun 2026 · Friday",
+    date: "12/6/2026 · Friday",
     city: "Kyoto",
     title: "Arashiyama & Northern Kyoto",
     mood: "Early bamboo forest walks, quieter Kyoto streets, hidden temples and a slower scenic day.",
@@ -130,7 +130,7 @@ const tripDays = [
   },
   {
     day: 4,
-    date: "13 Jun 2026 · Saturday",
+    date: "13/6/2026 · Saturday",
     city: "Kyoto",
     title: "Fushimi Inari & Flexible Kyoto Afternoon",
     mood: "A shrine morning followed by either hydrangeas in Uji or a relaxing Kyoto cycling route.",
@@ -143,7 +143,7 @@ const tripDays = [
   },
   {
     day: 5,
-    date: "14 Jun 2026 · Sunday",
+    date: "14/6/2026 · Sunday",
     city: "Osaka",
     title: "Kyoto to Osaka, Castle & Dotonbori",
     mood: "A transfer into Osaka filled with castles, shopping, desserts and neon city nights.",
@@ -156,7 +156,7 @@ const tripDays = [
   },
   {
     day: 6,
-    date: "15 Jun 2026 · Monday",
+    date: "15/6/2026 · Monday",
     city: "Osaka → Nara",
     title: "Nara Day Trip",
     mood: "Historic temples, deer parks, panoramic halls and a slower cultural day outside Osaka.",
@@ -169,7 +169,7 @@ const tripDays = [
   },
   {
     day: 7,
-    date: "16 Jun 2026 · Tuesday",
+    date: "16/6/2026 · Tuesday",
     city: "Osaka",
     title: "Free & Easy Osaka",
     mood: "A flexible Osaka day for shopping, sightseeing, theme parks or aquarium visits.",
@@ -182,7 +182,7 @@ const tripDays = [
   },
   {
     day: 8,
-    date: "17 Jun 2026 · Wednesday",
+    date: "17/6/2026 · Wednesday",
     city: "Osaka → Kuala Lumpur",
     title: "Goodbye Japan",
     mood: "A calm airport morning before heading back home to Kuala Lumpur.",
@@ -1579,6 +1579,8 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
     setMobileExpanded(nextState);
   };
 
+  const mobileDate = item.date.split(" · ")[0];
+
   return (
     <section className="tearScene" ref={dayRef} data-trip-day={item.day}>
       <motion.div
@@ -1599,14 +1601,14 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
         </div>
 
         <a
-  className="videoPreviewLink"
-  href="https://youtu.be/LzrNMQ6CZx0"
-  target="_blank"
-  rel="noreferrer"
->
-  <span className="desktopVideoText">VIDEO PREVIEW</span>
-  <span className="mobileVideoText">VIDEO</span>
-</a>
+          className="videoPreviewLink"
+          href="https://youtu.be/LzrNMQ6CZx0"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span className="desktopVideoText">VIDEO PREVIEW</span>
+          <span className="mobileVideoText">VIDEO</span>
+        </a>
 
         <a
           className="detailedItineraryLink"
@@ -1630,7 +1632,11 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
             }`}
           >
             <div className="mobileDayKicker">
-              Day {item.day} <span>·</span> {item.city}
+              <span className="mobileDayMain">
+                Day {item.day} <span>·</span> {item.city}
+              </span>
+
+              <span className="mobileDayDate">{mobileDate}</span>
             </div>
 
             <h3>{item.title}</h3>
@@ -2497,17 +2503,20 @@ function FloorPlanModal({ stay, onClose }) {
 }
 
 const initialExpenses = [
-  { name: "Flights", yen: null, myr: 1653.9, fixed: true, fixedCurrency: "MYR" },
-  { name: "Transport to Kyoto", yen: null, myr: 90, fixed: false },
-  { name: "Stay in Kyoto (4 nights)", yen: 20273, myr: null, fixed: true, fixedCurrency: "YEN" },
-  { name: "Transport to Osaka", yen: null, myr: 50, fixed: false },
-  { name: "Stay in Osaka (3 nights)", yen: 11496, myr: null, fixed: true, fixedCurrency: "YEN" },
-  { name: "teamLab Kyoto", yen: null, myr: 113, fixed: true, fixedCurrency: "MYR" },
-  { name: "Transport to KIX", yen: null, myr: 30, fixed: false },
-  { name: "Food", yen: null, myr: 1140, fixed: false },
-  { name: "Sightseeing admission fees", yen: null, myr: 130, fixed: false },
-  { name: "City accommodation tax", yen: 1400, myr: null, fixed: false },
-  { name: "Taxi and Uber", yen: null, myr: 100, fixed: false },
+  { name: "Flights", yen: 66853, myr: 1653.9, fixed: true },
+  { name: "Stay in Kyoto (4 nights)", yen: 20273, myr: 502, fixed: true },
+  { name: "Stay in Osaka (3 nights)", yen: 11496, myr: 285, fixed: true },
+  { name: "teamLab Kyoto", yen: 4568, myr: 113, fixed: true },
+  { name: "FUJIFILM Disposable Film Camera", yen: 2951, myr: 73, fixed: true },
+  { name: "Transport from KIX to Kyoto", yen: 3000, myr: 74.22, fixed: false },
+  { name: "Transport from Kyoto to Osaka-Umeda", yen: 500, myr: 12.37, fixed: false },
+  { name: "Transport from Apartment 11 to Nara", yen: 1400, myr: 34.64, fixed: false },
+  { name: "Transport from Apartment 11 to KIX", yen: 1700, myr: 42.06, fixed: false },
+  { name: "Food", yen: 40000, myr: 989.57, fixed: false },
+  { name: "Sightseeing admission fees", yen: 4100, myr: 100, fixed: false },
+  { name: "City accommodation tax", yen: 1000, myr: 24.74, fixed: false },
+  { name: "Miscellaneous Transport", yen: 5000, myr: 123.7, fixed: false },
+  { name: "Taxi and Uber", yen: 2000, myr: 100, fixed: false },
 ];
 
 const yenRate = 40.41;
@@ -2515,8 +2524,8 @@ const yenRate = 40.41;
 function ExpensesPage() {
   const [currency, setCurrency] = useState("MYR");
 
-  const [budget, setBudget] = useState(() => {
-    return Number(localStorage.getItem("japanTripBudget")) || 5000;
+  const [budgetMYR, setBudgetMYR] = useState(() => {
+    return Number(localStorage.getItem("japanTripOverallBudgetMYR")) || 4500;
   });
 
   const [exchangeRate, setExchangeRate] = useState(() => {
@@ -2526,7 +2535,7 @@ function ExpensesPage() {
   const [editingRate, setEditingRate] = useState(false);
 
   const [expenses, setExpenses] = useState(() => {
-    const saved = localStorage.getItem("japanTripExpenses");
+    const saved = localStorage.getItem("japanTripExpensesV3");
     return saved ? JSON.parse(saved) : initialExpenses;
   });
 
@@ -2535,12 +2544,12 @@ function ExpensesPage() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("japanTripExpenses", JSON.stringify(expenses));
+    localStorage.setItem("japanTripExpensesV3", JSON.stringify(expenses));
   }, [expenses]);
 
   useEffect(() => {
-    localStorage.setItem("japanTripBudget", budget);
-  }, [budget]);
+    localStorage.setItem("japanTripOverallBudgetMYR", budgetMYR);
+  }, [budgetMYR]);
 
   useEffect(() => {
     localStorage.setItem("japanTripExchangeRate", exchangeRate);
@@ -2548,62 +2557,70 @@ function ExpensesPage() {
 
   const today = new Date().toLocaleDateString("en-GB");
   const receiptNo = "JP-7X9B2K";
-
   const safeRate = Number(exchangeRate) || yenRate;
 
- const getYen = (item) => {
-  const myrValue = Number(item.myr || 0);
-  const yenValue = Number(item.yen || 0);
+  const getYen = (item) => {
+    if (item.yen !== null && item.yen !== "" && item.yen !== undefined) {
+      return Number(item.yen);
+    }
 
-  if (item.fixedCurrency === "YEN") return yenValue;
+    return Math.round(Number(item.myr || 0) * safeRate);
+  };
 
-  if (yenValue > 0 && myrValue === 0) return yenValue;
+  const getMYR = (item) => {
+    if (item.myr !== null && item.myr !== "" && item.myr !== undefined) {
+      return Number(item.myr);
+    }
 
-  return Math.round(myrValue * safeRate);
-};
+    return Number((Number(item.yen || 0) / safeRate).toFixed(2));
+  };
 
-const getMYR = (item) => {
-  const myrValue = Number(item.myr || 0);
-  const yenValue = Number(item.yen || 0);
+  const updateExpense = (index, value) => {
+    setExpenses((prev) =>
+      prev.map((item, i) => {
+        if (i !== index || item.fixed) return item;
 
-  if (item.fixedCurrency === "MYR") return myrValue;
+        if (value === "") {
+          return {
+            ...item,
+            myr: "",
+            yen: "",
+          };
+        }
 
-  if (myrValue > 0 && yenValue === 0) return myrValue;
+        const amount = Number(value);
 
-  return Number((yenValue / safeRate).toFixed(2));
-};
+        if (currency === "MYR") {
+          return {
+            ...item,
+            myr: amount,
+            yen: Math.round(amount * safeRate),
+          };
+        }
 
-const updateExpense = (index, value) => {
-  setExpenses((prev) =>
-    prev.map((item, i) => {
-      if (i !== index || item.fixed) return item;
-
-      if (value === "") {
         return {
           ...item,
-          myr: "",
-          yen: "",
+          yen: amount,
+          myr: Number((amount / safeRate).toFixed(2)),
         };
-      }
+      })
+    );
+  };
 
-      const amount = Number(value);
+  const updateBudget = (value) => {
+    if (value === "") {
+      setBudgetMYR("");
+      return;
+    }
 
-      if (currency === "MYR") {
-        return {
-          ...item,
-          myr: amount,
-          yen: Math.round(amount * safeRate),
-        };
-      }
+    const amount = Number(value);
 
-      return {
-        ...item,
-        yen: amount,
-        myr: Number((amount / safeRate).toFixed(2)),
-      };
-    })
-  );
-};
+    if (currency === "MYR") {
+      setBudgetMYR(amount);
+    } else {
+      setBudgetMYR(Number((amount / safeRate).toFixed(2)));
+    }
+  };
 
   const formatMYR = (value) =>
     `RM${Number(value || 0).toLocaleString("en-MY", {
@@ -2614,21 +2631,22 @@ const updateExpense = (index, value) => {
   const formatYEN = (value) =>
     `¥${Number(value || 0).toLocaleString("ja-JP")}`;
 
-const cleanAmount = (item) => {
-  if (currency === "MYR") {
-    return item.myr ?? "";
-  }
+  const cleanAmount = (item) => {
+    if (currency === "MYR") return item.myr ?? "";
+    return item.yen ?? "";
+  };
 
-  return item.yen ?? "";
-};
+  const totalMYR = expenses.reduce((sum, item) => {
+    return sum + Number(getMYR(item) || 0);
+  }, 0);
 
-const totalMYR = expenses.reduce((sum, item) => {
-  return sum + Number(getMYR(item) || 0);
-}, 0);
-const totalYEN = expenses.reduce((sum, item) => {
-  return sum + Number(getYen(item) || 0);
-}, 0);
-const shoppingBalance = Number(budget || 0) - totalMYR;
+  const totalYEN = expenses.reduce((sum, item) => {
+    return sum + Number(getYen(item) || 0);
+  }, 0);
+
+  const budgetYEN = Math.round(Number(budgetMYR || 0) * safeRate);
+  const balanceMYR = Number(budgetMYR || 0) - totalMYR;
+  const balanceYEN = budgetYEN - totalYEN;
 
   return (
     <main className="expensesPage">
@@ -2672,22 +2690,16 @@ const shoppingBalance = Number(budget || 0) - totalMYR;
             </div>
 
             <label className="thermalBudget">
-              <span>SHOPPING BUDGET:</span>
+              <span>OVERALL BUDGET:</span>
               <strong>{currency === "MYR" ? "RM" : "¥"}</strong>
               <input
                 type="number"
-                value={currency === "MYR" ? budget : Math.round(budget * safeRate)}
-                onChange={(e) => {
-                  const value = e.target.value;
-
-                  if (value === "") {
-                    setBudget("");
-                    return;
-                  }
-
-                  const amount = Number(value);
-                  setBudget(currency === "MYR" ? amount : amount / safeRate);
-                }}
+                value={
+                  currency === "MYR"
+                    ? budgetMYR
+                    : Math.round(Number(budgetMYR || 0) * safeRate)
+                }
+                onChange={(e) => updateBudget(e.target.value)}
               />
             </label>
           </section>
@@ -2749,8 +2761,12 @@ const shoppingBalance = Number(budget || 0) - totalMYR;
             </div>
 
             <div>
-              <span>SHOPPING BALANCE</span>
-              <strong>{formatMYR(shoppingBalance)}</strong>
+              <span>BALANCE</span>
+              <strong>
+                {currency === "MYR"
+                  ? formatMYR(balanceMYR)
+                  : formatYEN(balanceYEN)}
+              </strong>
             </div>
           </section>
 
