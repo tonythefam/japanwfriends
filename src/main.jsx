@@ -36,6 +36,12 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+const galleryImage = (person, number) =>
+  `/gallery/${person}/images/${person}-${String(number).padStart(2, "0")}.jpg`;
+
+const galleryThumb = (person, number) =>
+  `/gallery/${person}/thumbnails/${person}-${String(number).padStart(2, "0")}.jpg`;
+
 const heroImages = [
   "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=2000&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=2000&auto=format&fit=crop",
@@ -85,7 +91,7 @@ const dayCoverPhotos = {
   ],
   8: [
     "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=1800&auto=format&fit=crop",
-  ]
+  ],
 };
 
 const tripDays = [
@@ -659,54 +665,53 @@ const placeInfo = {
     ],
   },
 
-"Mimuroto-ji Hydrangea Option": {
-  type: "minor",
-  title: "Mimuroto-ji Hydrangea Option",
-  desc: "A seasonal flower-viewing option after Fushimi Inari, heading towards Uji for hydrangea scenery.",
-  details: [
-    {
-      title: "Hydrangea Temple",
-      text: "Mimuroto-ji is also known as the flower temple, and June is a good season to visit for hydrangeas.",
-    },
-    {
-      title: "Travel Route",
-      text: "From Fushimi Inari, travel towards Mimurodo Station, then walk around 15 minutes to the temple.",
-    },
-    {
-      title: "Planning Note",
-      text: "This option is more suitable if the group wants scenery and seasonal flowers. Many famous Uji matcha stores may already be closed by the time the temple visit ends.",
-    },
-    {
-      title: "Afterwards",
-      text: "If time allows, continue towards central Uji for simple matcha café hunting before returning to Kyoto.",
-    },
-  ],
-},
+  "Mimuroto-ji Hydrangea Option": {
+    type: "minor",
+    title: "Mimuroto-ji Hydrangea Option",
+    desc: "A seasonal flower-viewing option after Fushimi Inari, heading towards Uji for hydrangea scenery.",
+    details: [
+      {
+        title: "Hydrangea Temple",
+        text: "Mimuroto-ji is also known as the flower temple, and June is a good season to visit for hydrangeas.",
+      },
+      {
+        title: "Travel Route",
+        text: "From Fushimi Inari, travel towards Mimurodo Station, then walk around 15 minutes to the temple.",
+      },
+      {
+        title: "Planning Note",
+        text: "This option is more suitable if the group wants scenery and seasonal flowers. Many famous Uji matcha stores may already be closed by the time the temple visit ends.",
+      },
+      {
+        title: "Afterwards",
+        text: "If time allows, continue towards central Uji for simple matcha café hunting before returning to Kyoto.",
+      },
+    ],
+  },
 
- "Kamo River Cycling Option": {
-  type: "minor",
-  title: "Kamo River Cycling Option",
-  desc: "A relaxing half-day cycling option through Kyoto after returning from Fushimi Inari.",
-  details: [
-    {
-      title: "Cycling Idea",
-      text: "Rest first after Fushimi Inari, then rent bicycles around Gion Shijo and explore Kyoto at a slower pace.",
-    },
-    {
-      title: "Suggested Route",
-      text: "Possible stops include Kamo River, the stepping stones at Kojin, Demachi Masugata Shopping Street and Kyoto Botanical Gardens.",
-    },
-    {
-      title: "Rental Note",
-      text: "Regular bicycles are around ¥1,300, electric bicycles around ¥2,300 and hybrid bicycles around ¥1,800. Reservation may be needed earlier.",
-    },
-    {
-      title: "Important Cycling Notes",
-      text: "Do not cycle side by side, use bicycle lights at night, ride carefully near pedestrians and only park at proper bicycle parking areas.",
-    },
-  ],
-},
-
+  "Kamo River Cycling Option": {
+    type: "minor",
+    title: "Kamo River Cycling Option",
+    desc: "A relaxing half-day cycling option through Kyoto after returning from Fushimi Inari.",
+    details: [
+      {
+        title: "Cycling Idea",
+        text: "Rest first after Fushimi Inari, then rent bicycles around Gion Shijo and explore Kyoto at a slower pace.",
+      },
+      {
+        title: "Suggested Route",
+        text: "Possible stops include Kamo River, the stepping stones at Kojin, Demachi Masugata Shopping Street and Kyoto Botanical Gardens.",
+      },
+      {
+        title: "Rental Note",
+        text: "Regular bicycles are around ¥1,300, electric bicycles around ¥2,300 and hybrid bicycles around ¥1,800. Reservation may be needed earlier.",
+      },
+      {
+        title: "Important Cycling Notes",
+        text: "Do not cycle side by side, use bicycle lights at night, ride carefully near pedestrians and only park at proper bicycle parking areas.",
+      },
+    ],
+  },
 
   "Osaka Castle": {
     type: "major",
@@ -825,64 +830,64 @@ const placeInfo = {
   },
 
   "Universal Studios Japan Option": {
-  type: "minor",
-  title: "Universal Studios Japan Option",
-  desc: "A full-day theme park option for the Osaka free-and-easy day.",
-  details: [
-    {
-      title: "Free Day Option",
-      text: "This is one possible plan for the Osaka free day if the group wants a full theme park experience.",
-    },
-    {
-      title: "Experience",
-      text: "Expect rides, shows, themed zones and a much more energetic day compared to shopping or aquarium plans.",
-    },
-    {
-      title: "Planning Note",
-      text: "This option should be decided earlier because tickets, express passes and crowd levels can affect the experience.",
-    },
-  ],
-},
+    type: "minor",
+    title: "Universal Studios Japan Option",
+    desc: "A full-day theme park option for the Osaka free-and-easy day.",
+    details: [
+      {
+        title: "Free Day Option",
+        text: "This is one possible plan for the Osaka free day if the group wants a full theme park experience.",
+      },
+      {
+        title: "Experience",
+        text: "Expect rides, shows, themed zones and a much more energetic day compared to shopping or aquarium plans.",
+      },
+      {
+        title: "Planning Note",
+        text: "This option should be decided earlier because tickets, express passes and crowd levels can affect the experience.",
+      },
+    ],
+  },
 
-"Osaka Aquarium Kaiyukan Option": {
-  type: "minor",
-  title: "Osaka Aquarium Kaiyukan Option",
-  desc: "A slower indoor option for the Osaka free-and-easy day.",
-  details: [
-    {
-      title: "Aquarium Day",
-      text: "Kaiyukan is one of Osaka’s well-known aquarium attractions and is a good slower-paced alternative to USJ.",
-    },
-    {
-      title: "Main Highlight",
-      text: "The aquarium is known for its large central tank, including the whale shark display.",
-    },
-    {
-      title: "Planning Note",
-      text: "This is a good option if the group wants something indoors, less tiring and easier to manage than a full theme park day.",
-    },
-  ],
-},
+  "Osaka Aquarium Kaiyukan Option": {
+    type: "minor",
+    title: "Osaka Aquarium Kaiyukan Option",
+    desc: "A slower indoor option for the Osaka free-and-easy day.",
+    details: [
+      {
+        title: "Aquarium Day",
+        text: "Kaiyukan is one of Osaka’s well-known aquarium attractions and is a good slower-paced alternative to USJ.",
+      },
+      {
+        title: "Main Highlight",
+        text: "The aquarium is known for its large central tank, including the whale shark display.",
+      },
+      {
+        title: "Planning Note",
+        text: "This is a good option if the group wants something indoors, less tiring and easier to manage than a full theme park day.",
+      },
+    ],
+  },
 
   "Flight to Kuala Lumpur": {
-  type: "minor",
-  title: "Flight to Kuala Lumpur",
-  desc: "The final travel leg from Kansai Airport back to Kuala Lumpur.",
-  details: [
-    {
-      title: "Morning Flight",
-      text: "The return flight departs from Kansai Airport at around 11:05 AM.",
-    },
-    {
-      title: "Airport Timing",
-      text: "Aim to reach Kansai Airport by around 8:00 AM so there is enough time for check-in, breakfast and boarding.",
-    },
-    {
-      title: "Arrival",
-      text: "Arrival back at KLIA2 is expected around 4:55 PM.",
-    },
-  ],
-},
+    type: "minor",
+    title: "Flight to Kuala Lumpur",
+    desc: "The final travel leg from Kansai Airport back to Kuala Lumpur.",
+    details: [
+      {
+        title: "Morning Flight",
+        text: "The return flight departs from Kansai Airport at around 11:05 AM.",
+      },
+      {
+        title: "Airport Timing",
+        text: "Aim to reach Kansai Airport by around 8:00 AM so there is enough time for check-in, breakfast and boarding.",
+      },
+      {
+        title: "Arrival",
+        text: "Arrival back at KLIA2 is expected around 4:55 PM.",
+      },
+    ],
+  },
 };
 
 const pages = [
@@ -897,62 +902,93 @@ const pages = [
 
 const tripQuotes = [
   {
-    quote: "An amazing trip of course needs an amazing slideshow",
+    quote: "Absolutely worth the 4 hours of sleep every night. 10/10 trip",
     name: "Tony",
   },
   {
-    quote: "I am excited to go on a trip with my friends!",
+    quote: "5 kg heavier now...",
     name: "Natalie",
   },
   {
-    quote: "We started from Penang and now we here",
+    quote: "Arigato Japan, see ya again next time.",
     name: "Anthony",
   },
   {
-    quote: "What’s this for. Is someone beefing?",
+    quote: "All in all, I'm happy, felt surreal.",
     name: "Yujing",
   },
   {
-    quote: "Feeling excited? Hahahahahaha",
+    quote: "Japan, you set the bar high.",
     name: "Jian Sheng",
   },
   {
-    quote: "Wait aaaaaaa. Har",
+    quote: "Sooo... where next?",
     name: "Ashley",
   },
   {
-    quote: "Cute girls & Good Company 😌",
+    quote: "I will miss the cute girls 😔",
     name: "Paul",
   },
   {
-    quote: "I can't wait to rent a girlfriend for my boyfriend",
-    name: "Natalie",
-  },
-  {
-    quote: "What could possibly go wrong?",
+    quote: "10/10 trip. Same people, new place, round 2 when?",
     name: "Zhao Yang",
   },
   {
-    quote: "Very excited and can't wait to have a great time in Japan",
+    quote: "Vacation in Japan during the World cup was a good investment. JAPAN was crazy FUN",
     name: "Lee Quan",
   },
   {
-    quote: "Waku Waku!",
-    name: "Ashley",
-  },
-  {
-    quote: "I want to relax, good food and shopping",
-    name: "Yujing",
-  },
-  {
-    quote: "I want 10 plates of sashimi please!",
-    name: "Natalie",
-  },
-  {
-    quote: "No fighting on my trip",
-    name: "Lee Quan",
+    quote: "Deers are crazy.",
+    name: "Zhao Yang",
   }
 ];
+
+const countdownUnits = [
+  { key: "days", label: "Days", pad: false },
+  { key: "hours", label: "Hours", pad: true },
+  { key: "minutes", label: "Minutes", pad: true },
+  { key: "seconds", label: "Seconds", pad: true },
+];
+
+const homeCardLinks = [
+  {
+    page: "flights",
+    icon: Plane,
+    number: "01",
+    title: "Flights",
+    description: "Return flight, luggage and airport timing.",
+  },
+  {
+    page: "accommodation",
+    icon: Hotel,
+    number: "02",
+    title: "Accommodation",
+    description: "Kyoto and Osaka stays in one clean view.",
+  },
+  {
+    page: "expenses",
+    icon: Wallet,
+    number: "03",
+    title: "Expenses",
+    description: "Budget, food, admission and shopping allowance.",
+  },
+  {
+    page: "gallery",
+    icon: Camera,
+    number: "04",
+    title: "Gallery",
+    description: "Disposable film rolls from all 9 friends.",
+  },
+  {
+    page: "places",
+    icon: MapPin,
+    number: "05",
+    title: "Places",
+    description: "Saved attractions and map planning.",
+  },
+];
+
+const calendarWeekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
 function RotatingQuote() {
   const hasBackToBackNames = (quotes) => {
@@ -1023,8 +1059,7 @@ function RotatingQuote() {
           exit={{ opacity: 0, y: -14, filter: "blur(6px)" }}
           transition={{ duration: 0.55 }}
         >
-          “{currentQuote.quote}”
-          <span> — {currentQuote.name}</span>
+          “{currentQuote.quote}”<span> — {currentQuote.name}</span>
         </motion.p>
       </AnimatePresence>
     </div>
@@ -1078,17 +1113,17 @@ function Sidebar({ open, setOpen, page, setPage }) {
             exit={{ opacity: 0 }}
           />
 
-<motion.aside
-  className="drawer"
-  initial={{ x: "-100%" }}
-  animate={{ x: 0 }}
-  exit={{ x: "-100%" }}
-  transition={{
-    type: "tween",
-    duration: 0.32,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
+          <motion.aside
+            className="drawer"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{
+              type: "tween",
+              duration: 0.32,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             <div className="drawerTop">
               <div>
                 <p className="smallLabel">Japan 2026</p>
@@ -1108,9 +1143,9 @@ function Sidebar({ open, setOpen, page, setPage }) {
                   <button
                     key={item.id}
                     className={page === item.id ? "active" : ""}
-onClick={() => {
-  setPage(item.id);
-}}
+                    onClick={() => {
+                      setPage(item.id);
+                    }}
                   >
                     <Icon size={19} />
                     {item.label}
@@ -1176,15 +1211,11 @@ function HomeAmbientBackground() {
 }
 
 function CountdownTimer() {
-  const tripDate = new Date("2026-06-10T00:00:00+08:00");
+  const tripEndDate = new Date("2026-06-17T00:00:00+08:00");
 
-  const getTimeLeft = () => {
+  const getTimeSinceTrip = () => {
     const now = new Date();
-    const difference = tripDate - now;
-
-    if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-    }
+    const difference = Math.max(0, now.getTime() - tripEndDate.getTime());
 
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -1194,11 +1225,11 @@ function CountdownTimer() {
     };
   };
 
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
+  const [timeSinceTrip, setTimeSinceTrip] = useState(getTimeSinceTrip);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(getTimeLeft());
+      setTimeSinceTrip(getTimeSinceTrip());
     }, 1000);
 
     return () => clearInterval(timer);
@@ -1206,32 +1237,31 @@ function CountdownTimer() {
 
   return (
     <section className="countdownSection">
-      <p className="pill">10 June 2026 · Kyoto & Osaka</p>
-
-      <h2>Counting down to Japan.</h2>
+      <h2>Days since our Japan trip.</h2>
 
       <p className="countdownSubtitle">
-        The journey begins in Kyoto — temples, food, quiet streets and Osaka nights.
+        The trip may be over but let this website be a keepsake of our special
+        time together.
       </p>
 
       <div className="countdownGrid">
         <div>
-          <strong>{timeLeft.days}</strong>
+          <strong>{timeSinceTrip.days}</strong>
           <span>Days</span>
         </div>
 
         <div>
-          <strong>{String(timeLeft.hours).padStart(2, "0")}</strong>
+          <strong>{timeSinceTrip.hours}</strong>
           <span>Hours</span>
         </div>
 
         <div>
-          <strong>{String(timeLeft.minutes).padStart(2, "0")}</strong>
+          <strong>{timeSinceTrip.minutes}</strong>
           <span>Minutes</span>
         </div>
 
         <div>
-          <strong>{String(timeLeft.seconds).padStart(2, "0")}</strong>
+          <strong>{timeSinceTrip.seconds}</strong>
           <span>Seconds</span>
         </div>
       </div>
@@ -1259,40 +1289,16 @@ function HomePage({ setPage }) {
         <CountdownTimer />
 
         <section className="homeCards upgradedHomeCards">
-          <button onClick={() => goToPage("flights")}>
-            <Plane />
-            <span>01</span>
-            <h3>Flights</h3>
-            <p>Return flight, luggage and airport timing.</p>
-          </button>
-
-          <button onClick={() => goToPage("accommodation")}>
-            <Hotel />
-            <span>02</span>
-            <h3>Accommodation</h3>
-            <p>Kyoto and Osaka stays in one clean view.</p>
-          </button>
-
-          <button onClick={() => goToPage("expenses")}>
-            <Wallet />
-            <span>03</span>
-            <h3>Expenses</h3>
-            <p>Budget, food, admission and shopping allowance.</p>
-          </button>
-
-          <button onClick={() => goToPage("gallery")}>
-            <Camera />
-            <span>04</span>
-            <h3>Gallery</h3>
-            <p>Disposable film rolls from all 9 friends.</p>
-          </button>
-
-          <button onClick={() => goToPage("places")}>
-            <MapPin />
-            <span>05</span>
-            <h3>Places</h3>
-            <p>Saved attractions and map planning.</p>
-          </button>
+          {homeCardLinks.map(
+            ({ page, icon: Icon, number, title, description }) => (
+              <button key={page} onClick={() => goToPage(page)}>
+                <Icon />
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </button>
+            ),
+          )}
         </section>
       </main>
     </>
@@ -1307,7 +1313,7 @@ function CalendarPage() {
     const setRealViewportHeight = () => {
       document.documentElement.style.setProperty(
         "--real-vh",
-        `${window.innerHeight * 0.01}px`
+        `${window.innerHeight * 0.01}px`,
       );
     };
 
@@ -1327,33 +1333,36 @@ function CalendarPage() {
       clearTimeout(scrollTimer.current);
     }
 
-    scrollTimer.current = setTimeout(() => {
-      const scroller = document.querySelector(".calendarPage");
-      const days = Array.from(document.querySelectorAll(".tearScene"));
-      if (!scroller || !days.length) return;
+    scrollTimer.current = setTimeout(
+      () => {
+        const scroller = document.querySelector(".calendarPage");
+        const days = Array.from(document.querySelectorAll(".tearScene"));
+        if (!scroller || !days.length) return;
 
-      const scrollerRect = scroller.getBoundingClientRect();
+        const scrollerRect = scroller.getBoundingClientRect();
 
-      const nearestDay = days.reduce((closest, day) => {
-        const rect = day.getBoundingClientRect();
-        const distance = Math.abs(rect.top - scrollerRect.top);
+        const nearestDay = days.reduce((closest, day) => {
+          const rect = day.getBoundingClientRect();
+          const distance = Math.abs(rect.top - scrollerRect.top);
 
-        if (!closest || distance < closest.distance) {
-          return { day, distance };
+          if (!closest || distance < closest.distance) {
+            return { day, distance };
+          }
+
+          return closest;
+        }, null);
+
+        const threshold = window.innerWidth <= 850 ? 8 : 36;
+
+        if (nearestDay?.day && nearestDay.distance > threshold) {
+          nearestDay.day.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
         }
-
-        return closest;
-      }, null);
-
-      const threshold = window.innerWidth <= 850 ? 8 : 36;
-
-      if (nearestDay?.day && nearestDay.distance > threshold) {
-        nearestDay.day.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }, window.innerWidth <= 850 ? 180 : 140);
+      },
+      window.innerWidth <= 850 ? 180 : 140,
+    );
   };
 
   return (
@@ -1488,13 +1497,9 @@ function DesktopTripCalendar({ item }) {
       </div>
 
       <div className="desktopCalendarWeekdays">
-        <span>Mo</span>
-        <span>Tu</span>
-        <span>We</span>
-        <span>Th</span>
-        <span>Fr</span>
-        <span>Sa</span>
-        <span>Su</span>
+        {calendarWeekdays.map((weekday) => (
+          <span key={weekday}>{weekday}</span>
+        ))}
       </div>
 
       <div className="desktopCalendarGrid">
@@ -1539,7 +1544,7 @@ function CalendarDayPage({ item, index, total, setSelectedPlace }) {
 
       dayRef.current.style.setProperty(
         "--desktop-bubble-height",
-        `${bubbleHeight}px`
+        `${bubbleHeight}px`,
       );
     };
 
@@ -1707,7 +1712,9 @@ function PlaceBubble({ place, onClose }) {
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className={isMajor ? "placeBubble majorBubble" : "placeBubble minorBubble"}
+          className={
+            isMajor ? "placeBubble majorBubble" : "placeBubble minorBubble"
+          }
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -1803,24 +1810,24 @@ function PlaceBubble({ place, onClose }) {
 
 const flightDetails = [
   {
-  id: "departure",
-  date: "10 Jun 2026",
-  label: "Departure Flight",
-  fromCity: "Kuala Lumpur",
-  fromCode: "KLIA2",
-  toCity: "Osaka",
-  toCode: "KIX",
-  direction: "depart",
-  price: "RM782",
-  departTime: "2:20 AM",
-  arriveTime: "9:50 AM",
-  duration: "6 hours 30 minutes",
-  airline: "AirAsia X",
-  flightNo: "D7 532",
-  luggage: "20 kg checked + 7 kg carry-on",
-  passenger: "Tan Yujing",
-  gate: "404",
-  seat: "A1",
+    id: "departure",
+    date: "10 Jun 2026",
+    label: "Departure Flight",
+    fromCity: "Kuala Lumpur",
+    fromCode: "KLIA2",
+    toCity: "Osaka",
+    toCode: "KIX",
+    direction: "depart",
+    price: "RM782",
+    departTime: "2:20 AM",
+    arriveTime: "9:50 AM",
+    duration: "6 hours 30 minutes",
+    airline: "AirAsia X",
+    flightNo: "D7 532",
+    luggage: "20 kg checked + 7 kg carry-on",
+    passenger: "Tan Yujing",
+    gate: "404",
+    seat: "A1",
   },
   {
     id: "return",
@@ -1844,15 +1851,15 @@ const flightDetails = [
 ];
 
 const passengerNames = [
-  "Ng Wai Zhung",
-  "Cheow Kai Xin",
-  "Tan Yujing",
-  "Low Zhao Yang",
-  "Siak Xiang Jun",
-  "Low Yue Tong",
-  "Lim Paul Lim",
-  "Tan Lee Quan",
-  "Chew Jian Sheng",
+  "Tony Ng",
+  "Natalie Cheow",
+  "Yujing",
+  "Zhao Yang",
+  "Anthony Siak",
+  "Ashley Low",
+  "Paul Lim",
+  "Lee Quan",
+  "Jian Sheng",
 ];
 
 function RotatingPassengerName() {
@@ -1887,10 +1894,10 @@ function RotatingPassengerName() {
   }, [nameIndex]);
 
   return (
-  <strong className="typewriterName">
-    <span className="typedText">{displayName || "\u00A0"}</span>
-    <span className="typeCursor">|</span>
-  </strong>
+    <strong className="typewriterName">
+      <span className="typedText">{displayName || "\u00A0"}</span>
+      <span className="typeCursor">|</span>
+    </strong>
   );
 }
 
@@ -1956,7 +1963,7 @@ function FlightsPage() {
               <div className="ticketDetails">
                 <div className="ticketField wide">
                   <span>Passenger Name</span>
-                    <RotatingPassengerName />
+                  <RotatingPassengerName />
                 </div>
 
                 <div className="ticketField">
@@ -2022,7 +2029,7 @@ function FlightsPage() {
 
               <div>
                 <span>Name</span>
-                    <RotatingPassengerName />
+                <RotatingPassengerName />
               </div>
 
               <div>
@@ -2077,9 +2084,7 @@ function RouteReveal({ flight }) {
 
   const mobileRouteText = `${
     flight.fromCode === "KLIA2" ? "KUL" : flight.fromCode
-  } → ${
-    flight.toCode === "KLIA2" ? "KUL" : flight.toCode
-  }`;
+  } → ${flight.toCode === "KLIA2" ? "KUL" : flight.toCode}`;
 
   return (
     <div className="routeReveal">
@@ -2153,13 +2158,12 @@ const accommodations = [
     checkOut: "10:00 AM",
     price: "RM125.5",
     map: "https://maps.app.goo.gl/XazeEdAWRVTAKvt8A",
-    nearestTransit: 
-    {
-    type: "Bus Stop",
-    name: "Kawaramachi Matsubara",
-    distance: "300 m",
-    walk: "5 min walk",
-    map: "https://maps.app.goo.gl/fufYissDuJAXqP369" 
+    nearestTransit: {
+      type: "Bus Stop",
+      name: "Kawaramachi Matsubara",
+      distance: "300 m",
+      walk: "5 min walk",
+      map: "https://maps.app.goo.gl/fufYissDuJAXqP369",
     },
     floorPlans: [
       {
@@ -2174,33 +2178,33 @@ const accommodations = [
       },
     ],
     photoGroups: [
-  {
-    label: "Deluxe Apartment · 6 pax",
-    photos: [
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357701.jpg?k=f5b476be5d59f0a85697254d0bf2580441aa36b583d3cef8b2207cf654f59244&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272813.jpg?k=8520bcfc01afbf8faf8582f6b1947a5870500a44798f11a5da4ff745cdde86a2&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203897924.jpg?k=9e7975dd09e183dc7ed8cb1c88ad80754fc8bf353610061bd2dbe944f88d146d&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203898390.jpg?k=181bd9744b4b92099c16533eae951f63eed4a3640945986d02e3eb81d2f0848d&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449482001.jpg?k=7cc25cbcea2f8797d1822062af33ef14230dc896d4b5ff27897ec2f556d552fb&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449482358.jpg?k=f0a2f990644c1bb715f60dce80e59c2f07f83001e8d7f4b567da3c168017e487&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272828.jpg?k=6eb3514753d3d03109d975848e10c628686fd2b1cd4eeff61c66e68ed80fa3be&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272778.jpg?k=63d4896e56fbd1fe6e8da5f006fc56b866c8255ea69ea14bce934835ad0bb541&o=",
+      {
+        label: "Deluxe Apartment · 6 pax",
+        photos: [
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357701.jpg?k=f5b476be5d59f0a85697254d0bf2580441aa36b583d3cef8b2207cf654f59244&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272813.jpg?k=8520bcfc01afbf8faf8582f6b1947a5870500a44798f11a5da4ff745cdde86a2&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203897924.jpg?k=9e7975dd09e183dc7ed8cb1c88ad80754fc8bf353610061bd2dbe944f88d146d&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/203898390.jpg?k=181bd9744b4b92099c16533eae951f63eed4a3640945986d02e3eb81d2f0848d&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449482001.jpg?k=7cc25cbcea2f8797d1822062af33ef14230dc896d4b5ff27897ec2f556d552fb&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449482358.jpg?k=f0a2f990644c1bb715f60dce80e59c2f07f83001e8d7f4b567da3c168017e487&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272828.jpg?k=6eb3514753d3d03109d975848e10c628686fd2b1cd4eeff61c66e68ed80fa3be&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/184272778.jpg?k=63d4896e56fbd1fe6e8da5f006fc56b866c8255ea69ea14bce934835ad0bb541&o=",
+        ],
+      },
+      {
+        label: "Superior Quad Room · 4 pax",
+        photos: [
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357924.jpg?k=9b65cb099a2527ac1563ab97baadea06cbff2ee1662ad02fd09d5b62e55a5c11&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357895.jpg?k=f1153c78ee26a8a6e19999114ba96a58e540cf29e8217d51bd3d2742e0f22c34&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357775.jpg?k=fe6c89ecade6a05e442d13326981b512c4173f7e522c52c6e7c18cd03ea08740&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449480734.jpg?k=1d16f1cec1f69d7719ca1139f96d17e63652ca38e62ce0eaa01e199020ad9f90&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357906.jpg?k=a1e8867c098fc6742da926f0196c5ea879da680bd3c2469aaa5ab3c987b10cec&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357891.jpg?k=6da3e2f9509013c61ac49675a4f007d80fad90524c10d0c0a1b351642d6a9d3e&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/301210561.jpg?k=1ef017b1ad91f62a4e06494836f4eedba4fc3e1a5092375194ba6a32b5f2c019&o=",
+          "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357864.jpg?k=239280392e46a432fdc94dbdd4afe25f2ffa42e086c5dfd40fa0ab1f7e1fe251&o=",
+        ],
+      },
     ],
-  },
-  {
-    label: "Superior Quad Room · 4 pax",
-    photos: [
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357924.jpg?k=9b65cb099a2527ac1563ab97baadea06cbff2ee1662ad02fd09d5b62e55a5c11&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357895.jpg?k=f1153c78ee26a8a6e19999114ba96a58e540cf29e8217d51bd3d2742e0f22c34&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357775.jpg?k=fe6c89ecade6a05e442d13326981b512c4173f7e522c52c6e7c18cd03ea08740&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/449480734.jpg?k=1d16f1cec1f69d7719ca1139f96d17e63652ca38e62ce0eaa01e199020ad9f90&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357906.jpg?k=a1e8867c098fc6742da926f0196c5ea879da680bd3c2469aaa5ab3c987b10cec&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357891.jpg?k=6da3e2f9509013c61ac49675a4f007d80fad90524c10d0c0a1b351642d6a9d3e&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/301210561.jpg?k=1ef017b1ad91f62a4e06494836f4eedba4fc3e1a5092375194ba6a32b5f2c019&o=",
-      "https://cf.bstatic.com/xdata/images/hotel/max1024x768/149357864.jpg?k=239280392e46a432fdc94dbdd4afe25f2ffa42e086c5dfd40fa0ab1f7e1fe251&o=",
-    ],
-  },
-  ],
   },
   {
     city: "Osaka",
@@ -2213,13 +2217,12 @@ const accommodations = [
     checkOut: "10:00 AM",
     price: "RM95",
     map: "https://maps.app.goo.gl/Pf8fFHJaRmfMxbZh9",
-    nearestTransit: 
-    {
-    type: "Train Station",
-    name: "Namba Station",
-    distance: "600 m",
-    walk: "8 min walk",
-    map: "https://maps.app.goo.gl/qLMg7c7BkazywwQ57",
+    nearestTransit: {
+      type: "Train Station",
+      name: "Namba Station",
+      distance: "600 m",
+      walk: "8 min walk",
+      map: "https://maps.app.goo.gl/qLMg7c7BkazywwQ57",
     },
     photos: [
       "https://cf.bstatic.com/xdata/images/hotel/max1024x768/504349233.jpg?k=b3c671c07a798fe09a529c31ca4b36eb1dcbe6b200ad39dc596ad3f3c230b71e&o=",
@@ -2238,9 +2241,9 @@ function AccommodationPage() {
   const [galleryStay, setGalleryStay] = useState(null);
   const [floorPlanStay, setFloorPlanStay] = useState(null);
 
-useLayoutEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main className="accommodationPage">
@@ -2316,17 +2319,17 @@ useLayoutEffect(() => {
                 )}
               </div>
               <a
-  className="transitBubbleButton"
-  href={stay.nearestTransit.map}
-  target="_blank"
-  rel="noreferrer"
->
-  <span>Nearest Transit · {stay.nearestTransit.name}</span>
-  <small>
-    {stay.nearestTransit.type} · {stay.nearestTransit.distance} ·{" "}
-    {stay.nearestTransit.walk}
-  </small>
-</a>
+                className="transitBubbleButton"
+                href={stay.nearestTransit.map}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>Nearest Transit · {stay.nearestTransit.name}</span>
+                <small>
+                  {stay.nearestTransit.type} · {stay.nearestTransit.distance} ·{" "}
+                  {stay.nearestTransit.walk}
+                </small>
+              </a>
             </div>
           </motion.article>
         ))}
@@ -2461,7 +2464,8 @@ function FloorPlanModal({ stay, onClose }) {
   const plans = stay.floorPlans;
 
   const next = () => setIndex((prev) => (prev + 1) % plans.length);
-  const prev = () => setIndex((prev) => (prev - 1 + plans.length) % plans.length);
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + plans.length) % plans.length);
 
   return (
     <AnimatePresence>
@@ -2479,13 +2483,19 @@ function FloorPlanModal({ stay, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 24 }}
         >
-          <button className="galleryClose" onClick={onClose}>×</button>
+          <button className="galleryClose" onClick={onClose}>
+            ×
+          </button>
 
           <div className="floorPlanImageWrap">
             <img src={plans[index].image} alt={plans[index].title} />
 
-            <button className="galleryArrow left" onClick={prev}>‹</button>
-            <button className="galleryArrow right" onClick={next}>›</button>
+            <button className="galleryArrow left" onClick={prev}>
+              ‹
+            </button>
+            <button className="galleryArrow right" onClick={next}>
+              ›
+            </button>
           </div>
 
           <div className="galleryInfo">
@@ -2494,7 +2504,9 @@ function FloorPlanModal({ stay, onClose }) {
               <h2>{plans[index].title}</h2>
             </div>
 
-            <span>{index + 1} / {plans.length}</span>
+            <span>
+              {index + 1} / {plans.length}
+            </span>
           </div>
         </motion.div>
       </motion.div>
@@ -2509,9 +2521,24 @@ const initialExpenses = [
   { name: "teamLab Kyoto", yen: 4568, myr: 113, fixed: true },
   { name: "FUJIFILM Disposable Film Camera", yen: 2951, myr: 73, fixed: true },
   { name: "Transport from KIX to Kyoto", yen: 3000, myr: 74.22, fixed: false },
-  { name: "Transport from Kyoto to Osaka-Umeda", yen: 500, myr: 12.37, fixed: false },
-  { name: "Transport from Apartment 11 to Nara", yen: 1400, myr: 34.64, fixed: false },
-  { name: "Transport from Apartment 11 to KIX", yen: 1700, myr: 42.06, fixed: false },
+  {
+    name: "Transport from Kyoto to Osaka-Umeda",
+    yen: 500,
+    myr: 12.37,
+    fixed: false,
+  },
+  {
+    name: "Transport from Apartment 11 to Nara",
+    yen: 1400,
+    myr: 34.64,
+    fixed: false,
+  },
+  {
+    name: "Transport from Apartment 11 to KIX",
+    yen: 1700,
+    myr: 42.06,
+    fixed: false,
+  },
   { name: "Food", yen: 40000, myr: 989.57, fixed: false },
   { name: "Sightseeing admission fees", yen: 4100, myr: 100, fixed: false },
   { name: "City accommodation tax", yen: 1000, myr: 24.74, fixed: false },
@@ -2603,7 +2630,7 @@ function ExpensesPage() {
           yen: amount,
           myr: Number((amount / safeRate).toFixed(2)),
         };
-      })
+      }),
     );
   };
 
@@ -2628,8 +2655,7 @@ function ExpensesPage() {
       maximumFractionDigits: 2,
     })}`;
 
-  const formatYEN = (value) =>
-    `¥${Number(value || 0).toLocaleString("ja-JP")}`;
+  const formatYEN = (value) => `¥${Number(value || 0).toLocaleString("ja-JP")}`;
 
   const cleanAmount = (item) => {
     if (currency === "MYR") return item.myr ?? "";
@@ -2658,7 +2684,8 @@ function ExpensesPage() {
             <h1>Japan おはよう!</h1>
             <p>Kyoto · Osaka · 10–17 June 2026</p>
             <p>
-              1 Chome-2-16 Nipponbashihigashi,<br />
+              1 Chome-2-16 Nipponbashihigashi,
+              <br />
               Naniwa Ward, Osaka, 556-0006, Japan
             </p>
           </header>
@@ -2814,7 +2841,6 @@ function ExpensesPage() {
   );
 }
 
-
 const filmPhotoPool = [
   "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=900&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=900&auto=format&fit=crop",
@@ -2848,88 +2874,187 @@ const filmPhotoPool = [
 const galleryProfiles = [
   {
     id: "tony",
-    fullName: "Ng Wai Zhung",
+    fullName: "Tony Ng",
     name: "Tony",
     roll: "ROLL 01",
-    vibe: "Kyoto Soft Light",
+    vibe: "Experience the world of Japan through Tony's eyes",
     avatar: tonyAvatar,
+      albumUrl:
+    "https://drive.google.com/drive/folders/147pydqmApGuXMvXXmZyfPylvR6tDIYBd?usp=drive_link",
+photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `tony-${String(number).padStart(2, "0")}`,
+    src: galleryImage("tony", number),
+    thumb: galleryThumb("tony", number),
+    caption: `Tony POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
 
   {
     id: "natalie",
-    fullName: "Cheow Kai Xin",
+    fullName: "Natalie Cheow",
     name: "Natalie",
     roll: "ROLL 02",
-    vibe: "Osaka Night Roll",
+    vibe: "Experience the world of Japan through Natalie's eyes",
     avatar: natalieAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/1CFReD_CUuALAWDVUA2aHE2KAvdH0zW5a?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `natalie-${String(number).padStart(2, "0")}`,
+    src: galleryImage("natalie", number),
+    thumb: galleryThumb("natalie", number),
+    caption: `Nat POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
   {
     id: "anthony",
-    fullName: "Siak Xiang Jun",
+    fullName: "Anthony Siak",
     name: "Anthony",
     roll: "ROLL 03",
-    vibe: "Food & Friends",
+    vibe: "Experience the world of Japan through Anthony's eyes",
     avatar: anthonyAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/16HJSxk5Eg5lom5tAd9TQQM-JYKDncbHP?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `anthony-${String(number).padStart(2, "0")}`,
+    src: galleryImage("anthony", number),
+    thumb: galleryThumb("anthony", number),
+    caption: `Anthony POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
 
   {
     id: "ashley",
-    fullName: "Low Yue Tong",
+    fullName: "Ashley Low",
     name: "Ashley",
     roll: "ROLL 04",
-    vibe: "Soft Memories",
+    vibe: "Experience the world of Japan through Ashley's eyes",
     avatar: ashleyAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/1D-dQuOm_q7HTPbfQlFurZVWQyt4ZcanJ?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `ashley-${String(number).padStart(2, "0")}`,
+    src: galleryImage("ashley", number),
+    thumb: galleryThumb("ashley", number),
+    caption: `Ashley POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
 
   {
     id: "leequan",
-    fullName: "Tan Lee Quan",
+    fullName: "Lee Quan",
     name: "Lee Quan",
     roll: "ROLL 05",
-    vibe: "Good Food Roll",
+    vibe: "Experience the world of Japan through Lee Quan's eyes",
     avatar: leequanAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/14vMKiBL0KIon4knRrbriL6FklUek2Lg4?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `leequan-${String(number).padStart(2, "0")}`,
+    src: galleryImage("leequan", number),
+    thumb: galleryThumb("leequan", number),
+    caption: `Lee Quan POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
   {
-    id: "yujing",
-    fullName: "Tan Yujing",
-    name: "Yujing",
-    roll: "ROLL 06",
-    vibe: "Kyoto Street Diary",
-    avatar: yujingAvatar,
-  },
+  id: "yujing",
+  name: "Yujing",
+  avatar: yujingAvatar,
+  roll: "ROLL 06",
+  emptyImage: "/gallery/yujing/yujing-01.jpeg",
+  emptyMessage:
+    "Yujing did not take any pictures with his camera, so you can't see his POV. Sorry about that. He did buy 3 large gundams though.",
+},
 
   {
     id: "zhaoyang",
-    fullName: "Low Zhao Yang",
+    fullName: "Zhao Yang",
     name: "Zhao Yang",
     roll: "ROLL 07",
-    vibe: "Fuji Soft Frame",
+    vibe: "Experience the world of Japan through Zhao Yang's eyes",
     avatar: zhaoyangAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/163_zXJbzvSxA7z_mDYqfyndW8OsgOyRc?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `zhaoyang-${String(number).padStart(2, "0")}`,
+    src: galleryImage("zhaoyang", number),
+    thumb: galleryThumb("zhaoyang", number),
+    caption: `Zhao Yang POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
   {
     id: "paul",
-    fullName: "Lim Paul Lim",
+    fullName: "Paul Lim",
     name: "Paul",
     roll: "ROLL 08",
-    vibe: "City Walk Roll",
+    vibe: "Experience the world of Japan through Paul's eyes",
     avatar: paulAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/1f6OkXJpAV13hqeqTu3WM_e_Y3K2OgY5t?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `paul-${String(number).padStart(2, "0")}`,
+    src: galleryImage("paul", number),
+    thumb: galleryThumb("paul", number),
+    caption: `Paul POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
   {
     id: "jiansheng",
-    fullName: "Chew Jian Sheng",
+    fullName: "Jian Sheng",
     name: "Jian Sheng",
     roll: "ROLL 09",
-    vibe: "Waku Waku Roll",
+    vibe: "Experience the world of Japan through Jian Sheng's eyes",
     avatar: jianshengAvatar,
+    albumUrl:
+    "https://drive.google.com/drive/folders/1YUmR4Q6PDNfLqKtE4eDy2s4WZfQ8tkNP?usp=drive_link",
+    photos: Array.from({ length: 27 }, (_, i) => {
+  const number = i + 1;
+
+  return {
+    id: `jiansheng-${String(number).padStart(2, "0")}`,
+    src: galleryImage("jiansheng", number),
+    thumb: galleryThumb("jiansheng", number),
+    caption: `Jian Sheng POV ${String(number).padStart(2, "0")}`,
+  };
+}),
   },
 ].map((profile) => ({
   ...profile,
 
-  photos: Array.from({ length: 27 }, (_, i) => ({
-    id: `${profile.id}-${i + 1}`,
-    src: profile.avatar,
-    caption: `Frame ${String(i + 1).padStart(2, "0")} · ${profile.name}`,
-  })),
+  photos:
+    profile.photos ??
+    Array.from({ length: 27 }, (_, i) => ({
+      id: `${profile.id}-${i + 1}`,
+      src: profile.avatar,
+      caption: `Frame ${String(i + 1).padStart(2, "0")} · ${profile.name}`,
+    })),
 }));
 
 function GalleryPage() {
@@ -3102,7 +3227,7 @@ function GalleryPage() {
 
     requestAnimationFrame(() => {
       const tonyCard = track.querySelector(
-        '.filmProfileCard[data-profile-id="tony"][data-loop-index="2"]'
+        '.filmProfileCard[data-profile-id="tony"][data-loop-index="2"]',
       );
 
       if (tonyCard) {
@@ -3110,19 +3235,18 @@ function GalleryPage() {
         setActiveCardKey(tonyCard.dataset.cardKey);
       }
 
-      const autoScrollDelay =
-  window.innerWidth <= 850 ? 2200 : 3000;
+      const autoScrollDelay = window.innerWidth <= 850 ? 2200 : 3000;
 
-setTimeout(() => {
-  hasInteractedRef.current = false;
-  startAutoScroll();
+      setTimeout(() => {
+        hasInteractedRef.current = false;
+        startAutoScroll();
 
-  setTimeout(() => {
-    if (!hasInteractedRef.current) {
-      startAutoScroll();
-    }
-  }, 500);
-}, autoScrollDelay);
+        setTimeout(() => {
+          if (!hasInteractedRef.current) {
+            startAutoScroll();
+          }
+        }, 500);
+      }, autoScrollDelay);
     });
 
     return () => {
@@ -3221,77 +3345,77 @@ setTimeout(() => {
       <div className="galleryBg" />
 
       <motion.section
-  className="galleryHero compactGalleryHero"
-  initial={{ opacity: 0, y: -18 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    duration: 0.7,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
+        className="galleryHero compactGalleryHero"
+        initial={{ opacity: 0, y: -18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.7,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
         <motion.div
-  className="infoIcon"
-  initial={{ opacity: 0, scale: 0.82 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{
-    delay: 0.2,
-    duration: 0.7,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
-  <Camera size={28} />
-</motion.div>
+          className="infoIcon"
+          initial={{ opacity: 0, scale: 0.82 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <Camera size={28} />
+        </motion.div>
 
-<motion.p
-  className="smallLabel"
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    delay: 0.2,
-    duration: 0.7,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
-  Film Gallery
-</motion.p>
+        <motion.p
+          className="smallLabel"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          Film Gallery
+        </motion.p>
 
-<motion.span
-  initial={{ opacity: 0, y: 12 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    delay: 0.2,
-    duration: 0.8,
-    ease: [0.22, 1, 0.36, 1],
-  }}
->
-  See the world of Japan through their lenses.
-</motion.span>
+        <motion.span
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.2,
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          See the world of Japan through their lenses.
+        </motion.span>
       </motion.section>
 
       <section className="filmPackStage heroGalleryStage">
         <motion.div
-  className="filmPackIntro minimal"
-  initial={{ opacity: 0, y: 22 }}
-  animate={{ opacity: 1, y: 0 }}
-transition={{
-  delay: window.innerWidth <= 850 ? 0.55 : 1.35,
-  duration: 0.75,
-  ease: [0.22, 1, 0.36, 1],
-}}
->
-  <h2>Choose your roll</h2>
-</motion.div>
+          className="filmPackIntro minimal"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: window.innerWidth <= 850 ? 0.55 : 1.35,
+            duration: 0.75,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <h2>Choose your roll</h2>
+        </motion.div>
 
         <motion.div
-  ref={trackRef}
-  className="filmPackTrack"
-  initial={{ opacity: 0, y: 42 }}
-  animate={{ opacity: 1, y: 0 }}
-transition={{
-  delay: window.innerWidth <= 850 ? 1.75 : 2.25,
-  duration: 0.85,
-  ease: [0.22, 1, 0.36, 1],
-}}
+          ref={trackRef}
+          className="filmPackTrack"
+          initial={{ opacity: 0, y: 42 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: window.innerWidth <= 850 ? 1.75 : 2.25,
+            duration: 0.85,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           onWheel={onWheel}
           onScroll={() => {
             handleLoop();
@@ -3383,99 +3507,360 @@ transition={{
   );
 }
 
-function FilmRollViewer({
-  profile,
-  onClose,
-  selectedPhoto,
-  setSelectedPhoto,
-}) {
+function FilmRollViewer({ profile, onClose }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [photoRatio, setPhotoRatio] = useState(3 / 2);
+  const [showRotateHint, setShowRotateHint] = useState(false);
+  const [mobileRotatedView, setMobileRotatedView] = useState(false);
+
+  const photos = profile.photos ?? [];
+  const hasNoPhotos = Boolean(profile.emptyMessage);
+  const totalPhotos = photos.length;
+  const activePhoto = photos[activeIndex];
+
+  const preventPhotoSave = (e) => {
+    e.preventDefault();
+  };
+
+const handleRotateConfirmed = () => {
+  window.__japanGalleryRotateHintSeenThisPage = true;
+  setShowRotateHint(false);
+  setMobileRotatedView(true);
+};
+
+  const goToPhoto = (index) => {
+    if (hasNoPhotos || index === activeIndex) return;
+
+    setDirection(index > activeIndex ? 1 : -1);
+    setActiveIndex(index);
+    setSidebarOpen(false);
+  };
+
+  const nextPhoto = () => {
+    if (hasNoPhotos || totalPhotos === 0) return;
+
+    setDirection(1);
+    setActiveIndex((current) => (current + 1) % totalPhotos);
+  };
+
+  const prevPhoto = () => {
+    if (hasNoPhotos || totalPhotos === 0) return;
+
+    setDirection(-1);
+    setActiveIndex((current) =>
+      current === 0 ? totalPhotos - 1 : current - 1,
+    );
+  };
+
+  useEffect(() => {
+  const checkMobile = () => {
+    const isMobile = window.matchMedia("(max-width: 850px)").matches;
+    const hasSeenRotateHint =
+      window.__japanGalleryRotateHintSeenThisPage === true;
+
+    if (isMobile && !hasSeenRotateHint) {
+      setShowRotateHint(true);
+      setMobileRotatedView(false);
+    } else if (isMobile && hasSeenRotateHint) {
+      setShowRotateHint(false);
+      setMobileRotatedView(true);
+    } else {
+      setShowRotateHint(false);
+      setMobileRotatedView(false);
+    }
+  };
+
+  checkMobile();
+
+  window.addEventListener("resize", checkMobile);
+
+  return () => {
+    window.removeEventListener("resize", checkMobile);
+  };
+}, [profile.id]);
+
+  useEffect(() => {
+    document.body.classList.add("film-viewer-open");
+
+    return () => {
+      document.body.classList.remove("film-viewer-open");
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowRight") nextPhoto();
+      if (e.key === "ArrowLeft") prevPhoto();
+
+      if (e.key === "Escape") {
+        if (sidebarOpen) {
+          setSidebarOpen(false);
+        } else {
+          onClose();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [sidebarOpen, activeIndex, totalPhotos, hasNoPhotos]);
+
   return (
-    <>
-      {/* MAIN VIEWER */}
-      <motion.div
-        className="filmViewerBackdrop"
-        onClick={onClose}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <motion.div
-          className="filmViewer"
-          onClick={(e) => e.stopPropagation()}
-          initial={{ opacity: 0, y: 38, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 38, scale: 0.96 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-        >
-          <button className="filmViewerClose" onClick={onClose}>
-            ×
-          </button>
-
-          <header className="filmViewerHeader">
-            <div>
-              <p className="smallLabel">{profile.roll} · 27 Photos</p>
-              <h2>{profile.name}</h2>
-              <span>{profile.vibe} · Developed after Japan 2026</span>
-            </div>
-
-            <div className="filmViewerBadge">
-              <Aperture size={20} />
-              <strong>35mm</strong>
-            </div>
-          </header>
-
-          <section className="filmPhotoMasonry">
-            {profile.photos.map((photo, index) => (
-              <motion.button
-                className={`filmPhotoTile ${
-                  index % 5 === 0 ? "large" : ""
-                }`}
-                key={photo.id}
-                onClick={() => setSelectedPhoto({ ...photo, index })}
-                whileHover={{ y: -6 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <img src={photo.src} alt={photo.caption} />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </motion.button>
-            ))}
-          </section>
-        </motion.div>
-      </motion.div>
-
-      {/* LIGHTBOX */}
+    <motion.div
+      className="filmViewerBackdrop filmStoryBackdrop"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <AnimatePresence>
-        {selectedPhoto && (
+        {showRotateHint && (
           <motion.div
-            className="filmLightbox"
-            onClick={() => setSelectedPhoto(null)}
+            className="rotatePhoneHint"
+            onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedPhoto(null);
-              }}
-            >
-              ×
-            </button>
+            <div className="rotatePhoneCard">
+              <div className="rotatePhoneIcon">
+                <div className="rotatePhoneShape" />
+              </div>
 
-            <img
-              src={selectedPhoto.src}
-              alt={selectedPhoto.caption}
-              onClick={(e) => e.stopPropagation()}
-            />
+              <span>For the best POV experience</span>
 
-            <p>
-              {profile.name} · Photo {selectedPhoto.index + 1} /{" "}
-              {profile.photos.length}
-            </p>
+              <h3>Rotate your phone sideways</h3>
+
+              <p>
+                Turn off your phone’s auto-rotate, then physically rotate your
+                phone to horizontal mode.
+              </p>
+
+              <button onClick={handleRotateConfirmed}>
+                I have rotated my phone
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+
+      {hasNoPhotos ? (
+        <motion.div
+          className={`filmStoryViewer emptyPovViewer imageEmptyPovViewer ${
+            mobileRotatedView ? "mobileGalleryRotated" : ""
+          }`}
+          style={{ "--photo-ratio": 3 / 2 }}
+          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.96, y: 24 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button className="filmStoryClose" onClick={onClose}>
+            ×
+          </button>
+
+          <img
+            className="emptyPovImage"
+            src={profile.emptyImage}
+            alt={`${profile.name}'s POV placeholder`}
+            draggable="false"
+            onContextMenu={preventPhotoSave}
+            onDragStart={preventPhotoSave}
+          />
+
+          <div className="emptyPovOverlay" />
+
+          <div className="emptyPovSubtitle">
+            <span>{profile.roll}</span>
+            <p>{profile.emptyMessage}</p>
+          </div>
+        </motion.div>
+      ) : (
+        activePhoto && (
+          <motion.div
+            className={`filmStoryViewer ${
+              mobileRotatedView ? "mobileGalleryRotated" : ""
+            }`}
+            style={{ "--photo-ratio": photoRatio }}
+            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.96, y: 24 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 24 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <button className="filmStoryClose" onClick={onClose}>
+              ×
+            </button>
+
+            <div className="filmStoryProgress">
+              {photos.map((photo, index) => (
+                <button
+                  key={photo.id}
+                  className={index <= activeIndex ? "active" : ""}
+                  onClick={() => goToPhoto(index)}
+                  aria-label={`Go to photo ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              className="filmStoryMenuButton"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <Images size={18} />
+              <span>{String(activeIndex + 1).padStart(2, "0")}</span>
+            </button>
+
+            <div className="filmStoryName">
+              <span>{profile.roll}</span>
+              <strong>{profile.name}</strong>
+            </div>
+
+            <button
+              className="filmStoryArrow left"
+              onClick={prevPhoto}
+              aria-label="Previous photo"
+            >
+              ‹
+            </button>
+
+            <button
+              className="filmStoryArrow right"
+              onClick={nextPhoto}
+              aria-label="Next photo"
+            >
+              ›
+            </button>
+
+            <div className="filmStoryPhotoFrame">
+              <AnimatePresence initial={false}>
+                <motion.img
+                  className="filmStoryMainPhoto"
+                  key={activePhoto.id}
+                  src={activePhoto.src}
+                  alt={activePhoto.caption}
+                  loading="eager"
+                  decoding="async"
+                  draggable="false"
+                  onContextMenu={preventPhotoSave}
+                  onDragStart={preventPhotoSave}
+                  onLoad={(e) => {
+                    const img = e.currentTarget;
+
+                    if (img.naturalWidth && img.naturalHeight) {
+                      setPhotoRatio(img.naturalWidth / img.naturalHeight);
+                    }
+                  }}
+                  initial={{
+                    opacity: 0,
+                    x: direction > 0 ? 24 : -24,
+                    scale: 1.01,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: direction > 0 ? -24 : 24,
+                    scale: 0.99,
+                  }}
+                  transition={{
+                    opacity: { duration: 0.28, ease: "easeOut" },
+                    x: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
+                    scale: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
+                  }}
+                />
+              </AnimatePresence>
+            </div>
+
+            <div className="filmStoryBottomRight">
+              {profile.albumUrl && (
+                <a
+                  className="filmStoryFullResButton"
+                  href={profile.albumUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span className="desktopFullResText">Full resolution</span>
+                  <span className="mobileFullResText">Full-res</span>
+                </a>
+              )}
+
+              <div className="filmStoryCaption">
+                <p>
+                  {profile.name} · Photo {activeIndex + 1} / {totalPhotos}
+                </p>
+              </div>
+            </div>
+
+            <AnimatePresence>
+              {sidebarOpen && (
+                <>
+                  <motion.div
+                    className="filmStorySidebarScrim"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSidebarOpen(false);
+                    }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+
+                  <motion.aside
+                    className="filmStorySidebar"
+                    onClick={(e) => e.stopPropagation()}
+                    initial={{ x: -24, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -24, opacity: 0 }}
+                    transition={{
+                      duration: 0.28,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <div className="filmStorySidebarHeader">
+                      <span>{profile.name}'s POV</span>
+                      <strong>{totalPhotos} photos</strong>
+                    </div>
+
+                    <div className="filmStoryThumbList">
+                      {photos.map((photo, index) => (
+                        <button
+                          key={photo.id}
+                          className={index === activeIndex ? "active" : ""}
+                          onClick={() => goToPhoto(index)}
+                        >
+                          <img
+                            src={photo.thumb || photo.src}
+                            alt={photo.caption}
+                            draggable="false"
+                            onContextMenu={preventPhotoSave}
+                            onDragStart={preventPhotoSave}
+                          />
+
+                          <div>
+                            <strong>
+                              {String(index + 1).padStart(2, "0")}
+                            </strong>
+                            <span>{photo.caption}</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </motion.aside>
+                </>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )
+      )}
+    </motion.div>
   );
 }
 
@@ -3525,7 +3910,10 @@ function PlacesPage() {
 
               <div>
                 <span>2</span>
-                <p>Toggle layers like Kyoto food, Osaka food, Kyoto attractions, and Osaka attractions.</p>
+                <p>
+                  Toggle layers like Kyoto food, Osaka food, Kyoto attractions,
+                  and Osaka attractions.
+                </p>
               </div>
 
               <div>
@@ -3538,7 +3926,6 @@ function PlacesPage() {
                 <p>Zoom around Kyoto & Osaka to plan each day.</p>
               </div>
             </div>
-
           </div>
         )}
       </section>
@@ -3601,11 +3988,7 @@ function App() {
 
   return (
     <div className="page">
-      <TopBar
-        setOpen={setDrawerOpen}
-        drawerOpen={drawerOpen}
-        page={page}
-      />
+      <TopBar setOpen={setDrawerOpen} drawerOpen={drawerOpen} page={page} />
 
       <Sidebar
         open={drawerOpen}
