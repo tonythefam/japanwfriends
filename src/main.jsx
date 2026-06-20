@@ -3514,6 +3514,9 @@ function FilmRollViewer({ profile, onClose }) {
   const [photoRatio, setPhotoRatio] = useState(3 / 2);
   const [showRotateHint, setShowRotateHint] = useState(false);
   const [mobileRotatedView, setMobileRotatedView] = useState(false);
+  const [mobileGallerySize, setMobileGallerySize] = useState(null);
+  const [uiHidden, setUiHidden] = useState(false);
+  const idleTimerRef = useRef(null);
 
   const photos = profile.photos ?? [];
   const hasNoPhotos = Boolean(profile.emptyMessage);
@@ -3524,11 +3527,69 @@ function FilmRollViewer({ profile, onClose }) {
     e.preventDefault();
   };
 
-const handleRotateConfirmed = () => {
-  window.__japanGalleryRotateHintSeenThisPage = true;
-  setShowRotateHint(false);
-  setMobileRotatedView(true);
+const startGalleryIdleTimer = () => {
+  if (idleTimerRef.current) {
+    window.clearTimeout(idleTimerRef.current);
+  }
+
+  if (!sidebarOpen && !showRotateHint) {
+    idleTimerRef.current = window.setTimeout(() => {
+      setUiHidden(true);
+    }, 5000);
+  }
 };
+
+const wakeGalleryUi = () => {
+  setUiHidden(false);
+  startGalleryIdleTimer();
+};
+
+const toggleGalleryUi = (e) => {
+  e.stopPropagation();
+
+  if (sidebarOpen || showRotateHint) return;
+
+  if (idleTimerRef.current) {
+    window.clearTimeout(idleTimerRef.current);
+  }
+
+  if (uiHidden) {
+    setUiHidden(false);
+
+    idleTimerRef.current = window.setTimeout(() => {
+      setUiHidden(true);
+    }, 5000);
+  } else {
+    setUiHidden(true);
+  }
+};
+
+useEffect(() => {
+  wakeGalleryUi();
+
+  return () => {
+    if (idleTimerRef.current) {
+      window.clearTimeout(idleTimerRef.current);
+    }
+  };
+}, [activeIndex, sidebarOpen, showRotateHint]);
+
+  const getLockedMobileGallerySize = () => {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    return {
+      width: viewportHeight,
+      height: viewportWidth,
+    };
+  };
+
+  const handleRotateConfirmed = () => {
+    window.__japanGalleryRotateHintSeenThisPage = true;
+    setMobileGallerySize(getLockedMobileGallerySize());
+    setShowRotateHint(false);
+    setMobileRotatedView(true);
+  };
 
   const goToPhoto = (index) => {
     if (hasNoPhotos || index === activeIndex) return;
@@ -3555,7 +3616,6 @@ const handleRotateConfirmed = () => {
   };
 
   useEffect(() => {
-  const checkMobile = () => {
     const isMobile = window.matchMedia("(max-width: 850px)").matches;
     const hasSeenRotateHint =
       window.__japanGalleryRotateHintSeenThisPage === true;
@@ -3563,29 +3623,44 @@ const handleRotateConfirmed = () => {
     if (isMobile && !hasSeenRotateHint) {
       setShowRotateHint(true);
       setMobileRotatedView(false);
-    } else if (isMobile && hasSeenRotateHint) {
+      setMobileGallerySize(null);
+      return;
+    }
+
+    if (isMobile && hasSeenRotateHint) {
       setShowRotateHint(false);
       setMobileRotatedView(true);
-    } else {
-      setShowRotateHint(false);
-      setMobileRotatedView(false);
+      setMobileGallerySize(getLockedMobileGallerySize());
+      return;
     }
-  };
 
-  checkMobile();
-
-  window.addEventListener("resize", checkMobile);
-
-  return () => {
-    window.removeEventListener("resize", checkMobile);
-  };
-}, [profile.id]);
+    setShowRotateHint(false);
+    setMobileRotatedView(false);
+    setMobileGallerySize(null);
+  }, [profile.id]);
 
   useEffect(() => {
+    const viewportMeta = document.querySelector('meta[name="viewport"]');
+    const originalViewport = viewportMeta?.getAttribute("content");
+    const isMobile = window.matchMedia("(max-width: 850px)").matches;
+
     document.body.classList.add("film-viewer-open");
+    document.documentElement.classList.add("film-viewer-open");
+
+    if (isMobile && viewportMeta) {
+      viewportMeta.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
+      );
+    }
 
     return () => {
       document.body.classList.remove("film-viewer-open");
+      document.documentElement.classList.remove("film-viewer-open");
+
+      if (viewportMeta && originalViewport) {
+        viewportMeta.setAttribute("content", originalViewport);
+      }
     };
   }, []);
 
@@ -3606,6 +3681,32 @@ const handleRotateConfirmed = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [sidebarOpen, activeIndex, totalPhotos, hasNoPhotos]);
+
+  useEffect(() => {
+    if (hasNoPhotos || totalPhotos === 0) return;
+
+    const nextIndex = (activeIndex + 1) % totalPhotos;
+    const nextPhotoToLoad = photos[nextIndex];
+
+    if (!nextPhotoToLoad?.src) return;
+
+    const timer = window.setTimeout(() => {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = nextPhotoToLoad.src;
+    }, 450);
+
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, totalPhotos, photos, hasNoPhotos]);
+
+  const mobileGalleryStyle = {
+    "--mobile-gallery-width": mobileGallerySize
+      ? `${mobileGallerySize.width}px`
+      : "100dvh",
+    "--mobile-gallery-height": mobileGallerySize
+      ? `${mobileGallerySize.height}px`
+      : "100dvw",
+  };
 
   return (
     <motion.div
@@ -3651,7 +3752,10 @@ const handleRotateConfirmed = () => {
           className={`filmStoryViewer emptyPovViewer imageEmptyPovViewer ${
             mobileRotatedView ? "mobileGalleryRotated" : ""
           }`}
-          style={{ "--photo-ratio": 3 / 2 }}
+          style={{
+            "--photo-ratio": 3 / 2,
+            ...mobileGalleryStyle,
+          }}
           onClick={(e) => e.stopPropagation()}
           initial={{ opacity: 0, scale: 0.96, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -3682,9 +3786,12 @@ const handleRotateConfirmed = () => {
         activePhoto && (
           <motion.div
             className={`filmStoryViewer ${
-              mobileRotatedView ? "mobileGalleryRotated" : ""
-            }`}
-            style={{ "--photo-ratio": photoRatio }}
+  mobileRotatedView ? "mobileGalleryRotated" : ""
+} ${uiHidden ? "galleryUiHidden" : ""}`}
+            style={{
+              "--photo-ratio": photoRatio,
+              ...mobileGalleryStyle,
+            }}
             onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.96, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -3720,22 +3827,30 @@ const handleRotateConfirmed = () => {
             </div>
 
             <button
-              className="filmStoryArrow left"
-              onClick={prevPhoto}
-              aria-label="Previous photo"
-            >
-              ‹
-            </button>
+  className="filmStoryArrow left"
+  onClick={(e) => {
+    e.stopPropagation();
+    wakeGalleryUi();
+    prevPhoto();
+  }}
+  aria-label="Previous photo"
+>
+  ‹
+</button>
 
             <button
-              className="filmStoryArrow right"
-              onClick={nextPhoto}
-              aria-label="Next photo"
-            >
-              ›
-            </button>
+  className="filmStoryArrow right"
+  onClick={(e) => {
+    e.stopPropagation();
+    wakeGalleryUi();
+    nextPhoto();
+  }}
+  aria-label="Next photo"
+>
+  ›
+</button>
 
-            <div className="filmStoryPhotoFrame">
+            <div className="filmStoryPhotoFrame" onClick={toggleGalleryUi}>
               <AnimatePresence initial={false}>
                 <motion.img
                   className="filmStoryMainPhoto"
@@ -3787,15 +3902,15 @@ const handleRotateConfirmed = () => {
                   rel="noreferrer"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <span className="desktopFullResText">Full resolution</span>
-                  <span className="mobileFullResText">Full-res</span>
+                  <span className="desktopFullResText">Open Google Drive 🔗</span>
+                  <span className="mobileFullResText">Open Google Drive 🔗</span>
                 </a>
               )}
 
               <div className="filmStoryCaption">
-                <p>
+                <span className="filmStoryCaptionText">
                   {profile.name} · Photo {activeIndex + 1} / {totalPhotos}
-                </p>
+                </span>
               </div>
             </div>
 
@@ -3839,6 +3954,8 @@ const handleRotateConfirmed = () => {
                           <img
                             src={photo.thumb || photo.src}
                             alt={photo.caption}
+                            loading="lazy"
+                            decoding="async"
                             draggable="false"
                             onContextMenu={preventPhotoSave}
                             onDragStart={preventPhotoSave}
@@ -3861,108 +3978,6 @@ const handleRotateConfirmed = () => {
         )
       )}
     </motion.div>
-  );
-}
-
-function PlacesPage() {
-  const [showMapGuide, setShowMapGuide] = useState(true);
-
-  return (
-    <main className="placesPage">
-      <div className="placesBg" />
-
-      <section className="placesHero compact">
-        <div className="infoIcon">
-          <MapPin size={28} />
-        </div>
-
-        <p className="smallLabel">Interactive Trip Map</p>
-        <h1>Our Japan adventure map.</h1>
-      </section>
-
-      <section className="mapExperience bigMap">
-        <div className="interactiveMapFrame">
-          <iframe
-            title="Japan Places of Interest Map"
-            src="https://www.google.com/maps/d/u/0/embed?mid=1ZeyxHFUGHdUquj01wP2HRrgToa-Xll0&ehbc=2E312F"
-            loading="lazy"
-            allowFullScreen
-          />
-        </div>
-
-        {showMapGuide && (
-          <div className="floatingMapGuide">
-            <button
-              className="closeGuide"
-              onClick={() => setShowMapGuide(false)}
-            >
-              ×
-            </button>
-
-            <p className="smallLabel">How to Use</p>
-            <h2>Explore the map interactively.</h2>
-
-            <div className="guideSteps">
-              <div>
-                <span>1</span>
-                <p>Open the sidebar inside the map.</p>
-              </div>
-
-              <div>
-                <span>2</span>
-                <p>
-                  Toggle layers like Kyoto food, Osaka food, Kyoto attractions,
-                  and Osaka attractions.
-                </p>
-              </div>
-
-              <div>
-                <span>3</span>
-                <p>Tap pins to preview saved locations.</p>
-              </div>
-
-              <div>
-                <span>4</span>
-                <p>Zoom around Kyoto & Osaka to plan each day.</p>
-              </div>
-            </div>
-          </div>
-        )}
-      </section>
-      <a
-        className="openFullMapBubble"
-        href="https://www.google.com/maps/d/u/0/viewer?mid=1ZeyxHFUGHdUquj01wP2HRrgToa-Xll0"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Open Full Map
-      </a>
-    </main>
-  );
-}
-
-function InfoPage({ icon: Icon, label, title, description, items }) {
-  return (
-    <main className="infoPage">
-      <section className="infoHero">
-        <div className="infoIcon">
-          <Icon size={28} />
-        </div>
-
-        <p className="smallLabel">{label}</p>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </section>
-
-      <section className="infoGrid">
-        {items.map(([name, value]) => (
-          <div className="infoCard" key={name}>
-            <p>{name}</p>
-            <h3>{value}</h3>
-          </div>
-        ))}
-      </section>
-    </main>
   );
 }
 
