@@ -3981,6 +3981,83 @@ useEffect(() => {
   );
 }
 
+function PlacesPage() {
+  const [showMapGuide, setShowMapGuide] = useState(true);
+
+  return (
+    <main className="placesPage">
+      <div className="placesBg" />
+
+      <section className="placesHero compact">
+        <div className="infoIcon">
+          <MapPin size={28} />
+        </div>
+
+        <p className="smallLabel">Interactive Trip Map</p>
+        <h1>Our Japan adventure map.</h1>
+      </section>
+
+      <section className="mapExperience bigMap">
+        <div className="interactiveMapFrame">
+          <iframe
+            title="Japan Places of Interest Map"
+            src="https://www.google.com/maps/d/u/0/embed?mid=1ZeyxHFUGHdUquj01wP2HRrgToa-Xll0&ehbc=2E312F"
+            loading="lazy"
+            allowFullScreen
+          />
+        </div>
+
+        {showMapGuide && (
+          <div className="floatingMapGuide">
+            <button
+              className="closeGuide"
+              onClick={() => setShowMapGuide(false)}
+            >
+              ×
+            </button>
+
+            <p className="smallLabel">How to Use</p>
+            <h2>Explore the map interactively.</h2>
+
+            <div className="guideSteps">
+              <div>
+                <span>1</span>
+                <p>Open the sidebar inside the map.</p>
+              </div>
+
+              <div>
+                <span>2</span>
+                <p>
+                  Toggle layers like Kyoto food, Osaka food, Kyoto attractions,
+                  and Osaka attractions.
+                </p>
+              </div>
+
+              <div>
+                <span>3</span>
+                <p>Tap pins to preview saved locations.</p>
+              </div>
+
+              <div>
+                <span>4</span>
+                <p>Zoom around Kyoto & Osaka to plan each day.</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+      <a
+        className="openFullMapBubble"
+        href="https://www.google.com/maps/d/u/0/viewer?mid=1ZeyxHFUGHdUquj01wP2HRrgToa-Xll0"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Open Full Map
+      </a>
+    </main>
+  );
+}
+
 function App() {
   const [page, setPage] = useState("home");
   const [drawerOpen, setDrawerOpen] = useState(false);
